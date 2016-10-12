@@ -1,0 +1,13 @@
+'''Current Version: 6.1.1'''<br />
+Population genetics methods and EIGENSTRAT stratification correction method. <br /><br />
+==Setup==
+The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module unload compilers</code><br /><code>module load compilers/gnu/4.9.2</code><br /><code>module load gsl/1.16/gnu-4.9.2</code><br /><code>module load openblas/0.2.14/gnu-4.9.2</code><br />
+
+
+
+
+
+
+

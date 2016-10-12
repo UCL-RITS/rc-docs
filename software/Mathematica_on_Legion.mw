@@ -1,0 +1,162 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 10.2.0'''<br />
+Mathematica is a general purpose package and language for mathematical applications. It can be used for numerical calculations, symbolic computation and visualization. Mathematica supports numbers of any precision.
+
+Mathematica is available as a full installation including Mathematica's Notebook interface.
+
+Mathematica is primarily intended to be run within batch jobs however you may run short (less than 15 minutes execution time) interactive tests on the Login Nodes and longer (up to two hours) on the User Test Nodes. Interactive work can be done using the Notebook interface provided you have X-windows functionality enabled though your ssh connection. See our Legion User Guide for more information about enabling X-windows functionality and the User Test nodes.
+
+For general Mathematica resources, check the [http://reference.wolfram.com/language/ Wolfram Language & System Documentation Centre] and their [http://www.wolfram.com/language/fast-introduction-for-programmers/interactive-usage/ Fast Introduction for Programmers] guide. <br /><br />
+==Setup==
+Before you can use Mathematica interactively or within a batch job, you need to load the Mathematica module using: <br />
+
+<code>module load mathematica/10.2.0</code><br /><br />You can check that the modules have loaded correctly using:
+<code>
+ module list
+</code>
+==Creating a submittable Mathematica script==
+You can convert a .nb file into a Mathematica Package .m file in Mathematica by choosing Save As. (Or you can write a script by hand, typing Mathematica commands into a text file). You can then run it as below. 
+
+Note that script mode (using <tt>-script</tt> option) means that only output that you explicitly write out inside the script gets written, similar to using <tt>echo</tt> in bash. The rest of the script is evaluated silently.
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+math -noprompt -script input.m
+or
+math -noprompt -run "<<input.m"
+</nowiki>
+</code>
+</div>
+
+
+
+[[#top | back to top]]
+==Sample Mathematica jobscript==
+If removing all the comments at the top, remember <tt>#!/bin/bash -l</tt> must still be the first line in your script.
+<div style="background-color:#F9F9F9;width=100%">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run a serial Mathematica job on Legion with the upgraded
+# software stack under SGE. This version works with the modules
+# environment upgraded in Oct 2015.
+
+# Submit using a qsub command of the form:
+#
+#   qsub -v mathIn=`pwd`/my_input_file,mathOut=results_file run-math.sh
+#
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request ten minutes of wallclock time (format hours:minutes:seconds).
+#    Change this to suit your requirements.
+#$ -l h_rt=0:10:0
+
+# 3. Request 1 gigabyte of RAM. Change this to suit your requirements.
+#$ -l mem=1G
+
+# 4. Set the name of the job. You can change this if you wish.
+#$ -N Math_job_1
+
+# 6. Set the working directory to somewhere in your scratch space.  This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to your $HOME.
+#
+# NOTE: this directory must exist.
+#
+# Replace "<your_UCL_id>" with your UCL user ID :)
+#$ -wd /home/<your_UCL_id>/Scratch/Mathematica_output
+
+# 7. Your work *must* be done in $TMPDIR 
+cd $TMPDIR
+
+# 8. Load correct modules for Mathematica
+module load mathematica/10.2.0
+
+module list
+
+# 9. Run Mathematica
+cp $mathIn  $TMPDIR
+math -noprompt < $mathIn > $mathOut
+
+# 10. Preferably, tar-up (archive) all output files onto the shared scratch area
+#    this will include the mathOut file above.
+tar zcvf $HOME/Scratch/Mathematica_output/files_from_job_$JOB_ID.tgz $TMPDIR
+
+# Make sure you have given enough time for the copy to complete!
+</nowiki>
+</code>
+</div>
+
+==Running Mathematica in parallel==
+
+You can run Mathematica in parallel within a single node (this is called "Local Kernels" in the documentation and GUI). [http://reference.wolfram.com/language/ParallelTools/tutorial/Overview.html Wolfram's Parallel Tools Computing Guide] has a lot of useful information, and see also [http://reference.wolfram.com/language/guide/ParallelComputing.html Parallel Computing in the Wolfram Language Guide]. 
+
+Mathematica has a number of specific parallel computations like <tt>ParallelSum</tt> and <tt>ParallelTable</tt>, along with <tt>Parallelize</tt> and <tt>ParallelEvaluate</tt> which can be used with arbitrary expressions and user-defined functions.
+
+===Within a single node - Local Kernels===
+
+Here is a simple .m file that does a parallel computation within a single node. The work in Parallelize is farmed out between the kernels as Mathematica sees fit, while all kernels do the ParallelEvaluates. 
+
+
+[[Category:Pages with bash scripts]]
+
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+(* ::Package:: *)
+LaunchKernels[12];
+ParallelEvaluate[$ProcessID] (* each process prints its ID, so you can see they do exist *)
+ParallelEvaluate[$MachineName] (* each process prints the node it is on *)
+Parallelize[Select[Range[10000],PrimeQ[2^# - 1]&]] (* auto-parallelisation of this computation *)
+Exit[]
+</nowiki>
+</code>
+</div>
+
+[[Category:Pages with bash scripts]]
+
+You would request 12 threads in your jobscript for this, as you have 12 kernels:
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+# 5. Select 12 threads (the most you can have on nodetypes Y and Z).
+#$ -pe smp 12
+</nowiki>
+</code>
+</div>
+
+[[#top | back to top]]
+
+
+
+
+

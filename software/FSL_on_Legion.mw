@@ -1,0 +1,120 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 5.0.9'''<br />
+The FMRIB Software Library is a set of tools for analysis and visualization of  FMRI, MRI and DTI brain imaging data. It is developed by the FMRIB Analysis Group of the Nuffield Department of Clinical Neurosciences at the University of Oxford. FSL is intended to be run primarily within batch jobs however you may run short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer interactive tests on the User Test Nodes. Output can be displayed using the ''slices'' program. <br /><br />'''Useful Links:'''
+
+* [http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/ FSL Wiki at Oxford]    <br /><br />
+==Setup==
+<br />Before you can use FSL you need to load the FSL module and call FSL's set up script. 
+<code>
+ module load fsl/5.0.9
+ source $FSLDIR/etc/fslconf/fsl.sh
+</code>
+
+FSL 5 can be used in combination with R. FSL programs can now be run in command line mode for example:
+<code>
+ susan structural.nii.gz 2000 2 3 1 0 structural_susan.nii.gz
+</code>
+With FSL version 5 some programs eg FEAT can submit jobs directly to the cluster and will do this by default. For other programs you will need a runscript.
+[[Category:Pages with bash scripts]]
+==Example FSL 5 runscript==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run FSL 5 example jobs on Legion with the upgraded
+# software stack under SGE.
+#
+# Oct 2015
+#
+# Based on serial.sh by:
+#
+# Owain Kenway, Research Computing, 16/Sept/2010
+
+#$ -S /bin/bash
+
+# 1. Request 1 hour of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=1:0:0
+
+# 2. Request 4 gigabyte of RAM.
+#$ -l mem=4G
+
+# Note: some FSL programs are multi-threaded eg FEAT and you will need to
+# use -pe smp <number of cores> as well.
+
+# 3. Set the name of the job.
+#$ -N FSL_job1
+
+# 6. Set the working directory to somewhere in your scratch space.  This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to $HOME.
+#
+# Note: this directory MUST exist before your job starts!
+# Replace "<your_UCL_id>" with your UCL user ID :)
+#$ -wd /home/<your_UCL_id>/Scratch/FSL_output
+
+# 7. Setup FSL runtime environment
+
+module load fsl/5.0.9
+source $FSLDIR/etc/fslconf/fsl.sh
+
+# 8. Your work *must* be done in $TMPDIR 
+cd $TMPDIR
+
+# 9. Run job - A simple example using the BET command on the supplied example 
+#    data.
+
+# Copy your input files to $TMPDIR
+cp ~/Scratch/FSLdata/structural.nii.gz $TMPDIR
+echo ""
+echo "Running: bet structural.nii.gz structural_brain.nii"
+echo ""
+time bet structural.nii.gz structural_brain.nii
+
+# 10. Preferably, tar-up (archive) all output files onto the shared scratch area
+tar zcvf $HOME/Scratch/FSL/files_from_job_$JOB_ID.tar.gz $TMPDIR
+
+# Make sure you have given enough time for the copy to complete!
+
+</nowiki>
+</code>
+</div>
+
+Please copy if you wish and edit it to suit your jobs. You will need to change the ''-wd /home/<your_UCL_id>/Scratch/FSL_output'' SGE directive. You will also need to change the FSL command in the example and may need to change the memory, wallclock time and job name directives as well. The script can be submitted using the simplest form of the qsub command i.e.:
+<code>
+ qsub run-fsl.sh
+</code>
+Output will be written to $TMPDIR and so will need to be copied back to your ~/Scratch directory - step 10 in the runscript.
+
+
+
+
+
+

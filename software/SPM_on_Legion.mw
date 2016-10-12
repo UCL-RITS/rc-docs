@@ -1,0 +1,45 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 8, 12'''<br />
+SPM is a package written in MATLAB for analysing brain image data. Both modules require full MATLAB to be loaded. <br /><br />'''Useful Links:'''
+
+* [http://www.fil.ion.ucl.ac.uk/spm/ SPM homepage]    <br /><br />
+==Setup==
+Setup for SPM 12 (r6470). In order to run SPM on legion, you need to have the Matlab R2015a (v 8.5) module loaded and the SPM module. To use SPM 8 instead, load a different SPM module. <br />
+
+<code>module load matlab/full/r2015a/8.5</code><br /><code>module load spm/12/r6470/matlab.r2015a</code><br /><br />These add SPM to your MATLABPATH. They are the MATLAB toolbox version and not standalone versions.
+
+When constructing job scripts, remember to load the modules in the job script (or your .bashrc).
+
+
+
+
+
+
+

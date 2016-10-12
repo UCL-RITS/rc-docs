@@ -1,0 +1,222 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 2014.10'''<br />
+ADF is a parallelized computational chemistry program for chemical structure analysis with density functional theory (DFT). <br /><br />
+==Setup==
+ADF version 2014.10 is available on Grace. <br /> <br />The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module load adf/2014.10</code><br /><br />ADF is commercial software. We have a 128 core floating licence for ADF only and the licence is restricted to the Grace cluster. Access to ADF is enabled by being a member of he appropriate reserved application group. Please email [mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk] to get your userid added to the ADF group.
+
+ADF is intended to be run primarily within batch jobs however you may run short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer (up to two hours) using qrsh to request an interactive session on the compute nodes. See the [https://wiki.rc.ucl.ac.uk/wiki/Category:User_Guide RC Systems User Guide] for more information.
+
+Here is an example runscript using one of the examples from the ADF manual.
+[[Category:Pages with bash scripts]]
+==Multi Node ADF Example Runscript==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+#!/bin/bash -l
+
+# ADF 2014.10: Batch script to run ADF on the simple water example 
+# from the ADF documentation, distributed parallel (32 cores).
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request one hour of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=1:00:0
+
+# 3. Request 2 gigabyte of RAM.
+#$ -l mem=2G
+
+# 4. Set the name of the job.
+#$ -N ADF_CuH+_S-squared_32
+
+# 5. Select the MPI parallel environment (qlc) and 32 processors.
+#$ -pe mpi 32
+
+# 7. Set the working directory to somewhere in your scratch space.  In this
+# case the subdirectory ADF_examples
+#$ -wd /home/<your_UCL_id>/Scratch/ADF_examples
+
+# 8. Load the ADF module to set up your environment
+
+module load adf/2014.10
+
+module list
+
+# 9. Copy the ADF example script into the working (current) directory
+
+cp /home/ccaabaa/Software/ADF/Examples/CuH+_S-squared.run .
+
+# 10. Run the ADF script
+
+./CuH+_S-squared.run > CuH+_S-squared.out_$JOB_ID
+</nowiki>
+</code>
+</div>
+
+
+
+
+
+[[Category:Pages with bash scripts]]
+==The example used==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+#! /bin/sh
+
+
+$ADFBIN/adf -n 1 <<eor
+Create H $ADFRESOURCES/TZP/H
+end input
+eor
+
+mv TAPE21 t21.H
+
+$ADFBIN/adf -n 1 <<eor
+Create Cu $ADFRESOURCES/TZP/Cu.2p
+end input
+eor
+
+mv TAPE21 t21.Cu
+
+$ADFBIN/adf << eor
+Title calculate expectation value of S-squared
+
+Symmetry Nosym
+
+ATOMS Z-Matrix
+ Cu   0 0 0
+ H    1 0 0  1.463
+END
+
+CHARGE 1.0 1.0
+Unrestricted
+
+FRAGMENTS
+H  t21.H
+Cu t21.Cu
+END
+
+endinput
+eor
+
+rm TAPE21 logfile
+
+$ADFBIN/adf << eor
+Title calculate expectation value of S-squared
+
+Symmetry C(LIN)
+
+ATOMS Z-Matrix
+ Cu   0 0 0
+ H    1 0 0  1.463
+END
+
+CHARGE 1.0 1.0
+Unrestricted
+
+FRAGMENTS
+H  t21.H
+Cu t21.Cu
+END
+
+endinput
+eor
+
+
+rm TAPE21 logfile
+
+$ADFBIN/adf << eor
+Title calculate expectation value of S-squared
+
+Symmetry C(S)
+
+ATOMS Z-Matrix
+ Cu   0 0 0
+ H    1 0 0  1.463
+END
+
+CHARGE 1.0 1.0
+Unrestricted
+
+FRAGMENTS
+H  t21.H
+Cu t21.Cu
+END
+
+endinput
+eor
+
+rm TAPE21 logfile
+
+$ADFBIN/adf << eor
+Title calculate expectation value of S-squared
+
+ATOMS Z-Matrix
+ Cu   0 0 0
+ H    1 0 0  1.463
+END
+
+CHARGE 1.0 -1.0
+Unrestricted
+
+FRAGMENTS
+H  t21.H
+Cu t21.Cu
+END
+
+endinput
+eor
+
+mv TAPE21 CuH_plus.t21
+</nowiki>
+</code>
+</div>
+This is available on:
+<code>
+ /shared/ucl/apps/ADF/run_adf_CuH+_S-squared.sh
+</code>
+You will need to change the '-wd /home/<your_UCL_id>/Scratch/ADF_examples' Grid Engine directive and may need to change the memory, wallclock time, number of MPI Processors (item 5) and job name directives as well. Replace the CuH+_S-squared.run example file by your own ADF input file.
+
+The simplest form of qsub command can be used to submit the job eg:
+<code>
+ qsub run_adf_CuH+_S-squared_ex.sh
+</code>
+Output files will be saved in the job's working directory. 
+
+[[#top | Back to top]]
+
+
+
+
+
+

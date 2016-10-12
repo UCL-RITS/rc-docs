@@ -1,0 +1,65 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 3.4.46'''<br />
+The Genome Analysis Toolkit or GATK is a software package developed at the Broad Institute to analyze high-throughput sequencing data. <br /><br />'''Useful Links:'''
+
+* [https://www.broadinstitute.org/gatk/index.php GATK website]
+
+==License==
+
+Before you can run GATK, you need to sign up for a gatkforums account at https://www.broadinstitute.org/gatk/download/ and then agree to the license at https://www.broadinstitute.org/gatk/download/auth?package=GATK. Tell us you have done so, and we can add you to the GATK group so you can access the software.
+
+==Running GATK==
+
+GATK is currently not compatible with Java 1.8, so you need to use the system Java 1.7. Set up your modules as follows:
+
+<code>
+ module load gatk/3.4.46
+</code>
+
+Then to run GATK, you should either prefix the .jar you want to run with <code>$GATKPATH</code>:
+
+<code>
+ java -Xmx2g -jar $GATKPATH/GenomeAnalysisTK.jar OPTION1=value1 OPTION2=value2...
+</code>
+
+Or we provide wrappers, so you can run it one of these ways instead:
+
+<code>
+ GenomeAnalysisTK OPTION1=value1 OPTION2=value2...
+ gatk OPTION1=value1 OPTION2=value2...
+</code>    <br /><br />
+
+
+
+
+
+
+
+

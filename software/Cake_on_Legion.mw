@@ -1,0 +1,94 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 1.0'''<br />
+A pipeline for the integrated analysis of somatic variants in cancer genomes. 
+
+Cake pipelines can run mpileup, varscan, bambino, and somaticsniper, which are bundled into this module. On first load, creates ~/cakeconfig/SomaticCallerConfig.pm, where you can set options. <br /><br />'''Useful Links:'''
+
+* [http://cakesomatic.sourceforge.net/ Cake website]    <br /><br />
+==Setup==
+Cake was built with the GNU 4.6.3 compilers and uses samtools 0.1.19. <br /> <br />The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module unload compilers</code><br /><code>module load compilers/gnu/4.6.3</code><br /><code>module load samtools/0.1.19</code><br /><code>module load cake/1.0</code><br /><br />The first time you load this module, it will create a cakeconfig directory in your home and put a copy of SomaticCallerConfig.pm in there. (Existing files or directories with those names will not be overwritten). SomaticCallerConfig.pm contains the locations of all the separate software that the Cake pipeline uses - if for any reason you need a different version of those, you can compile your own and change the path to it. SomaticCallerConfig.pm also contains other variables you will need to alter to tweak your runs.
+
+The reference files currently referred to in SomaticCallerConfig.pm are test mouse data. 
+
+Cake uses version 75 of the Ensembl database (June 2014).
+
+Cake has a cluster option, but only knows about LSF and not SGE, so this option will not work.
+
+Note: trying to use .fai files that were created with an older version of samtools will result in the creation of blank pileup files and an error from varscan:
+<pre>Input file(s) were not ready for parsing after 100 5-second cycles! Pileup output may be invalid or too slow</pre>
+
+If this happens, recreate your .fai files or use the original .fa files and Cake will do the indexing step.
+
+
+[[Category:Pages with bash scripts]]
+==Run Cake==
+Example variant calling run using mouse sample data
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki> 
+run_somatic_pipeline.pl \
+-s /shared/ucl/apps/cake/1.0/required/Cake_Example_Run_SampleInformation_File.csv \
+-species mouse \
+-callers mpileup,varscan,bambino,somaticsniper \
+-separator , \
+-o ~/Scratch/cake_test/ \
+-mode CALLING
+</nowiki>
+</code>
+</div>
+
+
+
+
+
+
+[[Category:Pages with bash scripts]]
+==Example .csv file==
+Uses example mouse BAMfiles
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki> 
+SampleID,NormalID,Cohort,PatientID,Type,TumorBAM,NormalBAM
+MouseT1,MouseN1,Mouse100,MouseT1,Tumor,/shared/ucl/apps/cake/1.0/required/bamfiles/MouseT1.bam,/shared/ucl/apps/cake/1.0/required/bamfiles/MouseN1.bam
+MouseT2,MouseN2,Mouse100,MouseT2,Tumor,/shared/ucl/apps/cake/1.0/required/bamfiles/MouseT2.bam,/shared/ucl/apps/cake/1.0/required/bamfiles/MouseN2.bam
+</nowiki>
+</code>
+</div>
+This is available on:
+<code>
+ /shared/ucl/apps/cake/1.0/required/Cake_Example_Run_SampleInformation_File.csv
+</code>
+
+
+
+
+
+
+

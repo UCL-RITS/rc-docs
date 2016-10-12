@@ -1,0 +1,52 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+
+CASTEP is a full-featured materials modelling code based on a first-principles quantum mechanical description of electrons and nuclei. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra. CASTEP is developed by members of the Castep Developers Group (CDG) who are currently all UK based academics.
+
+On RC systems CASTEP is intended to be run primarily within batch jobs however you may run short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer interactive tests on the User Test Nodes. <br /><br />'''Useful Links:'''
+
+* [http://www.castep.org/ CASTEP website]    <br /><br />
+==Setup==
+CASTEP is not currently provided centrally - if you have access to the source code, you may install it in your home. You may wish to refer to [[Compiling]].
+
+==Optimisation==
+It has been suggested that compiling with these options (on Grace) gave a build that ran about 10% faster than the default compilation options.
+
+<code>
+ make COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 BUILD=fast
+</code> 
+
+Do check for numerical accuracy with any optimisations you carry out. If you have further suggestions, please let us know. <br /> <br />
+
+
+
+
+
+
+

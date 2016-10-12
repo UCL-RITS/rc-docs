@@ -1,0 +1,86 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 3.4'''<br />
+GULP is a program for performing a variety of types of simulation on materials using boundary conditions of 0-D (molecules and clusters), 1-D (polymers), 2-D (surfaces, slabs and grain boundaries) or 3-D (periodic solids). <br /><br />'''Useful Links:'''
+
+* [http://projects.ivec.org/gulp/ GULP website] 
+* [http://projects.ivec.org/gulp/help/manuals.html GULP manuals]   <br /><br />
+
+==Sample script==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run a GULP job on Legion with the upgraded
+# software stack under SGE.
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=00:10:00
+
+# 3. Request 1 gigabyte of RAM.
+#$ -l mem=1G
+
+# 4. Set the name of the job.
+#$ -N GULPtest
+
+# 5. Select the QLogic parallel environment (qlc) and 2 processes.
+#$ -pe qlc 2
+
+# 6. Set the working directory to somewhere in your scratch space. This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to $HOME.
+#
+# Note: this directory MUST exist before your job starts!
+#$ -wd /home/<your_UCL_id>/Scratch/GULP_output
+
+# Load the correct modules
+module unload mkl
+module load atlas/3.8.3/intel
+module load gulp/3.4
+
+# Run GULP. Gerun is a wrapper for mpirun which sets np and machinefile for you.
+gerun gulp < $JOB_NAME.res > $JOB_NAME.gout
+</nowiki>
+</code>
+</div>
+
+
+
+[[#top | back to top]]
+
+
+
+
+
+

@@ -1,0 +1,431 @@
+
+=Development tools available=
+
+The default set of development tools available on the RC Systems software stack is the following:
+{|style="background-color:#F9F9F9;"
+|- style="vertical-align:top;"
+!Name
+!Description
+!Version
+!Useful links
+!Notes
+|- style="vertical-align:top;"
+|Bison
+|Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.
+|3.0.4
+|[http://www.gnu.org/software/bison/ Bison web page]
+|Use:
+<code>
+ module load bison/3.0.4/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|cmake
+|multi-platform make utility
+|3.2.1
+|[http://www.cmake.org/cmake/resources/software.html cmake home page]
+|
+
+|- style="vertical-align:top;"
+|NVIDIA CUDA toolkit
+|CUDA compilers and libraries
+|
+|[https://developer.nvidia.com/ Documentation and development resources]	
+|This is primarily to support the experimental GPU setup - please see the Legion overview and job script examples for more information. Access it via module:
+<code>
+ module load cuda/7.5.18/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|Emacs
+|Text editor
+|24.5
+|[https://www.gnu.org/software/emacs/ Emacs home]
+|Use:
+<code>
+ module load giflib
+ module load emacs/24.5
+</code>
+
+|- style="vertical-align:top;"
+|flex
+|A Fast Lexical Analyzer.
+|2.5.39
+|[http://flex.sourceforge.net/ flex web page]
+|Use:
+<code>
+ module load flex/2.5.39
+</code>
+
+|- style="vertical-align:top;"
+|GCC
+|GNU Compiler Collection
+|4.9.2
+|[http://gcc.gnu.org/onlinedocs/ GCC documentation] on GNU website.
+|Includes C (gcc), C++ (g++) and Fortran 95 (gfortran) compilers. 
+
+|- style="vertical-align:top;"
+|GHC/Haskell Platform
+|Glasgow Haskell Compiler and commonly used libraries.
+|Version 7.8.3 of GHC, version 2014.2.0.0 of Haskell platform
+|[http://blogs.ucl.ac.uk/research-computing/2014/05/20/installing-ghc-on-scientific-linux-5-x/ Blog post on installing GHC 7.6.3 on SL 5.x]
+|You will need to load:
+<code>
+ haskellplatform/2014.2.0.0
+</code>
+If you wish to use cabal to install packages, you will need to:
+<code>
+ mkdir ~/Scratch/.cabal
+
+ ln -s ~/Scratch/.cabal ~/.cabal
+
+ cabal update
+</code>
+
+|- style="vertical-align:top;"
+|git
+|Version control system
+|2.3.5
+|[https://git-scm.com/ Git home]
+|Loaded by default, or use:
+<code>
+ module load git/2.3.5
+</code>
+
+|- style="vertical-align:top;"
+|gperf
+|GNU gperf is a perfect hash function generator.
+|3.0.4
+|[https://www.gnu.org/software/gperf/ gperf home]
+|Use:
+<code>
+ module load gperf/3.0.4/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|guile
+|Guile is the GNU Ubiquitous Intelligent Language for Extensions, the official extension language for the GNU operating system.
+|2.0.11
+|[http://www.gnu.org/software/guile/ guile home]
+|Use:
+<code>
+ module load libbdwgc/7.4.2
+ module load guile/2.0.11/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|htop
+|An interactive process viewer for Linux.
+|1.0.3
+|[http://hisham.hm/htop/ htop home]
+|Use:
+<code>
+ module load htop/1.0.3/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|Intel C++ Compiler
+|
+|2015 update 2, 2016.0.109
+|[http://software.intel.com/sites/products/documentation/hpc/composerxe/en-us/2011Update/cpp/lin/index.htm Intel C++ User and Reference Guide] on Intel website.
+|
+
+|- style="vertical-align:top;"
+|Intel Fortran Compiler
+|
+|2015 update 2, 2016.0.109
+|[http://software.intel.com/sites/products/documentation/hpc/composerxe/en-us/2011Update/cpp/lin/index.htm Intel C++ User and Reference Guide] on Intel website.
+|
+
+|- style="vertical-align:top;"
+|Java JDK and JRE
+|64 bit version of the Java development kit and runtime environment
+|1.6 Update 20 and 1.6 Update 32.<br />1.7 Update 45.
+|[http://www.oracle.com/technetwork/java/javase/documentation/index.html Java Documentation web site] (hosted by Oracle) 	
+|1.7.0_85 is the default version. To use 1.8.0_45 you need to load the following module:
+<code>
+ module load java/1.8.0_45
+</code>
+
+|- style="vertical-align:top;"
+|Julia
+|Julia is a programming language.
+|0.3.10, 0.4.0
+|[http://julialang.org/ Julia home]
+|Use:
+<code>
+ module load julia/0.4.0
+</code>
+
+|- style="vertical-align:top;"
+|libtool
+|GNU libtool is a generic library support script.
+|2.4.6
+|[http://www.gnu.org/software/libtool/ libtool home]
+|Use:
+<code>
+ module load libtool/2.4.6
+</code>
+
+|- style="vertical-align:top;"
+|ltrace
+|Library call tracer
+|0.7.3
+|[http://ltrace.org/ ltrace home]
+|Use:
+<code>
+ module load libelf
+ module load ltrace/0.7.3/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|Lua
+|Embeddable scripting language.
+|5.3.1
+|[http://www.lua.org/ Lua home]
+|Use:
+<code>
+ module load lua/5.3.1
+</code>
+
+|- style="vertical-align:top;"
+|mc - Midnight Commander
+|Visual file manager
+|4.8.14
+|[https://www.midnight-commander.org/ mc home]
+|Use:
+<code>
+ module load mc/4.8.14
+</code>
+
+|- style="vertical-align:top;"
+|Mono
+|Open source implementation of Microsoft's .NET Framework
+|3.12.1
+|[http://www.mono-project.com/ Mono home]
+|Use:
+<code>
+ module load mono/3.12.1
+</code>
+
+|- style="vertical-align:top;"
+|Intel MPI
+|Thread-safe MPI 2 implementation
+|2015 update 3
+|
+|This is the default MPI implementation on Legion. There is a module for Intel MPI for the Intel compilers and one for GCC.
+
+|- style="vertical-align:top;"
+|OpenMPI
+|MPI-2 implementation
+|OpenMPI 1.8.4
+|[http://www.open-mpi.org/ OpenMPI home page]
+|To use this MPI implementation instead of Intel MPI do the following:
+<code>
+ module unload mpi
+</code>
+to remove the default MPI module and then:
+<code>
+ module load mpi/openmpi/1.8.4/intel-2015-update2
+</code>
+if you are using the Intel compilers or:
+<code>
+ module load mpi/openmpi/1.8.4/gnu-4.9.2
+</code>
+if you are using GCC.
+
+|- style="vertical-align:top;"
+|NAG Fortran compiler
+|Fortran compiler by NAG.
+|6.0 (1044)
+|[http://www.nag.co.uk/nagware/np/doc_index.asp NAG Fortran Compiler Documentation]
+
+|- style="vertical-align:top;"
+|Nano
+|Text editor
+|2.4.2
+|[http://www.nano-editor.org/ Nano home]
+|Loaded by default, or use:
+<code>
+ module load nano/2.4.2
+</code>
+
+|- style="vertical-align:top;"
+|NCL
+|NCAR Command Language
+|6.0.0, 6.3.0
+|[https://www.ncl.ucar.edu/ NCL home]
+|Use:
+<code>
+ module load hdf/5-1.8.15/gnu-4.9.2
+ module load netcdf/4.3.3.1/gnu-4.9.2
+ module load udunits/2.2.19
+ module load szip/2.1
+ module load ncl/6.3.0
+</code>
+
+|- style="vertical-align:top;"
+|NEdit
+|GUI text editor
+|5.6-Aug15
+|[http://sourceforge.net/projects/nedit/ NEdit home]
+|Loaded by default, or use:
+<code>
+ module load nedit/5.6-aug15
+</code>
+
+|- style="vertical-align:top;"
+|Perl
+|System perl is 5.16.3. 
+|5.16.3, 5.22.0
+|[https://www.perl.org/ Perl home]
+|Use:
+<code>
+ module load perl/5.22.0
+</code>
+
+|- style="vertical-align:top;"
+|Perlbrew
+|Perl installation management - can use to install your own.
+|0.73
+|[http://perlbrew.pl/ Perlbrew home]
+|Use:
+<code>
+ module load perlbrew/0.73
+</code>
+
+|- style="vertical-align:top;"
+|PGI compiler suite
+|The Portland Group PGI Fortran C/C++ compilers and tools.
+|2012.10, 2015.4, 2015.7
+|[http://www.pgroup.com/resources/docs.htm PGI documentation] on the Portland Group web site.
+|PGI compilers have been provided primarily to build Gaussian. To use these instead of the GCC or Intel suites do the following:
+<code>
+ module load compilers/pgi/2015.7
+</code>
+
+|- style="vertical-align:top;"
+|Python
+|Scripting language
+|2.7.9, 3.4.3 	  	
+|
+|The Pythons have bundled software that was built for them - access by loading
+<code>
+ module load python2/recommended
+</code>
+or
+<code>
+ module load python3/recommended
+</code>
+
+|- style="vertical-align:top;"
+|Qt
+|Cross-platform development tool
+|4.8.6, 5.4.2
+|[http://www.qt.io/ Qt home]
+|Use:
+<code>
+ module load qt/4.8.6/gnu-4.9.2
+</code>
+or
+<code>
+ module unload compilers mpi
+ module load compilers/gnu/4.9.2
+ module load bison/3.0.4/gnu-4.9.2
+ module load gperf/3.0.4/gnu-4.9.2
+ module load qt/5.4.2/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|Rappture
+|Toolkit supporting Rapid application infrastructure
+|20130903
+|[https://nanohub.org/infrastructure/rappture/wiki Rappture wiki]
+|Use:
+<code>
+ module load rappture/20130903
+</code>
+
+|- style="vertical-align:top;"
+|Ruby
+|Programming language.
+|2.2.2
+|[https://www.ruby-lang.org/en/ Ruby home]
+|Use:
+<code>
+ module load ruby/2.2.2
+</code>
+
+|- style="vertical-align:top;"
+|SCons
+|Software build system
+|2.3.4
+|[http://www.scons.org/ SCons home]
+|Use:
+<code>
+ module load python/2.7.9
+ module load scons/2.3.4
+</code>
+
+|- style="vertical-align:top;"
+|Subversion
+|Version control system
+|1.8.13
+|[https://subversion.apache.org/ Subversion home]
+|Use:
+<code>
+ module load apr/1.5.2
+ module load subversion/1.8.13
+</code>
+
+|- style="vertical-align:top;"
+|SWIG
+|Simplified Wrapper and Interface Generator
+|3.0.5, 3.0.7
+|[http://www.swig.org/ SWIG home]
+|Use:
+<code>
+ module unload compilers
+ module load compilers/gnu/4.9.2
+ module load swig/3.0.7/gnu-4.9.2
+</code>
+
+|- style="vertical-align:top;"
+|Valgrind
+|Valgrind is a system for debugging and profiling Linux programs.
+|3.11.0
+|[http://valgrind.org/docs/ Valgrind Documentation]
+[[Valgrind on Legion]]
+
+|- style="vertical-align:top;"
+|X-org utils
+|util-macros-1.17, makedepend-1.0.5, libXdmcp-1.1.1, libXScrnSaver-1.2.2
+|X11 R7.7
+|[http://www.x.org/wiki/ X.org]
+|Use:
+<code>
+ module load xorg-utils/X11R7.7
+</code>
+
+|}
+There are a number of text editors available including [http://www.vim.org/docs.php Vim] (Vi enhanced), [http://www.gnu.org/software/emacs/manual/ GNU Emacs], NEdit. All include some support for program development like syntax highlighting etc.
+
+[[#top | back to top]]
+
+=Developer tools being tested (experimental)=
+
+Some of these packages are not publicly available yet, but we are seeking users to test them. Others are available under the "experimental-modules" module bundle.
+
+If an package is not available as an experimental module, please contact [mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk] for instructions on how to test it.
+{|style="background-color:#F9F9F9;"
+|- style="vertical-align:top;"
+!Name
+!Description
+!Issues you may encounter
+|- style="vertical-align:top;"
+|Intel Vtune
+|Vtune is a tool that lets you measure and diagnose performance problems with your code.
+|Currently the hardware counter kernel module is not installed on any of the nodes on Legion.
+|}
+
+[[#top | back to top]]

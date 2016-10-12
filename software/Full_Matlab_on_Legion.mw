@@ -1,0 +1,339 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: Full Matlab including UCL licensed toolboxes and the NAG Toolbox for Matlab R2015b is available on Legion only at present.'''<br />
+Matlab release R2015b is available on Legion. Note: this is the full Matlab, not just the runtime environment and has all the toolboxes included in UCL's Total Academic Headcount-Campus licence. We also have the [http://www.nag.co.uk/numeric/mb/design.asp NAG toolbox for Matlab] available.  You can submit single node multi-threaded Matlab jobs and Matlab jobs that can fully utilise the Parallel Computing Toolbox and Matlab's Distributed Computing Server - these are currently restricted to being able to run only within a single node.
+
+It is also possible to submit Matlab jobs to Legion from Matlab running on your own desktop or laptop.
+
+It is still possible to build standalone Matlab programs using the Matlab Compiler on another system and run them on Legion using the Matlab runtime environment. See [[Building and Running Matlab Programs]] for more information.
+
+Matlab is intended to be run primarily within batch jobs however you may run short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer (up to two hours) on the User Test Nodes. Interactive work can be done using the full Matlab GUI provided you have X-windows functionality enabled though your ssh connection or using a Matlab terminal session. See our [[:Category:Legion User Guide | Legion User Guide]] for more information about [[Accessing_RC_Systems#Running_graphical_applications_using_X-forwarding | enabling X-windows functionality]] and the [[Legion_Test_Nodes | User Test nodes]]. <br /><br />'''Useful Links:'''
+
+* [http://www.mathworks.co.uk/products/compiler/ Matlab compiler]    <br /><br />
+==Setup==
+Before you can use Matlab interactively or in a job, you need to load the Matlab module using: <br />
+
+<code>module load matlab/full/r2015b/8.6</code><br /><br />The first time you load the module it will setup your ''~/.matlab'' directory as a symbolic link to ''~/Scratch/.matlab'' - this is needed as Compute Nodes do not have write access to home directories. This first load of the module '''MUST''' be done on a Login Node. You can check that the module is loaded using:
+<code>
+ module list 
+</code>
+
+==Matlab 2015b on new Legion==
+
+On the new Legion OS as of March 2016 you can submit single-node jobs using a jobscript, as mentioned below. You can now also submit Matlab DCS jobs but the jobs must run within a single node. This means that your jobs are restricted to a maximum of 12 Matlab workers.  Remote submission is also now available.
+
+
+[[Category:Pages with bash scripts]]
+==Interactive Matlab and single node multi-threaded jobs==
+Make sure you load the Matlab modules as described above. You can now start an interactive Matlab session using either:
+<code>
+ matlab
+</code>
+using the full Matlab GUI or:
+<code>
+ matlab -nodesktop -nodisplay
+</code>
+for a Matlab terminal session.
+
+To submit batch jobs to the cluster you will need a runscript. Before you submit your first Matlab job you '''MUST''' have loaded the Matlab module in an interactive session on a login node as shown in the [[#Setup | Setup]] section. If you do not do this, your Matlab jobs will fail. Here is a simple example Matlab runscript for multi-threaded jobs including comments:
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run a multi-threaded Matlab job on Legion with the upgraded
+# software stack under SGE.
+#
+# Based on openmp.sh by:
+# Owain Kenway, Research Computing, 20/Sept/2010
+# Updated for RHEL 7, Oct 2015
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request ten minutes of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=0:10:0
+
+# 3. Request 1 gigabyte of RAM.
+#$ -l mem=1G
+
+# 4. Select 12 threads (the most possible on Legion).
+#$ -pe smp 12
+
+# 5. Reserve one Matlab licence - this stops your job starting and failing when no
+#    licences are available.
+#$ -l matlab=1
+
+# 6. The way Matlab threads work requires Matlab to not share nodes with other
+# jobs.
+#$ -ac exclusive
+
+# 7. Set the name of the job.
+#$ -N Matlab_job1
+
+# 9. Set the working directory to somewhere in your scratch space.  This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to $HOME.
+# Replace "<your_UCL_id>" with your UCL user ID :)
+#$ -wd /home/<your_UCL_id>/Scratch/Matlab_output
+
+# 10. Your work *must* be done in $TMPDIR 
+cd $TMPDIR
+
+# 11. Copy main Matlab input file and any additional files to TMPDIR
+
+cp $infile .
+Matlab_infile=`basename $infile`
+for file in `echo $addinfiles | tr ':' ' '` 
+do
+  cp $file .
+done
+
+# 12. Run Matlab job
+
+module load matlab/full/r2015b/8.6
+module list
+echo ""
+echo "Running matlab -nosplash -nodisplay < $Matlab_infile ..."
+echo ""
+matlab -nosplash -nodesktop -nodisplay < $Matlab_infile
+
+# 13. Preferably, tar-up (archive) all output files onto the shared scratch area
+tar zcvf $HOME/Scratch/Matlab_examples/files_from_job_${JOB_ID}.tgz $TMPDIR
+
+# Make sure you have given enough time for the copy to complete!
+</nowiki>
+</code>
+</div>
+This is available on:
+<code>
+ /shared/ucl/apps/Matlab/R2015b/run-matlab.sh
+</code>
+Note: the Matlab module is being loaded in the runscript - this is required.
+
+Please copy if you wish and edit it to suit your jobs. You will need to change the ''-wd /home/<your_UCL_id>/Scratch/Matlab_output'' SGE directive and may need to change the memory, wallclock time and job name directives as well. A suitable qsub command to submit a single Matlab job using this runscript would be:
+<code>
+ qsub -v infile=`pwd`/myMatlabJob.m run-matlab.sh
+</code>
+If your jobs uses more than one Matlab file for additional functions etc then a suitable qsub command would be:
+
+<code>
+ qsub -v infile=`pwd`/myMatlabJob.m,addinfiles=`pwd`/initialise.m:`pwd`/analyse.m run-matlab.sh
+</code>
+
+where ''myMatlabJob.m'' is the file containing your Matlab commands and ''initialise.m'' and ''analyse.m'' contain  additional functions initialise and analyse. In these examples input, and your runscript files are in your current working directory. The output file is saved in the tar archive produced by the last  command in the runscript and will be in ''$HOME/Scratch/Matlab_output''.
+
+[[#top | back to top]]
+
+
+
+[[Category:Pages with bash scripts]]
+==Submitting parallel jobs using the Distributed Computing Server (DCS)==
+'''Note: as of March 2016 jobs are currently restricted to working within a single node. '''
+
+Make sure you load the Matlab modules as described in the [[#Setup | Setup]] section before you attempt to submit any Matlab DCS jobs. Currently Matlab DCS jobs need to be submitted from an interactive or scripted Matlab session which can be running on the cluster login nodes or on your own machine. The single node constraint means that your jobs are restricted to a maximum of 12 Matlab workers.
+
+===Importing the Legion Cluster Profile===
+
+Before you can submit any DCS jobs to Legion, you need to import Legion's cluster profile into your Matlab environment and set it as the default. You only need to do this once because the imported profile will be automatically saved in your Matlab settings directory. Importing the profile can be done either by calling a couple of Matlab functions or via the GUI interface. The Legion profile is stored in the file:
+<code>
+ /shared/ucl/apps/Matlab/toolbox_local/Legion/R2015b/LegionGraceProfile.settings
+</code>
+To import using Matlab functions run:
+<code>
+ profile_Legion = parallel.importProfile ('/shared/ucl/apps/Matlab/toolbox_local/Legion/R2015b/LegionGraceProfile.settings');
+ parallel.defaultClusterProfile ('LegionGraceProfile');
+</code>
+from a Matlab session. To import from the GUI do the following:
+
+# From the Home tab select the Parallel menu and click on the ''Manage Cluster Profiles...'' item.
+# The Cluster Profile Manager window will open.<br />[[File:ClusterProfBefore.png]]
+# Select the Import item and in the Import Profiles from file window navigate to the LegionGraceProfile.settings file shown above and select Open.
+# Select the resulting LegionGraceProfile and click Set as Default. The Cluster Profile Manager widow should now look like this:<br />[[File:ClusterProfAfter.png]]
+
+In both cases after you quit Matlab your Legion profile will be saved for future use.
+
+===Environment Variables Required to Support Job Submission===
+
+Three Grid Engine environment variables to assist with job submission from within a Matlab session have been set up. They are needed as setting parameters like Legion project and wallclock time are not supported by the internal Matlab job submission mechanism. (Note: users who applied after July 2014 will typically not have projects). The variables are: 
+
+; SGE_CONTEXT
+: a comma separated list of context variables treated as if added via the -ac option; e.g., ''exclusive''
+; SGE_OPT
+: a comma separated list of resources that will be treated as if added via the -l option; e.g., ''h_rt=0:10:0,mem=1G,thr=12''
+; SGE_PROJECT
+: your project. This is not normally needed.
+
+All three need to be set before starting your Matlab session using the usual Bash method of exporting environment variables. For example:
+<code>
+ export SGE_CONTEXT=exclusive
+ export SGE_OPT=h_rt=0:15:0,mem=2G
+ export SGE_PROJECT=<your project ID>
+</code>
+Or they can be set from a Matlab session using Matlab's setenv function. For example:
+<code>
+ setenv ('SGE_PROJECT', '<your project ID>');
+ setenv ('SGE_CONTEXT', 'exclusive');
+ setenv ('SGE_OPT', 'h_rt=0:15:0,mem=2G');
+</code>
+
+===Submitting a Simple DCS Job===
+
+Any Matlab session you use to submit jobs must be running from a directory in your Scratch area. This is because jobs will inherit this directory as their working directory. Here is a simple annotated job submission example with only one Matlab source file.
+
+# Before starting Matlab change to your directory in Scratch where you want the job to run from and set the SGE environment variables:<br /><code>cd ~/Scratch/Matlab_examples<br />export SGE_OPT=h_rt=0:10:0,mem=1G</code>
+# Start the Matlab GUI:<br /><code>matlab</code><br />or start a Matlab terminal session:<br /><code>matlab -nodesktop -nodisplay</code>
+# In your Matlab session create a cluster object using the Legion cluster profile:<br /><code>c = parcluster ('LegionGraceProfile');</code>
+# Using your cluster object create a job object of the required type. For this example the job is a parallel job with communication between Matlab workers of type "Single Program Multiple Data":<br /><code>myJob = createCommunicatingJob (c, 'Type', 'SPMD');</code>
+# Set the number of Matlab workers:<br /><code>num_workers = 12;</code>
+# Tell the job the files needed to be made available to each worker - in this example there is only one file:<br /><code>myJob.AttachedFiles = {'colsum.m'};</code><br />''colsum.m'' contains the simple magic square example from the Matlab manual "Parallel Computing Toolbox User's Guide".
+# Tell the job the files needed to be made available to each worker - in this example there is only one file:<br /><code>myJob.AttachedFiles = {'colsum.m'};</code>
+# Set the minimum and maximium number of workers for the job:<br /><code>myJob.NumWorkersRange = [num_workers, num_workers];</code>
+# Create a MATLAB task to be executed as part of the job. For this example it will consist of executing the Matlab function colsum. The rest of arguments indicate that the task returns one parameter and and there are no input arguments to the ''colsum'' function:<br /><code>task = createTask (myJob, @colsum, 1, {});</code>
+# Submit the job:<br /><code>submit (myJob);</code><br />Your job is now submitted to the Legion job queue. You will be able to see your job's queue status using the qstat command in the normal way. You can also monitor jobs using Matlab's  Job Monitor GUI. Select Monitor Jobs from the Parallel menu on the ''Home'' tab.
+# When the job has completed get the results using:<br /><code>results = fetchOutputs(myJob)</code>
+
+You can access  the job log from Matlab using:
+<code>
+ logMess = getDebugLog (c, myJob);
+</code>
+
+===An Example of a Job with more than One Input File===
+
+Here is an example of submitting a different type of job with many input files. The job type is "Matlab Pool". A "pool" job runs the specified task function with a MATLAB pool available to run the body of parfor loops or spmd blocks and is the default job type. This example was kindly supplied to assist in testing Matlab by colleagues from CoMPLEX.
+
+The first part of creating the job is the same as the above example apart from the longer runtime:
+
+# <code>cd ~/Scratch/Matlab_examples<br />export SGE_OPT=h_rt=1:0:0,mem=2G<br />matlab</code><br />to launch the GUI or:<br /><code>matlab -nodesktop -nodisplay</code><br />to start a terminal session.<br /><code>c = parcluster ('LegionGraceProfile');</code>
+# Using our cluster object create a job object of type "pool":<br /><code>myJob2 = createCommunicatingJob (c, 'Type', 'Pool');</code>
+# Set the number of Matlab workers and another variable used to by the example:<br /><code>num_workers = 8;<br />simulation_duration_ms = 1000;</code>
+# Tell the job all the input files needed to be made available to each worker as a cell array:<br /><code>myJob2.AttachedFiles = {<br />    'AssemblyFiniteDifferencesMatrix.m'<br />    'AssemblyFiniteDifferencesRightHandSide.m'<br />    'CellModelsComputeIonicCurrents.m'<br />    'CellModelsGetVoltage.m'<br />    'CellModelsInitialise.m'<br />    'CellModelsSetVoltage.m'<br />    'GetStimuliForTimeStep.m'<br />    'SubmitMonodomainJob.m'<br />    'RegressionTest.m'<br />    'RunAndVisualiseMonodomainSimulation.m'<br />    'SolveLinearSystem.m'<br />    'luo_rudy_1991_iionic.m'<br />    'luo_rudy_1991_time_deriv.m'};</code>
+# Set the minimum and maximium number of workers for the job:<br /><code>myJob2.NumWorkersRange = [num_workers, num_workers];</code>
+# Create a MATLAB task to be executed as part of the job. For this example it will consist of executing the Matlab function ''RunAndVisualiseMonodomainSimulation''. The rest of arguments indicate that the task returns three parameters and  there are five input arguments to the function. These are passed as a cell array:<br /><code>task = createTask (myJob2, @RunAndVisualiseMonodomainSimulation, 3, {5000, simulation_duration_ms, 1.4, 1.4, false});</code>
+# Submit the job:<br /><code>submit (myJob2);</code>
+
+As before use FetchOutputs to collect the results.
+
+If you closed your session, you can get your results by:
+
+<code>
+ c = parcluster ('LegionGraceProfile'); # get a cluster object
+ jobs = findJob(c); # gets a list of jobs submitted to that cluster
+ job = jobs(3); # pick a particular job
+ results = fetchOutputs(job)
+</code>
+
+You can get other information: <code>diary(job)</code> will give you the job diary, and <code>load(job)</code> will load the workspace.
+
+===Further Reading===
+
+There is a lot more information about using the Matlab Distributed Computing Server on the Matlab manual [https://www.ucl.ac.uk/isd/services/research-it/documents/matlab-pct-user-guide.pdf Parallel Computing Toolbox User’s Guide (pdf)].
+
+
+
+
+ 
+
+
+[[Category:Pages with bash scripts]]
+==Submitting Matlab jobs from desktop systems and personal laptops==
+'''As of March 2016 this is now working with Matlab 2015b.'''
+
+You can submit Matlab jobs to Legion from Matlab sessions running on your own desktop workstation or laptop systems provided they are running the same version of Matlab and your computer is within the UCL firewall.
+
+===Prerequisites===
+
+# You must already have an account on Legion!
+# Have Matlab R2015b installed on your local workstation/laptop. Currently this is the only full Matlab version installed on Legion and the local version must match the version running jobs.  Matlab R2015b can be downloaded from the UCL Software Database ([http://swdb.ucl.ac.uk/package/view/id/2?filter=Matlab Matlab entry on the UCL SWDB]) or from the directory: <code>/shared/ucl/apps/Matlab/R2015b/ISOs/</code> on Legion. There are three ISOs here: one for Linux (<code>R2015b_glnxa64.iso</code>), one for Mac OS X (<code>R2015b_maci64.iso</code>) and one for Windows (<code>R2015b_win64.iso</code>). The file <code>MD5s.txt</code> contains MD5 sums for them.
+# Depending on the version of java on your computer, you may need to apply this fix: [http://www.mathworks.com/support/bugreports/919688 Parallel Computing Toolbox Java problem].
+# If your local workstation/laptop is not directly connected to the UCL network (at home for example), you need to have the UCL VPN client installed and running on it. Details about the UCL VPN client are available on [http://www.ucl.ac.uk/isd/services/get-connected/remote-working/vpn these web pages].
+
+===Setup===
+<ol>
+<li>On Legion create a directory to hold remotely submitted job details. For example:<br />
+<code>
+ mkdir ~/Scratch/Matlab_remote_jobs
+</code><br />
+This directory needs to be in your Scratch directory as Compute Nodes need to be able to write to it. Also you shouldn't use this directory for anything else.</li>
+<li>On your local workstation/laptop create a directory to hold information about jobs that have been submitted to Legion. Again you shouldn't use this directory for anything else.</li>
+<li>Download the [https://wiki.rc.ucl.ac.uk/wiki/File:Legion_submit.zip support files for remote submission to Legion from here].</li>
+<li>This step '''MUST''' be done while Matlab is shut down. Unzip the archive into Matlab's local toolbox directory. Default locations for the local toolbox directory are:
+;Linux:The default local toolbox location is ''/usr/local/MATLAB/R2015b/toolbox/local''. Navigate to this directory and use unzip -x archive_name.
+;Mac OS X:The default local toolbox location is ''/Applications/MATLAB_R2015b.app/toolbox/local''. In order to view or change the contents of an application package, open /Applications in a Finder window. Then right-click the application and select "View Package Contents." Then navigate to the appropriate directory. '''Note:''' If you don't have access to ''/Applications/MATLAB_R2015b.app/toolbox/local'', you can unzip the support files into ''~/Documents/MATLAB/'' instead.
+;Windows:The default local toolbox location is ''C:\Program Files\MATLAB\R2015b\toolbox\local''. Extract the archive here.</li>
+<li>Download the [https://wiki.rc.ucl.ac.uk/wiki/File:ParallelProfileLegion.m.zip parallelProfileLegion function from here] to your local workstation/laptop. It will need to be unzipped. This function creates a cluster profile for Legion.</li>
+<li>Start Matlab, navigate to where you saved the ''parallelProfileLegion.m'' file, run the function by typing:<br />
+<code>
+ parallelProfileLegion
+</code><br />
+at your Matlab prompt (in your Matlab Command Window if running the Matlab GUI) and answer the questions.</li>
+</ol>
+===Submitting a Job to Legion===
+<ol>
+<li>You need to set values to the three Grid Engine support environment variables described above on your local computer suitable for the job or jobs you are going to submit.</li>
+<li>In your Matlab session create a cluster object using the cluster profile created by the parallelProfileLegion function:
+<code>
+ c&nbsp;=&nbsp;parcluster&nbsp;('legion_R2015b');
+</code>
+</li>
+<li>You can now create and submit jobs in a similar way to that shown in the examples above starting from item 4 in the first example and 2 in the second.</li></ol>
+
+===Viewing your results===
+After submitting your job remotely from your desktop, you can close MATLAB and come back later. To see your jobs:
+
+Click Parallel > Monitor jobs
+
+This will bring up the job monitor where you can see the status of your jobs and whether they are finished. MATLAB numbers the jobs sequentially.
+
+Right-click on a job and choose fetch outputs.
+
+It will execute this, with the corresponding ID number:
+
+<code>
+ myCluster = parcluster('legion_R2015b');
+ job4 = myCluster.findJob('ID',4);
+ job4_output = fetchOutputs(job4);
+</code>
+
+The Workspace will show the available data and you can view your results. The data is fetched from the Matlab_remote_jobs  directory you created on Legion in [https://wiki.rc.ucl.ac.uk/mediawiki119/index.php?title=Full_Matlab_on_Legion&action=submit#Setup_2 Setup step 1], so that will also have files and directories in it called job1, job2 and so on. 
+
+If you have already fetched the data, you can view the results straight away by selecting that job. If you need to reload everything, you can right-click on the job and the option will be to load variables instead.
+
+====Writing intermediate results====
+
+If you want to explicitly write out intermediate results, you need to provide a full path to somewhere in Scratch otherwise MATLAB will try to write them in your home, which isn't writable by the compute nodes.
+
+[[#top | back to top]]
+
+
+
+
+
+
+
+[[Category:Legion Applications |Matlab]]
