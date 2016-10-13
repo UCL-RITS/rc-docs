@@ -5,8 +5,7 @@
 
 Information about how to apply for an account to use available Research Computing services is provided below.
 
-Legion, Grace and Emerald access application
-============================================
+## Legion, Grace and Emerald access application
 
 We now have a single simplified application process for Legion, Grace and Emerald. Use of these services is subject to a common set of [terms and conditions](terms_and_conditions.html). All applications cover a Legion account while access to other systems depends on the resources you apply for.
 
@@ -36,8 +35,7 @@ The application process then runs as follows:
 5.  You will receive an email when your account is approved if you have a sponsor.
 6.  You should receive an email once we have created your account. Please note that there may be a delay of up to one working day between an application being approved and it being created.
 
-Accounts for visitors
-=====================
+## Accounts for visitors
 
 Applications for UCL visitors to use Research Computing services are welcomed. Please note that:
 
@@ -45,8 +43,7 @@ Applications for UCL visitors to use Research Computing services are welcomed. P
 2.  Account applications should specify the UCL grant under which the work is being carried out, if possible, as well as an associated UCL group or researcher.
 3.  Account applications may not be submitted on behalf of another except to cover accessibility requirements, as the account application process includes agreeing to relevant legal terms and conditions.
 
-Accounts for honorary staff
-===========================
+## Accounts for honorary staff
 
 UCL Staff Members may nominate Honorary members (named individuals) to be provided with access to Research Computing services where this is beneficial to UCL’s research interests.
 
@@ -56,8 +53,7 @@ Proposals will be reviewed by the [CRAG](http://www.ucl.ac.uk/isd/about/governan
 
 All accounts thus provided are subject to all other ‘standard’ T&C’s relating to their use of Research Computing services.
 
-Charges for use of research computing services
-==============================================
+## Charges for use of research computing services
 
 No direct charges are currently applicable for non-exceptional use of any Research Computing services in accordance with standard resource allocation policy as defined by the [CRAG](http://www.ucl.ac.uk/isd/about/governance/research-it/crag).
 

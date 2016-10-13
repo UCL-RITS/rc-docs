@@ -137,7 +137,6 @@ Xming is a popular open source X server for Windows. These are instructions for 
 3.  Open PuTTY
 4.  Set up PuTTY as shown in the Exceed section.
 
-Transferring files
-==================
+## Transferring files
 
 Read on to [Managing data on RC systems](Managing Data on RC Systems "wikilink").
