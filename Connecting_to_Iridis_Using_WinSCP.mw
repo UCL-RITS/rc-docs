@@ -1,23 +1,4 @@
 
-<table style="width:100%; background-color:#F9F9F9;">
-<tr>
-<td style="width:63%;vertical-align:top;">
-'''Quick Links'''
-<ul style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
-<li>[[Iridis]]</li>
-<li>[http://www.cfi.ses.ac.uk/ Centre for Innovation]</li>
-<li>[[Planned Service Outages]]</li>
-<li>[[Account Services]]</li>
-</ul>
-</td>
-<td style="vertical-align:top;">
-__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
-To report a problem or request support for Iridis, email:<br />
-[mailto:Iridis-support@ses.ac.uk Iridis-support@ses.ac.uk]
-
-</td>
-</tr>
-</table>
 
 {| class="notice-inform" style="border: 1px solid black; padding: 0; width:100%; background-color: #ffffcc;"
 | rowspan="2" align="center" style="width:35px; padding: 0;"|[[Image:Icon-Warn.png|35px|Notice]]
