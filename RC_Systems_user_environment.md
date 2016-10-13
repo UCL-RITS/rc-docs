@@ -1,30 +1,29 @@
+## Operating system
 
-=Operating system=
+### Legion and Grace
 
-==Legion and Grace==
+Legion and Grace run a software stack based upon Red Hat Enterprise Linux 7 and Son of Grid Engine. The environment provided should be familiar to users of UNIX-like operating systems.
 
-Legion and Grace run a software stack based upon Red Hat Enterprise Linux 7 and Son of Grid Engine. The environment provided should be familiar to users of UNIX-like operating systems. 
+Here is a [A Quick Introduction to Unix](http://en.wikibooks.org/wiki/A_Quick_Introduction_to_Unix) for those not familiar with this essential operating system.
 
-Here is a [http://en.wikibooks.org/wiki/A_Quick_Introduction_to_Unix A Quick Introduction to Unix] for those not familiar with this essential operating system.
-
-==Aristotle==
+### Aristotle
 
 Aristotle runs Red Hat Enterprise Linux 6.5.
 
-=Software=
+## Software
 
-As well as the system software, there are a number of applications, libraries and development tools available on our machines, the details of which may be found on the [[Software | software pages]].
+As well as the system software, there are a number of applications, libraries and development tools available on our machines, the details of which may be found on the [ software pages](Software "wikilink").
 
-=Modules=
+## Modules
 
-Our systems use the modules environment system to manage packages. A module configures your current login session or job to use a particular piece of software. For example, this may involve altering your PATH and LD_LIBRARY_PATH environment variables to make the associated commands and/or libraries available at compile-time and/or run-time, without explicitly having to know the relevant paths.
+Our systems use the modules environment system to manage packages. A module configures your current login session or job to use a particular piece of software. For example, this may involve altering your PATH and LD\_LIBRARY\_PATH environment variables to make the associated commands and/or libraries available at compile-time and/or run-time, without explicitly having to know the relevant paths.
 
 A module can for instance be associated with a particular version of the Intel compiler, or particular MPI libraries, or applications software, etc.
 
 The default environment has the most commonly required modules already loaded for your convenience.
 
-You can see what modules are currently loaded by using the command <code>module list</code>. The default module set is shown in the example below:
-<code>
+You can see what modules are currently loaded by using the command `module list`. The default module set is shown in the example below: 
+````
  [<userid>@login06 ~]$ module list
  Currently Loaded Modulefiles:
   1) gcc-libs/4.9.2                 7) subversion/1.8.13             13) rcps-core/1.0.0
@@ -33,86 +32,67 @@ You can see what modules are currently loaded by using the command <code>module 
   4) git/2.3.5                     10) nano/2.4.2                    16) default-modules
   5) apr/1.5.2                     11) nedit/5.6-aug15               
   6) apr-util/1.5.4                12) dos2unix/7.3                 
+```
 
-</code>
 This output indicates that the Intel compilers are loaded, the Intel MPI environment, editor nedit and some other utilities.
 
-In addition to those made available in your default environment, we provide a rich set of additional modules for your use. These can be listed by typing:
-<code>
+In addition to those made available in your default environment, we provide a rich set of additional modules for your use. These can be listed by typing: 
+```
  module whatis
-</code>
-Or in a shorter form by typing:
-<code>
+```
+Or in a shorter form by typing: 
+```
  module avail
-</code>
+```
 
-You can load additional modules into your current session by using the command:
-<code>
+You can load additional modules into your current session by using the command: 
+```
  module load
-</code>
-For example, to add the module for FFTW 2.1.5 for the Intel compilers, type:
-<code>
+```
+For example, to add the module for FFTW 2.1.5 for the Intel compilers, type: 
+```
  module load fftw/2.1.5/intel-2015-update2
-</code>
-Typing <code>module list</code> will now show the above with the addition of the fftw module.
+```
+Typing `module list` will now show the above with the addition of the fftw module.
 
-You can unload modules from your current session by using the command:
-<code>
+You can unload modules from your current session by using the command: `
  module unload
-</code>
-For example, to remove the FFTW module, type:
-<code>
+```
+For example, to remove the FFTW module, type: 
+```
  module unload fftw/2.1.5/intel-2015-update2
-</code>
-One commonly required change is to switch from using the Intel compiler and associated libraries (which are provided in the default environment), to using the GCC compiler. This would be achieved by typing the following commands:
-<code>
+```
+One commonly required change is to switch from using the Intel compiler and associated libraries (which are provided in the default environment), to using the GCC compiler. This would be achieved by typing the following commands: 
+```
  module unload compilers 
  module unload mpi
  module load compilers/gnu/4.9.2
  module load mpi/intel/2015/update3/gnu-4.9.2
-</code>
-Note that the order in which you execute these commands is vital! You must always unload modules before loading their replacements. Typing <code>module list</code> again will show the changes.
+```
+Note that the order in which you execute these commands is vital! You must always unload modules before loading their replacements. Typing `module list` again will show the changes.
 
-You can permanently change what modules are loaded by default in your environment by editing your ~/.bashrc file to add the appropriate module load and unload commands at the end. 
+You can permanently change what modules are loaded by default in your environment by editing your \~/.bashrc file to add the appropriate module load and unload commands at the end.
 
-When you first start using a new application, typing
-<code>
+When you first start using a new application, typing:
+```
  module help <module>
-</code>
+``` 
 (where <module> is the name of the application module) will provide you with additional Legion-specific instructions on how to use the application if any are necessary.
 
-{|valign="top" style="background-color:#F9F9F9;margin:10px 0px 10px 0px;"
-|+align="left" style="margin-bottom:5px;"|A summary of useful commands relating to the use of modules:
-|-
-|valign="top" width=30%|<code>module load <module></code>
-|loads a module
-|-
-|valign="top"|<code>module unload <module></code>
-|valign="top"|unloads a module
-|-
-|valign="top"|<code>module purge</code>
-|valign="top"|unloads all modules
-|-
-|valign="top"|<code>module list</code>
-|valign="top"|shows currently loaded modules
-|-
-|valign="top"|<code>module avail</code>
-|valign="top"|shows available modules
-|-
-|valign="top"|<code>module whatis</code>
-|valign="top"|shows available modules with brief explanations
-|-
-|valign="top"|<code>module show <module></code>
-|valign="top"|List the contents of the module fire. Shows environment variables set-up by the module
-|-
-|valign="top"|<code>module help <module></code>
-|valign="top"|Shows helpful information about a module, including instructions on how to use the application
-|}
+|---|---|
+|`module load <module>`|loads a module|
+|`module unload <module>`|unloads a module|
+|`module purge`|unloads all modules|
+|`module list`|shows currently loaded modules|
+|`module avail`|shows available modules|
+|`module whatis`|shows available modules with brief explanations|
+|`module show <module>`|List the contents of the module fire. Shows environment variables set-up by the module|
+|`module help <module>`|Shows helpful information about a module, including instructions on how to use the application|
 
-=Aristotle specific modules=
+## Aristotle specific modules
 
-Aristotle mounts the Research Computing software stack, so you will see all the same modules. They won't necessarily all work - everything built specifically for Aristotle will have Aristotle in the module name or else be in the extra module section that will show up at the bottom when using <code>module avail</code>:
-<code>
+Aristotle mounts the Research Computing software stack, so you will see all the same modules. They won't necessarily all work - everything built specifically for Aristotle will have Aristotle in the module name or else be in the extra module section that will show up at the bottom when using `module avail`: 
+```
  -------------------- /shared/ucl/apps/eb_ivybridge_noib/modules/all --------------------
  Bison/2.7-goolf-1.4.10                              OpenMPI/1.6.4-GCC-4.7.2
  CMake/2.8.11-goolf-1.4.10                           PCRE/8.12-goolf-1.4.10
@@ -130,29 +110,28 @@ Aristotle mounts the Research Computing software stack, so you will see all the 
  LibTIFF/4.0.3-goolf-1.4.10                          netCDF/4.2.1.1-goolf-1.4.10
  M4/1.4.16-goolf-1.4.10                              setuptools/0.6c11-goolf-1.4.10-Python-2.7.3
  OpenBLAS/0.2.6-gompi-1.4.10-LAPACK-3.4.2            zlib/1.2.7-goolf-1.4.10
-</code>
+```
 
 The others are mixed in with the general modules: here are a few:
 
-<code>
+```
  matlab/full/r2015a/8.5-aristotle
  recommended/r-aristotle
  python/2.7.9/gnu.4.7.2-Aristotle
  gnuplot/5.0.1-Aristotle
-</code>
+```
 
 Aristotle has different default modules:
 
-<code>
+```
  module show default-modules-aristotle
  -------------------------------------------------------------------
  /shared/ucl/apps/modulefiles2/bundles/default-modules-aristotle:
  
- module-whatis	 Adds default Aristotle modules to your environment. 
- module		 load compilers/gnu/4.6.3 
- module		 load nedit/5.6 
- module		 load mrxvt/0.5.4 
+ module-whatis   Adds default Aristotle modules to your environment. 
+ module      load compilers/gnu/4.6.3 
+ module      load nedit/5.6 
+ module      load mrxvt/0.5.4 
  -------------------------------------------------------------------
-</code>
+```
 
-[[#top | back to top]]
