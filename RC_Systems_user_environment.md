@@ -23,7 +23,8 @@ A module can for instance be associated with a particular version of the Intel c
 The default environment has the most commonly required modules already loaded for your convenience.
 
 You can see what modules are currently loaded by using the command `module list`. The default module set is shown in the example below: 
-````
+
+```
  [<userid>@login06 ~]$ module list
  Currently Loaded Modulefiles:
   1) gcc-libs/4.9.2                 7) subversion/1.8.13             13) rcps-core/1.0.0
