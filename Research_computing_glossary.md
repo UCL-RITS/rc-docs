@@ -1,45 +1,59 @@
+###### Bash
 
-;<div id="bash">Bash</div>
-:A Unix [[#shell | shell]] and [[#script | scripting]] language, which is the default command processor on most Linux operating systems.
+A Unix [ shell](#shell "wikilink") and [ scripting](#script "wikilink") language, which is the default command processor on most Linux operating systems. 
 
-;<div id="cluster">Cluster</div>
-:A cluster consists of a set of computer [[#nodes | nodes]] connected together over a fast local area network. A message passing protocol such as [[#mpi | MPI]] allows individual nodes to work together as a single system.
+###### Cluster
 
-;<div id="core">Core</div>
-:A core refers to a processing unit within a [[#node | node]]. A node may have multiple cores which can work in parallel on a single task, operating on the same data in memory. This kind of parallelism is coordinated using the [[#openmp | OpenMP]] library. Alternatively, cores may work independently on different tasks. Cores may or may not also share cache.
+A cluster consists of a set of computer [ nodes](#nodes "wikilink") connected together over a fast local area network. A message passing protocol such as [ MPI](#mpi "wikilink") allows individual nodes to work together as a single system. 
 
-;<div id="interconnect">Interconnect</div>
-:The interconnect is the network which is used to transfer data between [[#node | nodes]] in a [[#cluster | cluster]]. Different types of interconnect operate at different bandwidths and latency, which affects the suitability of a collection of nodes for jobs which use message passing ([[#mpi | MPI]]). On legion, a mixture of Ethernet and Infiniband interconnects are used, with node islands connected together by Infiniband being best suited for MPI jobs.
+###### Core
 
-;<div id="job">Job</div>
-:In the context of [[#sge | SGE]], a job refers to a computational task to be performed such as a single simulation or analysis.
+A core refers to a processing unit within a [ node](#node "wikilink"). A node may have multiple cores which can work in parallel on a single task, operating on the same data in memory. This kind of parallelism is coordinated using the [ OpenMP](#openmp "wikilink") library. Alternatively, cores may work independently on different tasks. Cores may or may not also share cache.
 
-;<div id="job script">Job Script</div>
-:A job script is essentially a special kind of [[#script | script]] used to specify the parameters of a job. Users can specify the data to input, program to use, and the computing resources required. The job script is specified when a job is submitted to SGE, which reads lines starting with '#$'.
+###### Interconnect
 
-;<div id="mpi">MPI</div>
-:The Message Passing Interface (MPI) system is a set of portable libraries which can be incorporated into programs in order to control parallel computation. Specifically it coordinates effort between [[#node | nodes]] which do not share the same memory address space cf. [[#openmp | OpenMP]].
+The interconnect is the network which is used to transfer data between [ nodes](#node "wikilink") in a [ cluster](#cluster "wikilink"). Different types of interconnect operate at different bandwidths and latency, which affects the suitability of a collection of nodes for jobs which use message passing ([ MPI](#mpi "wikilink")). On legion, a mixture of Ethernet and Infiniband interconnects are used, with node islands connected together by Infiniband being best suited for MPI jobs. 
 
-;<div id="node">Node</div>
-:In cluster computing, a node refers to a computational unit which is capable of operating independently of other parts of the cluster. As a minimum it consists of one (or more) processing [[#core | cores]], has its own memory, and runs its own operating system.
+###### Job
 
-;<div id="openmp">OpenMP</div>
-:Open Multi-Processing. OpenMP supports multithreading, a process whereby a master [[#thread | thread]] generates a number of slave threads to run a task which is divided among them. OpenMP applies to processes running on shared memory platforms, i.e. [[#job | jobs]] running on a single [[#node | node]]. Hybrid applications may make use of both OpenMP and [[#mpi | MPI]].
+In the context of [ SGE](#sge "wikilink"), a job refers to a computational task to be performed such as a single simulation or analysis. 
 
-;<div id="process">Process<div>
-:A process is a single instance of a program that is running on a computer. A single process may consist of many [[#thread | threads]] acting concurrently, and there may multiple instances of a program running as separate processes.
+###### Job Script
 
-;<div id="script">Script</div>
-:A [[#shell | shell]] script enables users to list commands to be run consecutively by typing them into a text file. The first line of the script uses the shebang notation '#!' to designate the scripting language to be used to interpret the commands, e.g. [[#bash | bash]].
+A job script is essentially a special kind of [ script](#script "wikilink") used to specify the parameters of a job. Users can specify the data to input, program to use, and the computing resources required. The job script is specified when a job is submitted to SGE, which reads lines starting with '\\#\\\\$'. 
 
-;<div id="shebang">Shebang</div>
-:A shebang consists of the character sequence '#!' and is placed at the start of a [[#script |script]] to specify the interpreter that should be used. When the shebang is found in the first line of a script, the program loader reads the rest of the line as the path to the required interpreter (e.g. /bin/bash is the path to the [[#bash | bash]] shell). The specified interpreter is then run with the path to the script passed as an argument to it.
+###### MPI
 
-;<div id="shell">Shell</div>
-:A command line interpreter which provides an interface for users to type instructions to be interpreted by the operating system and display output via the monitor. Users type specific shell commands in order to run [[#process | processes]], e.g. 'ls' to list directory contents.
+The Message Passing Interface (MPI) system is a set of portable libraries which can be incorporated into programs in order to control parallel computation. Specifically it coordinates effort between [ nodes](#node "wikilink") which do not share the same memory address space cf. [ OpenMP](#openmp "wikilink"). 
 
-;<div id="sge">Sun Grid Engine (SGE)</div>
-:The queuing system used by many cluster computing systems (including [[Legion]]) to organise and schedule [[#job | jobs]]. Once jobs are submitted to SGE, it takes care of executing them when the required resources become available. Job priority is subject to the local fair use policy.
+###### Node
 
-;<div id="thread">Thread</div>
-:A thread refers to a serial computational process running on a single [[#core | core]]. The number of threads generated by a parallel job may exceed the number of cores available though, in which case cores may alternate between running different threads. Threads are a software concept whereas cores exist in the real world.
+In cluster computing, a node refers to a computational unit which is capable of operating independently of other parts of the cluster. As a minimum it consists of one (or more) processing [ cores](#core "wikilink"), has its own memory, and runs its own operating system. 
+
+###### OpenMP
+
+Open Multi-Processing. OpenMP supports multithreading, a process whereby a master [ thread](#thread "wikilink") generates a number of subsidiary threads to run a task which is divided among them. OpenMP applies to processes running on shared memory platforms, i.e. [ jobs](#job "wikilink") running on a single [ node](#node "wikilink"). Hybrid applications may make use of both OpenMP and [ MPI](#mpi "wikilink"). 
+
+###### Process
+
+A process is a single instance of a program that is running on a computer. A single process may include many [ threads](#thread "wikilink") acting concurrently, and there may multiple instances of a program running as separate processes. 
+
+###### Script
+
+A list of commands or instructions intended to be provided to a program to interpret. In POSIX-compatible operating systems like Linux and macOS, these may commonly include a _shebang_ to specify which program should interpret the commands.
+
+###### Shebang
+
+A shebang consists of the character sequence `#!` and is placed at the start of a [script](#script "wikilink") to specify the interpreter that should be used. When the shebang is found in the first line of a script, the program loader reads the rest of the line as the path to the required interpreter (e.g. `/bin/bash` is the path to the [ bash](#bash "wikilink") shell). The specified interpreter is then run with the path to the script passed as an argument to it. 
+
+###### Shell
+
+A command line interpreter which provides an interface for users to type instructions to be interpreted by the operating system and display output via the monitor. Users type specific shell commands in order to run [ processes](#process "wikilink"), e.g. 'ls' to list directory contents. 
+
+##### Son of Grid Engine (SGE)
+
+The queuing system used by many cluster computing systems (including [Legion](Legion "wikilink")) to organise and schedule [ jobs](#job "wikilink"). Once jobs are submitted to SGE, it takes care of executing them when the required resources become available. Job priority is subject to the local fair use policy.
+
+###### Thread
+
+A thread refers to a serial computational process running on a single [ core](#core "wikilink"). The number of threads generated by a parallel job may exceed the number of cores available though, in which case cores may alternate between running different threads. Threads are a software concept whereas cores exist in the real world.
