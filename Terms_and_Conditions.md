@@ -16,5 +16,4 @@ The Research Computing Applications and Support Team reserve the right to suspen
 
 Users are required to acknowledge their use of Legion and associated research computing services in any publications describing research that has been conducted, in any part, on Legion.
 
-All support requests should be sent by e-mail to <rc-support@ucl.ac.uk>.
-
+All support requests should be sent by e-mail to <mailto:rc-support@ucl.ac.uk>.
