@@ -1,41 +1,42 @@
+# Example Submission Scripts
 
 On this page we describe some basic example scripts to submit jobs to Legion or Grace.
 
-For a full description of data management policies, please refer to the [[Managing Data on RC Systems | data management section]] of the user guide.
+For a full description of data management policies, please refer to the [ data management section](Managing Data on RC Systems "wikilink") of the user guide.
 
-After creating your script, submit it to the scheduler with <code>qsub yourscriptname</code>.
+After creating your script, submit it to the scheduler with `qsub yourscriptname`.
 
-==Grace==
+### Grace
 
 These scripts all also apply to Grace, but note that you should typically only be submitting multi-node MPI or hybrid MPI/OpenMP jobs there (smaller jobs should only be run for testing purposes).
 
-==Note about projects==
+### Note about projects
+
 Users who registered or re-registered after 23 July 2014 do not need to fill in a project name. Everyone is now part of the AllUsers project by default. Older job script examples will mention your project ID - you can delete that line.
 
-Projects with access to paid or specialised resources should still use their project name when utilising those resources - add this to your job scripts.
-<code>
+Projects with access to paid or specialised resources should still use their project name when utilising those resources - add this to your job scripts. 
+```
  # Find <your_project_id> by running the command "groups"
  #$ -P <your_project_id>
-</code>
+```
 
+### Serial job script example
 
-[[Category:Pages with bash scripts]]
-==Serial job script example==
-The most basic type of job a user can submit to the Legion cluster is a serial job. These jobs run on a single processor with a single thread. 
+The most basic type of job a user can submit to the Legion cluster is a serial job. These jobs run on a single processor with a single thread.
 
-Shown below is a simple job script that runs /bin/date (which prints the current date) on the compute nodes in Legion.
+Shown below is a simple job script that runs `/bin/date` (which prints the current date) on the compute nodes in Legion.
 
-# This section sets the shell which runs the jobs on the compute nodes.
-# This line sets the hard wall-clock time limit to ten minutes.
-# This line requests 1 gigabyte of RAM.
-# This line requests 15 gigabytes of TMPDIR space.
-# This line sets the job name.
-# This line sets the working directory. This must be set to a directory in scratch space because compute nodes cannot write to your home directory.
-# This line moves makes $TMPDIR the current working directory.  This is necessary with serial jobs (but not for parallel jobs) because of the rate of data output caused by large numbers of serial jobs all writing to the one file-system.
-# This line writes the output of /bin/date to the file "I_was_in_TMPDIR".
-# This line archives files onto your scratch area with the "tar" utility.
-<br />
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+1.  This section sets the shell which runs the jobs on the compute nodes.
+2.  This line sets the hard wall-clock time limit to ten minutes.
+3.  This line requests 1 gigabyte of RAM.
+4.  This line requests 15 gigabytes of `$TMPDIR` space.
+5.  This line sets the job name.
+6.  This line sets the working directory. This must be set to a directory in scratch space because compute nodes cannot write to your home directory.
+7.  This line moves makes `$TMPDIR` the current working directory. This is necessary with serial jobs (but not for parallel jobs) because of the rate of data output caused by large numbers of serial jobs all writing to the one file-system.
+8.  This line writes the output of `/bin/date` to the file `I_was_in_TMPDIR`.
+9.  This line archives files onto your scratch area with the `tar` utility.
+
+```bash
  #!/bin/bash -l
 
  # Batch script to run a serial job on Legion with the upgraded
@@ -72,18 +73,13 @@ Shown below is a simple job script that runs /bin/date (which prints the current
  tar zcvf $HOME/Scratch/files_from_job_$JOB_ID.tar.gz $TMPDIR
 
  # Make sure you have given enough time for the copy to complete!
-</code>
-</div>
+```
 
+### OpenMP job script example
 
+The first type of parallel job that might be run is an OpenMP job. OpenMP uses a threaded shared memory (all processors share an address space). On Legion, these jobs may use up to twelve processors on type X, Y and Z nodes, the maximum that are available on one node of these types. The primary differences between this job script and the serial job script are in 6. where in our example twelve threads are selected. The `$OMP_NUM_THREADS` variable is set automatically to the number of threads.
 
- 
-
-
-[[Category:Pages with bash scripts]]
-==OpenMP job script example==
-The first type of parallel job that might be run is an OpenMP job. OpenMP uses a threaded shared memory (all processors share an address space). On Legion, these jobs may use up to twelve processors on type X, Y and Z nodes, the maximum that are available on one node of these types. The primary differences between this job script and the serial job script are in 6. where in our example twelve threads are selected. The $OMP_NUM_THREADS variable is set automatically to the number of threads.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+```bash
  #!/bin/bash -l
 
  # Batch script to run an OpenMP threaded job on Legion with the upgraded
@@ -115,24 +111,19 @@ The first type of parallel job that might be run is an OpenMP job. OpenMP uses a
 
  # 8. Run the application.
  $HOME/src/madscience/madpi
-</code>
-</div>
+```
 
+### MPI job script example
 
+The default MPI implementation on our clusters is the Intel MPI stack. MPI programs don’t use a shared memory model so they can be run across multiple nodes. This script differs considerably from the serial and OpenMP jobs in that MPI programs need to be invoked by a program called gerun. This is a wrapper for mpirun and takes care of passing the number of processors and a file called a machine file.
 
- 
+**Important**: If you wish to pass a file to the stdin of an MPI program, you need to use the `-stdin filename` option (for some input file called `filename`) rather than using redirections (\<). You can control which processes within your MPI job this file using the `-stdin-target` option. By default, files passed with `-stdin` are passed to all processes - see man page for mpirun for more details.
 
-[[Category:Pages with bash scripts]]
-==MPI job script example==
-The default MPI implementation on our clusters is the Intel MPI stack. MPI programs don’t use a shared memory model so they can be run across multiple nodes.
-This script differs considerably from the serial and OpenMP jobs in that MPI programs need to be invoked by a program called gerun. This is a wrapper for mpirun and takes care of passing the number of processors and a file called a machine file.
+Note for older scripts: `-pe qlc` and `-pe mpi` are equivalent and will both work.
 
-'''Important''': If you wish to pass a file to the stdin of an MPI program, you need to use the "-stdin filename" option (for some input file called "filename") rather than using redirections (<).  You can control which processes within your MPI job this file using the "-stdin-target" option.  By default, files passed with -stdin are passed to all process - see man page for mpirun for more details.
+If you use OpenMPI, you need to make sure the Intel MPI modules are removed and the OpenMPI modules are loaded, either in your `.bashrc`, or else in the script itself.
 
-Note for older scripts: <code>-pe qlc</code> and <code>-pe mpi</code> are equivalent and will both work.
-
-If you use OpenMPI, you need to make sure the Intel mpi modules are removed and the OpenMPI modules are loaded, either in your .bashrc, or else in the script itself.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+```bash
  #!/bin/bash -l
 
  # Batch script to run an MPI parallel job with the upgraded software
@@ -164,24 +155,19 @@ If you use OpenMPI, you need to make sure the Intel mpi modules are removed and 
 
  # 8. Run our MPI job.  GERun is a wrapper that launches MPI jobs on our clusters.
  gerun $HOME/src/madscience/mad
-</code>
-</div>
+```
 
+### Hybrid MPI/OpenMP (Intel MPI) job script example
 
+If you wish to submit a job that combines MPI and OpenMP parallelisation then you have a number of challenges you need to think about. First of all, you may need to use an MPI library that is thread safe. You should use IntelMPI which is loaded by default and not OpenMPI. See our [Running Hybrid OpenMP/MPI Code](Running Hybrid OpenMP/MPI Code "wikilink") page for a complete walkthrough of a hybrid code example.
 
- 
-
-
-[[Category:Pages with bash scripts]]
-==Hybrid MPI/OpenMP (Intel MPI) job script example==
-If you wish to submit a job that combines MPI and OpenMP parallelisation then you have a number of challenges you need to think about. First of all, you may need to use an MPI library that is thread safe. You should use IntelMPI which is loaded by default and not OpenMPI. See our [[Running Hybrid OpenMP/MPI Code]] page for a complete walkthrough of a hybrid code example.
-
-You will request the total number of cores you wish to use, and either set $OMP_NUM_THREADS for the number of OpenMP threads yourself, or allow it to be worked out automatically by setting it to <code>OMP_NUM_THREADS=$(ppn)</code>. That will set $OMP_NUM_THREADS to $NSLOTS/$NHOSTS, so you will use threads within a node and MPI between nodes and don't need to know in advance what size of node you are running on. Gerun will then run $NSLOTS/$OMP_NUM_THREADS processes, round-robin allocated (if supported by the MPI). 
+You will request the total number of cores you wish to use, and either set `$OMP_NUM_THREADS` for the number of OpenMP threads yourself, or allow it to be worked out automatically by setting it to `OMP_NUM_THREADS=$(ppn)`. That will set `$OMP_NUM_THREADS` to `$NSLOTS/$NHOSTS`, so you will use threads within a node and MPI between nodes and don't need to know in advance what size of node you are running on. Gerun will then run `$NSLOTS/$OMP_NUM_THREADS` processes, round-robin allocated (if supported by the MPI).
 
 Therefore, if you want to use 24 cores on the type X nodes, with one MPI process per node and 12 threads per process you would request the example below.
 
 Note that if you are using multiple nodes and ppn, you get exclusive access to those nodes, so if you ask for 2.5 nodes-worth of cores you will end up with more threads on the last node than you thought you had.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+
+```bash
  #!/bin/bash -l
 
  # Batch script to run a hybrid parallel job with the upgraded software
@@ -209,30 +195,28 @@ Note that if you are using multiple nodes and ppn, you get exclusive access to t
  # write to $HOME.
  #$ -wd /home/<your_UCL_id/scratch/output/
 
- # 7. Automatically set threads to processes per node: if on X nodes = 12 OMP threads
+ # 7. Automatically set threads to processes per node: if on X nodes = 12 OpenMP threads
  export OMP_NUM_THREADS=$(ppn)
 
  # 7. Run our MPI job with the default modules. Gerun is a wrapper script for mpirun. 
 
  gerun $HOME/src/madscience/madhybrid
-</code>
-</div>
+```
 
-If you want to specify a specific number of OMP threads, you would alter the relevant lines above to this:
+If you want to specify a specific number of OpenMP threads, you would alter the relevant lines above to this:
 
-<code>
+```
  # Run 12 MPI processes, each spawning 2 threads
  #$ -pe mpi 24
  export OMP_NUM_THREADS=2
  gerun your_binary
-</code>
+```
 
- 
+### Array job script example (also for parallel)
 
-[[Category:Pages with bash scripts]]
-==Array job script example (also for parallel)==
-If you want to submit a large number of similar serial jobs then it may be easier to submit them as an array job. Array jobs are similar to serial jobs except that in line 5. we have told Sun Grid Engine to run 10,000 copies of this job numbered 1 to 10,000. Each job in this array will have the same JobID but a different task ID. The task ID is stored in the $SGE_TASK_ID environment variable in each task. All the usual SGE output files have the task ID appended. MPI jobs and parallel shared memory jobs can also be submitted as arrays.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+If you want to submit a large number of similar serial jobs then it may be easier to submit them as an array job. Array jobs are similar to serial jobs except that in line 5. we have told Sun Grid Engine to run 10,000 copies of this job numbered 1 to 10,000. Each job in this array will have the same JobID but a different task ID. The task ID is stored in the $SGE\_TASK\_ID environment variable in each task. All the usual SGE output files have the task ID appended. MPI jobs and parallel shared memory jobs can also be submitted as arrays.
+
+```bash
  #!/bin/bash -l
 
  # Batch script to run a serial array job with the upgraded
@@ -266,24 +250,19 @@ If you want to submit a large number of similar serial jobs then it may be easie
  # 8. Run the application.
 
  echo "$JOB_NAME $SGE_TASK_ID"
-</code>
-</div>
+```
 
+### Array job script with a stride
 
-
- 
-
-[[Category:Pages with bash scripts]]
-==Array job script with a stride==
 If each task for your array job is very small, you will get better use of the cluster if you can combine a number of these so each has a couple of hours' worth of work to do. There is a startup cost associated with the amount of time it takes to set up a new job. If your job's runtime is very small, this cost is proportionately high, and you incur it with every array task.
 
 Using a stride will allow you to leave your input files numbered as before, and each array task will run N inputs.
 
 For example, a stride of 10 will give you these task IDs: 1, 11, 21...
 
-Your script can then have a loop that runs task IDs from $SGE_TASK_ID to $SGE_TASK_ID + 9, so each task is doing ten times as many runs as it was before.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
- <nowiki>
+Your script can then have a loop that runs task IDs from `$SGE_TASK_ID` to `$SGE_TASK_ID + 9`, so each task is doing ten times as many runs as it was before.
+
+```bash
  #!/bin/bash -l
 
  # Batch script to run an array job with the upgraded
@@ -323,38 +302,33 @@ Your script can then have a loop that runs task IDs from $SGE_TASK_ID to $SGE_TA
  # 10. Loop through the IDs covered by this stride and run the application if 
  # the input file exists. (This is because the last stride may not have that
  # many inputs available). Or you can leave out the check and get an error.
- for (( i=$SGE_TASK_ID; i<$SGE_TASK_ID+10; i++ ))
+ for (( i=$SGE_TASK_ID; i\<$SGE_TASK_ID+10; i++ ))
  do
    if [ -f "input.$i" ]
    then
      echo "$JOB_NAME $SGE_TASK_ID input.$i"
    fi
  done
-</nowiki>
-</code>
-</div>
+```
 
+### Array job script with parameters file example
 
-
-
-
-[[Category:Pages with bash scripts]]
-==Array job script with parameters file example==
 Often a user will want to submit a large number of similar jobs but their input parameters don't match easily on to an index from 1 to n. In these cases it's possible to use a parameter file. To use this script a user needs to construct a file with a line for each element in the job array, with parameters separated by spaces.
 
-E.g.
-<code>
+Example: 
+```
  0001 1.5 3 aardvark
  0002 1.1 13 guppy
  0003 1.23 5 elephant
  0004 1.112 23 panda
  0005 ...
-</code>
-Assuming that this file is stored in "~/Scratch/input/params.txt" (you can call this file anything you want) then the user can use awk/sed to get the appropriate variables out of the file as with the script below which stores them in $index, $variable1, $variable2 and $variable3.  So for example in task 4, $index = 0004, $variable1 = 1.112, $variable2 = 23 and $variable3 = panda.
+```
 
-Since the parameter file can be generated automatically from the user's datasets, this approach allows the simple automation, submission and management of thousands or tens of thousands of tasks.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
- <nowiki>
+Assuming that this file is stored in `~/Scratch/input/params.txt` (you can call this file anything you want) then the user can use `awk` or `sed` to get the appropriate variables out of the file as with the script below which stores them in `$index`, `$variable1`, `$variable2` and `$variable3`. So for example in task 4, `$index = 0004`, `$variable1 = 1.112`, `$variable2 = 23` and `$variable3 = panda`.
+
+Since a parameter file can be generated automatically from the user's datasets, this approach allows the simple automation, submission and management of thousands or tens of thousands of tasks.
+
+```bash 
 #!/bin/bash -l
 
 # Batch script to run an array job with the upgraded
@@ -397,20 +371,15 @@ variable3=`sed -n ${number}p $paramfile | awk '{print $4}'`
 # 9. Run the program (replace echo with your binary and options).
  
 echo $index $variable1 $variable2 $variable3
-</nowiki>
-</code>
-</div>
+```
 
+### Automating data transfer with \#Local2Scratch
 
-
- 
-
-[[Category:Pages with bash scripts]]
-==Automating data transfer with #Local2Scratch==
-Users can automate the transfer of data from $TMPDIR to their scratch space by adding the directive #Local2Scratch to their script. At the end of the job, files are transferred from $TMPDIR to a directory in scratch with the structure <job id>/<job id>.<task id>.<queue>/.
+Users can automate the transfer of data from `$TMPDIR` to their scratch space by adding the directive `\#Local2Scratch` to their script. At the end of the job, files are transferred from `$TMPDIR` to a directory in scratch with the structure `<job id>/<job id>.<task id>.<queue>/`.
 
 The example below does this for a job array, but this works for any job type.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+
+```bash
  #!/bin/bash -l
 
  # Batch script to run an array job on with the upgraded
@@ -447,17 +416,13 @@ The example below does this for a job array, but this works for any job type.
  # 9. Run the application in TMPDIR.
  cd $TMPDIR
  hostname > hostname.txt
-</code>
-</div>
+```
 
+### GPU job script example (experimental)
 
+As described in the Legion Overview, we have eight GPU nodes, each with two NVIDIA M2070 GPU cards.
 
- 
-
-[[Category:Pages with bash scripts]]
-==GPU job script example (experimental)==
-As described in the Legion Overview, we have eight GPU nodes, each with two NVIDIA  M2070 GPU cards.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+```bash
  #!/bin/bash -l
 
  # Batch script to run a GPU job on Legion under SGE.
@@ -501,18 +466,11 @@ As described in the Legion Overview, we have eight GPU nodes, each with two NVID
  tar zcvf $HOME/Scratch/files_from_job_$JOB_ID.tar.gz $TMPDIR
 
  # Make sure you have given enough time for the copy to complete!
-</code>
-</div>
-
-
-
- 
-
-
-[[Category:Pages with bash scripts]]
+```
 
 It is possible to run MPI programs that use GPUs but only within a single node. The script below exemplifies how to run a program using 2 gpus and 12 cpus.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
+
+```bash
  #!/bin/bash -l
 
  # 1. Force bash as the executing shell.
@@ -542,18 +500,15 @@ It is possible to run MPI programs that use GPUs but only within a single node. 
  module load cuda/7.5.18/gnu-4.9.2
 
  gerun myGPUapp
-</code>
-</div>
+```
 
 This will change once we have solved all the problems around the scheduler configuration.
 
- 
+### Serial example checkpointed with BLCR (experimental)
 
-[[Category:Pages with bash scripts]]
-==Serial example checkpointed with BLCR (experimental)==
-The BLCR library allows serial jobs to use automatic checkpointing, even if the program does not have its own checkpointing mechanism. Please consult the page on [https://wiki.rc.ucl.ac.uk/wiki/Legion_Checkpointing Checkpointing with BLCR] for more information.
-<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;"><code>
- <nowiki>
+The BLCR library allows serial jobs to use automatic checkpointing, even if the program does not have its own checkpointing mechanism. Please consult the page on [Checkpointing with BLCR](https://wiki.rc.ucl.ac.uk/wiki/Legion_Checkpointing) for more information.
+
+```bash
 #!/bin/bash -l
 
 # Batch script to run a serial job on Legion with BLCR.
@@ -601,10 +556,5 @@ tar zcvf $HOME/Scratch/files_from_job_$JOB_ID.tar.gz $TMPDIR
 # 12. Clean up saved checkpoints for this job and exit cleanly.
 /usr/local/bin/onterminate clean
 exit 0
-</nowiki>
-</code>
-</div>
-
-
-
+```
 
