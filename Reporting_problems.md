@@ -2,11 +2,12 @@
 
 ## With an RC Systems service
 
-RC Systems' support process is based around a ticketing system. To submit a ticket please send an e-mail to <rc-support@ucl.ac.uk>.
+RC Systems' support process is based around a ticketing system. To submit a ticket please send an e-mail to <mailto:rc-support@ucl.ac.uk>.
 
 In order to help our support team deal with your ticket efficiently, please ensure the following is the case:
 
 1.  You have a clear description of your problem. This should include:
+
     -   Which system you are using (Legion, Grace, Aristotle etc).
     -   What you were doing when you got the error.
     -   What the error was (including a copy of the exact error message on the email body or a relevant extract).
@@ -16,7 +17,6 @@ In order to help our support team deal with your ticket efficiently, please ensu
 
 ## With Emerald
 
-[Emerald](Emerald "wikilink") is supported by the Centre for Innovation consortium. To request support or report a problem with these services please send an email to <Emerald-support@ses.ac.uk> for Emerald.
+[Emerald](Emerald "wikilink") is supported by the Centre for Innovation consortium. To request support or report a problem with these services please send an email to <mailto:Emerald-support@ses.ac.uk> for Emerald.
 
 Please include a clear description of your problem, as described above, in order to help the team deal with your ticket efficiently.
-
