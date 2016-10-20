@@ -1,0 +1,6 @@
+language: ruby
+install: 
+  - gem install mdl
+script:
+  - find . -name "*.md" | xargs mdl
+
