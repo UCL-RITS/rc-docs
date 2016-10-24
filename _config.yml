@@ -11,7 +11,7 @@ email: rc-support@ucl.ac.uk
 description: > # this means to ignore newlines until "baseurl:"
     Documentation for services run by UCL's Research IT Services Research Computing group.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://wiki.rc.ucl.ac.uk" # the base hostname & protocol for your site
+url: "http://rits.github-pages.ucl.ac.uk/rc-docs/" # the base hostname & protocol for your site
 twitter_username: uclrits
 github_username:  UCL-RITS
 
