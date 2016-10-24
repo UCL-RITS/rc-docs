@@ -1,15 +1,13 @@
 # Research Computing Docs
 
-This is documentation for the RITS Research Computing services,
-to be rendered into a website using Jekyll and templating using
-a mechanism found elsewhere (not yet implemented but probably
-to be in another repo, which should be linked here when someone
-remembers).
+This is a repository for storing and building documentation for
+the UCL RITS Research Computing services, using Jekyll and
+[templates](https://github.com/UCL-RITS/indigo-jekyll) based on the [UCL Indigo patterns](https://www.ucl.ac.uk/indigo).
 
 It is automatically linted using [MDL](https://github.com/mivok/markdownlint)
-after each commit using [Travis](http://travis-ci.org/).
+and built after each commit using [Travis](http://travis-ci.org/).
 
-Linting Status: [![Build Status](https://travis-ci.org/UCL-RITS/rc-docs-content.svg?branch=master)](https://travis-ci.org/UCL-RITS/rc-docs-content)
+Build Status: [![Build Status](https://travis-ci.org/UCL-RITS/rc-docs.svg?branch=master)](https://travis-ci.org/UCL-RITS/rc-docs)
 
 Please note that this is still an on-going conversion from a
 MediaWiki dump, and not all pages have been converted yet.
