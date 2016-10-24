@@ -1,0 +1,42 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 3.2'''<br />
+Bioconductor provides tools for the analysis and comprehension of high-throughput genomic data. Bioconductor uses the R statistical programming language. <br /><br />'''Useful Links:'''
+
+* [[R on Legion]] 
+* [[R packages available on Legion]] 
+* [http://www.bioconductor.org/ Bioconductor web site]  <br /><br />
+
+
+
+
+
+
+
+

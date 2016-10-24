@@ -1,0 +1,612 @@
+[[Category:Legion]][[Category:Legion Software]][[Category:Applications]]
+<table style="width:100%; background-color:#F9F9F9;">
+<tr>
+<td style="width:63%;vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Additional Resource Requests | Request Additional Resources]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Planned Service Outages | Planned Outages]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+
+=Enthought 7.3-2_2015-03-02=
+
+To use:
+<code>
+ module load python/enthought/7.3-2_2015-03-02
+</code>
+
+==Package version list==
+
+{|style="background-color:#F9F9F9;"
+|-
+!Name
+!Version
+!Description
+|-
+|appinst              
+|2.1.2-1   
+|OS abstraction for installing application menus, links and icons           
+|-
+|apptools             
+|4.2.1-3   
+|Application building blocks such as scripting and help system           
+|-
+|atom                 
+|0.3.9-1   
+|Memory efficient Python objects    
+|-       
+|basemap            
+|1.0.7-6  
+|Plot data on map projections with Matplotlib   
+|-         
+|biopython            
+|1.65-1         
+|Tools for biological computation
+|-      
+|bitarray             
+|0.8.1-1  
+|Efficient representation of arrays of booleans
+|-            
+|blist                
+|1.3.6-1        
+|list-like type with better asymptotic performance
+|-      
+|blockcanvas          
+|4.0.3-1     
+|visual environment for creating simulation experiments
+|-         
+|bsdiff4              
+|1.1.4-1   
+|Binary diff and patch using the BSDIFF4-format
+|-           
+|casuarius            
+|1.1-3
+|Python-wrap of Cassowary linear constraint solver
+|-                
+|cffi                 
+|0.8.6-1     
+|Foreign Function Interface for Python calling C code.
+|-         
+|chaco                
+|4.5.0-1   
+|Library for generating interactive 2D plots
+|-           
+|cloud                
+|2.4.6-1              
+|Distributed computing via PiCloud's cloud-computing platform
+|-
+|codetools            
+|4.2.0-2         
+|Tools that simplify meta-programming and help the programmer separate data from code in Python
+|-     
+|configobj            
+|5.0.6-1              
+|Simple but powerful configuration file reader and writer
+|-
+|coverage             
+|3.7.1-1              
+|Code coverage measurement for Python
+|-
+|cryptography         
+|0.6.1-2              
+|cryptography is a package which provides cryptographic recipes and primitives to Python developers.
+|-
+|curl                 
+|7.38.0-1   
+|Command line tool and library for transferring data specified with URL syntax         
+|-          
+|cython               
+|0.22-1   
+|Python-based language for writing C extensions for Python          
+|-            
+|decorator            
+|3.4.0-1   
+|Simplify the usage of decorators for the average programmer.           
+|-           
+|distribute           
+|0.6.49-1   
+|Download, build, install, upgrade, and uninstall Python packages          
+|-          
+|doclinks             
+|7.3-1                
+|
+|-
+|docutils                            
+|0.12-1   
+|Documentation utilities           
+|-            
+|ecdsa                               
+|0.13-1    
+|ECDSA cryptographic signature library (pure python)           
+|-           
+|enable                              
+|4.4.1-5    
+|Low-level, cross-platform drawing and interaction library           
+|-            
+|enaml                               
+|0.9.8-2    
+|Declarative language for building dynamic user interfaces           
+|-            
+|encore                              
+|0.6.0-2   
+|Low-level modules for building applications           
+|-             
+|enstaller                           
+|4.8.1-1    
+|Tool for installing and managing egg-based packages           
+|-            
+|envisage                            
+|4.4.0-2   
+|Extensible Application Framework           
+|-             
+|epd                                 
+|7.3-2   
+|           
+|-               
+|epydoc                              
+|3.0.1-6   
+|Generate API documentation for Python modules from docstrings           
+|-             
+|ets                                 
+|4.4.4-1    
+|Components for constructing custom scientific applications           
+|-            
+|etsdevtools                         
+|4.0.2-1   
+|Tools to support Python development           
+|-             
+|etsproxy                            
+|0.1.2-1  
+|Proxy modules for enabling code written against old ETS-versions to access current versions.           
+|-              
+|examples                            
+|7.3-1   
+|           
+|-               
+|expat                               
+|2.0.1-3   
+|           
+|-             
+|feedparser                          
+|5.1.3-1   
+|Module for downloading and parsing RSS and Atom feeds           
+|-             
+|foolscap                            
+|0.7.0-3    
+|A new version of Twisted's native RPC protocol           
+|-            
+|freetype                            
+|2.5.3-4   
+|High-quality portable font engine           
+|-             
+|fwrap                               
+|0.1.1-13   
+|Tool to wrap Fortran 77/90/95 code in C, Cython and Python           
+|-            
+|gdal                                
+|1.11.2-1   
+|Geospatial Data Abstraction Library           
+|-            
+|geos                                
+|3.4.2-1   
+|GEOS - Geometry Engine, Open Source           
+|-             
+|glib                                
+|2.36.1-2   
+|           
+|-            
+|graphcanvas                         
+|4.0.2-5   
+|Interactive graph (network) visualization           
+|-             
+|grin                                
+|1.2.1-2   
+|Utility which searches directories of source code better than grep or find           
+|-             
+|gst_plugins_base                    
+|0.10.36-2   
+|           
+|-           
+|gstreamer                           
+|0.10.36-3   
+|           
+|-           
+|h5py                                
+|2.4.0-2   
+|Python interface to the HDF library           
+|-             
+|hdf5                                
+|1.8.14-1  
+|HDF5 is a data model, library, and file format for storing and managing large, complex data           
+|-             
+|html5lib                            
+|0.999-1  
+|HTML parser designed to follow the WHATWG HTML5 specification           
+|-              
+|idle                                
+|2.7.3-1   
+|Interactive Python shell           
+|-             
+|ipython                             
+|3.0.0-2   
+|Advanced shell for interactive and exploratory computing           
+|-             
+|jdcal                               
+|1.0.0-1   
+|Julian dates from proleptic Gregorian and Julian calendars.           
+|-             
+|jinja2                              
+|2.7.3-2  
+|Template engine           
+|-              
+|jsonpickle                          
+|0.4.0-1   
+|Serialize arbitrary object graph into JSON similar to Python picking           
+|-             
+|jsonschema                          
+|2.4.0-1   
+|An implementation of JSON Schema validation for Python           
+|-             
+|kernmagic                           
+|0.2.0-2   
+|           
+|-             
+|keyring                             
+|4.0-3     
+|Store and access your passwords safely on multiple platforms           
+|-             
+|kiwisolver                          
+|0.1.3-1    
+|A fast implementation of the Cassowary constraint solver           
+|-            
+|libffi                              
+|3.0.13-2   
+|A portable foreign function interface library           
+|-            
+|libgdal                             
+|1.11.2-1   
+|           
+|-            
+|libgfortran                         
+|3.0.0-2   
+|Geospatial Data Abstraction Library           
+|-             
+|libjpeg                             
+|7.0-3    
+|JPEG library           
+|-              
+|lib_netcdf4                         
+|4.3.2-3    
+|           
+|-            
+|libpng                              
+|1.6.12-3  
+|Portable Network Graphics file format library           
+|-             
+|libtheora                           
+|1.1.1-1   
+|           
+|-             
+|libxml2                             
+|2.9.2-2   
+|XML parser and toolkit           
+|-             
+|libxslt                             
+|1.1.28-2  
+|XSLT library with XPath support           
+|-             
+|libyaml                             
+|0.1.4-1  
+|YAML 1.1 parser and emitter (C library)           
+|-              
+|lxml                                
+|3.4.2-1  
+|XML/XSLT library with bindings to libxml2/libxslt           
+|-              
+|markupsafe                          
+|0.23-1  
+|String class which safely handles XML/HTML/XHTML markup           
+|-               
+|matplotlib                          
+|1.4.3-2   
+|Interactive 2D plotting library           
+|-             
+|mayavi                              
+|4.3.1-2  
+|Interactive 3D visualization           
+|-              
+|mdp                                 
+|3.3-7  
+|Modular toolkit for Data Processing (MDP)           
+|-                
+|mistune                             
+|0.5-1   
+|           
+|-               
+|mkl                                 
+|10.3-1    
+|Intel Math Kernel Library (runtime)           
+|-             
+|netcdf4                             
+|1.1.1-3   
+|Interact with in both the new netCDF 4 and 3 formats           
+|-             
+|networkx                            
+|1.9.1-1   
+|Create, manipulate, and analyze graphs and networks          
+|-             
+|nose                                
+|1.3.4-1   
+|Extends the Python Unittest module with additional disocvery and running options           
+|-             
+|numexpr                            
+|2.4.0-2   
+|Fast evaluation of array expressions           
+|-             
+|numpy                               
+|1.8.1-3   
+|General-purpose multi-dimensional array-processing and math library           
+|-             
+|openpyxl                            
+|2.0.3-1  
+|Read and and write Excel OpenXML files           
+|-              
+|pandas                              
+|0.15.2-1   
+|Data manipulation and analysis library           
+|-            
+|paramiko                            
+|1.15.2-2   
+|SSH2 protocol for secure connections to remote machines           
+|-            
+|patsy                               
+|0.3.0-1   
+|Package for describing statistical models and building design matrices           
+|-             
+|pep8                                
+|1.6.2-1   
+|Python style guide checker           
+|-             
+|pil                                 
+|1.1.7-14   
+|Image processing library           
+|-            
+|ply                                 
+|3.4-1   
+|Python implementation of lex and yacc           
+|-               
+|ptyprocess                          
+|0.4-1   
+|           
+|-               
+|pyaudio                             
+|0.2.4-3   
+|Python bindings for PortAudio           
+|-             
+|pycluster                           
+|1.50-7    
+|Library of common clustering methods for gene expression data analysis          
+|-             
+|pycparser                           
+|2.10.0-1   
+|C parser in python           
+|-            
+|pycrypto                                           
+|2.6.1-1   
+|Collection of cryptographic algorithms and protocols           
+|-             
+|pydot                               
+|1.0.28-3    
+|Interface to Graphviz's Dot language           
+|-           
+|pyface                              
+|4.4.0-2  
+|GUI abstraction layer           
+|-              
+|pyfits                              
+|3.3-1    
+|Interface to FITS formatted files           
+|-              
+|pyflakes                            
+|0.8.1-1    
+|Static analysis of Python code to detect common errors           
+|-            
+|pygarrayimage                       
+|0.0.7-7    
+|Allows NumPy arrays as source of OpenGL textures via pyglet           
+|-            
+|pyglet                              
+|1.1.4-2  
+|Interface for developing games and other visually-rich applications           
+|-              
+|pygments                            
+|2.0.2-1   
+|Code syntax highlighting package written in Python           
+|-             
+|pyhdf                               
+|0.8.3-12  
+|Interface to the NCSA HDF4 library           
+|-             
+|pyopengl                            
+|3.1.0-1  
+|Python binding to OpenGL and related APIs           
+|-              
+|pyopenssl                           
+|0.14-2     
+|Python bindings to the OpenSSL library           
+|-            
+|pyparsing                           
+|2.0.3-1   
+|Alternative to creating simple grammers vs. tradition lex/yacc approach           
+|-             
+|pyproj                              
+|1.9.3-1    
+|Cartographic transformations and geodetic computations           
+|-            
+|pyserial                            
+|2.7-1    
+|Access the serial port from Python           
+|-              
+|pyside                              
+|1.2.2-1   
+|Python bindings for the cross-platform GUI toolkit Qt           
+|-             
+|pytables                            
+|3.1.1-5    
+|Hierarchical datasets for extremely large data           
+|-            
+|python_dateutil                     
+|2.2.0-7   
+|Extensions to the standard datetime module           
+|-             
+|pythondoc                           
+|2.7.3-1  
+|Python documentation           
+|-              
+|pytz                                
+|2014.9.0-1   
+|World timezone definitions, modern and historical           
+|-          
+|pyyaml                              
+|3.11-1    
+|YAML parser and emitter          
+|-             
+|pyzmq                               
+|14.5.0-1   
+|Binding to the ZeroMQ fast messaging library           
+|-            
+|qt                                  
+|4.8.5-10  
+|Cross-platform application and UI framework           
+|-             
+|reportlab                           
+|3.1.44-1    
+|Generate PDF PDF documents from dynamic data           
+|-           
+|scikit_learn                        
+|0.15.2-3    
+|Machine learning and data mining routines           
+|-           
+|scikits.image                       
+|0.10.1-6   
+|Image processing routines for SciPy           
+|-            
+|scikits.timeseries                  
+|0.91.3-7  
+|Manipulate, report, and plot time series           
+|-             
+|scimath                             
+|4.1.2-4   
+|Supports scientific and mathematical calculations beyond SciPy's capabilities           
+|-             
+|scipy                               
+|0.15.1-1   
+|Libraries for mathematics, science, and engineering           
+|-            
+|scons                               
+|2.3.3-1   
+|Pythonic substitute for Make           
+|-             
+|shapely                             
+|1.5.1-1    
+|Geometric objects, predicates, and operations           
+|-            
+|shiboken                            
+|1.2.2-2   
+|           
+|-             
+|simpy                               
+|3.0.5-1   
+|Object-oriented, process-based discrete-event simulation language           
+|-             
+|six                                 
+|1.9.0-1   
+|Python 2 and 3 compatibility utilities           
+|-             
+|sphinx                              
+|1.2.3-1  
+|Creates intelligent and beautiful project documentation           
+|-              
+|sqlalchemy                          
+|0.9.8-1    
+|SQL toolkit and Object Relational Mapper          
+|-            
+|ssl_match_hostname                  
+|3.4.0.2-1   
+|The ssl.match_hostname() function from Python 3.4           
+|-           
+|statsmodels                         
+|0.6.1-4   
+|Statistical computations and models for use with SciPy           
+|-             
+|swig                                
+|3.0.2-1    
+|C and C++ wrapper and interface generator           
+|-            
+|sympy                               
+|0.7.6-1     
+|Symbolic mathematics library           
+|-           
+|terminado                           
+|0.5-1     
+|           
+|-             
+|tornado                             
+|4.1-1     
+|Scalable, non-blocking web server           
+|-             
+|traits                              
+|4.5.0-1    
+|Extend Python attributes with characteristics including initialization, validation, delegation, notification, and visualization           
+|-            
+|traitsui                            
+|4.4.0-2    
+|Traits-capable windowing framework           
+|-            
+|twisted                             
+|15.0.0-1    
+|Event-driven networking engine           
+|-           
+|vtk                                 
+|5.10.1-2    
+|3-D computer graphics, image processing, and visualization          
+|-           
+|wxpython                            
+|2.8.10.1-7    
+|Python wrapper around the wxWidgets C++ GUI library           
+|-         
+|xlrd                                
+|0.9.3-1   
+|Extract data from Microsoft Excel (tm) spreadsheet files           
+|-             
+|xlwt                                
+|0.7.5-1   
+|Create spreadsheet files compatible with MS Excel           
+|-             
+|zeromq                              
+|4.0.5-1    
+|           
+|-            
+|zlib                                
+|1.2.6-1   
+|Cross-platform lossless data-compression library           
+|-             
+|zope.interface                      
+|4.1.2-1               
+|Implementation of Zope Object Database           
+|-

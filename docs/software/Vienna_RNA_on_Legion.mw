@@ -1,0 +1,48 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 2.1.9'''<br />
+RNA Secondary Structure Prediction and Comparison
+
+The Vienna RNA Package consists of a C code library and several stand-alone programs for the prediction and comparison of RNA secondary structures.
+
+RNA secondary structure prediction through energy minimization is the most used function in the package. We provide three kinds of dynamic programming algorithms for structure prediction: the minimum free energy algorithm of (Zuker & Stiegler 1981) which yields a single optimal structure, the partition function algorithm of (McCaskill 1990) which calculates base pair probabilities in the thermodynamic ensemble, and the suboptimal folding algorithm of (Wuchty et.al 1999) which generates all suboptimal structures within a given energy range of the optimal energy. For secondary structure comparison, the package contains several measures of distance (dissimilarities) using either string alignment or tree-editing (Shapiro & Zhang 1990). Finally, we provide an algorithm to design sequences with a predefined structure (inverse folding). <br /><br />'''Useful Links:'''
+
+* [http://www.tbi.univie.ac.at/~ivo/RNA/ Vienna RNA docs] 
+* [http://www.tbi.univie.ac.at/~ronny/RNA/index.html Vienna RNA homepage]   <br /><br />
+==Setup==
+The following changes need to be made to the standard Legion modules before running this software:<br />
+
+<code>module load perl</code><br /><code>module load python/2.7.9</code><br /><code>module load viennarna/2.1.9/gnu-4.9.2</code><br />
+
+
+
+
+
+
+

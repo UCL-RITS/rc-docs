@@ -1,0 +1,439 @@
+
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="lt-ie9 lt-ie8 no-js"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="lt-ie9 no-js"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset=utf-8 />
+    <meta name="author" content="UCL" />
+    <meta name="description" content="UCL Homepage" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- social meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uclnews">
+    <meta name="twitter:title" content="UCL - London's Global University">
+    <meta name="twitter:description" content="UCL (University College London) is London's leading multidisciplinary university, with 8,000 staff and 25,000 students.">
+    <meta name="twitter:creator" content="@UCLWAMS">
+    <meta name="twitter:image:src" content="http://www.ucl.ac.uk/visual-identity/logos/standalone.png">
+    <meta property="og:image" content="http://www.ucl.ac.uk/visual-identity/logos/standalone.png" />
+    <meta property="og:title" content="UCL - London's Global University" />
+    <meta property="og:url" content="http://www.ucl.ac.uk" />
+    <meta property="og:site_name" content="UCL" />
+    <meta property="og:description" content="UCL (University College London) is London's leading multidisciplinary university, with 8,000 staff and 25,000 students." />
+    <meta property="og:type" content="website" />
+    <meta property="og:profile_id" content="uclofficial" />
+    <!-- end social meta -->
+
+  <title></title>
+
+  <link href="/css/screen.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/css/jekyll-styles.css" rel="stylesheet" type="text/css">
+  <link href="/site-styles/local_styles.css" rel="stylesheet" type="text/css">
+  <link href="/site-styles/ipython.css" rel="stylesheet" type="text/css">
+
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/favicon-144.png">
+
+  <script src="/js/lib/modernizr-custom.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+
+    <script>
+      var cuttingTheMustard = document.querySelector && window.localStorage && window.addEventListener;
+
+      Modernizr.load({
+        //cutting the mustard as used by the BBC
+        test: cuttingTheMustard
+        //if old browser load the shiv
+        ,
+        nope: [
+          '/js/lib/html5shiv-printshiv.min.js', '/js/lib/respond.min.js'
+        ]
+      });
+      //set conditional assets for main.js
+      var globalSiteSpecificVars = {
+        pathToJquery: "/js/lib/jquery-1.9.1.min",
+        googleAnalyticsIdsArray: [] //specify array of site specific id's NOT UCL generic UA-943297-1
+      }
+      if (cuttingTheMustard) {
+        globalSiteSpecificVars.pathToJquery = '/js/lib/jquery-2.1.1.min';
+      }
+    </script>
+    <script src="/js/lib/require.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      require.config({
+        baseUrl: '/js/lib'
+      });
+        require(["app/general", "app/searchWithAutoComplete", "app/tabs"]);//load the default stuff
+    </script>
+</head>
+
+<body id="index" class="layout-vertical layout-vertical--nav-1col">
+
+  <header class="header header--desktop">
+
+  <a class="header__close" href="#">
+    <img src="/images/close.png" class="lazy" data-src="//static.ucl.ac.uk/indigo/images/close.png" alt="X" />Close</a>
+
+  <div class="masthead">
+
+  <div class="wrapper clearfix">
+
+      <div class="masthead__search">
+					<form action="#" method="get">
+						<div class="search-form">
+							<input type="search" placeholder="Search UCL websites, people and more" class="search-form__input search-form__input--search" value="">
+						</div>
+						<input type="submit" name="sumbit" value="Go" class="btn search-form__input search-form__input--submit" />
+					</form>
+				</div>
+
+
+				<nav class="masthead__nav m-clear">
+					<ul class="masthead__list">
+						<li class="masthead__item"><a href="index.php" class="masthead__link">UCL Home</a>
+						</li>
+						<li class="masthead__item"><a href="prospective-students.php" class="masthead__link">Prospective students</a>
+						</li>
+						<li class="masthead__item"><a href="current-students.php" class="masthead__link">Current students</a>
+						</li>
+						<li class="masthead__item"><a href="staff.php" class="masthead__link">Staff</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+</div><!-- end .masthead -->
+
+
+  <div class="wrapper">
+
+    <div class="photograph">
+  <div class="brand">
+    <p class="brand__heading">Research Computing Docs</p>
+    <a href="/" class="brand__link"><span class="visually-hidden">Home</span></a>
+    <img src="//cdn.ucl.ac.uk/img/blank.gif" data-src="//static.ucl.ac.uk/indigo/images/ucl-logo.svg" alt="UCL logo" id="logo" class="brand__logo lazy">  
+  </div>
+</div>
+
+
+    <div class="sidebar">
+
+      <nav class="nav nav--mobile">
+        <ul>
+          
+
+
+
+
+        </ul>
+      </nav>
+
+      <nav class="nav nav--left">
+        <ul>
+          
+
+ 
+
+        </ul>
+      </nav>
+
+    </div>
+    <!-- end .sidebar -->
+
+    <nav class="nav nav--top">
+      <ul>
+        
+      </ul>
+    </nav>
+
+  </div>
+  <!-- end .wrapper -->
+
+  </header>
+  <!-- end .header -->
+
+  <div class="site-content wrapper">
+
+    <header class="header header--mobile default-header">
+      <a class="header__open" href="#">
+        <img src="/images/ucl-menu.svg" alt="Menu" />
+      </a>
+    </header>
+
+    <div class="site-content__inner clearfix">
+      <div class="site-content__body">
+
+          
+            <nav class="breadcrumb clearfix">
+              <ul class="breadcrumb__list">
+                <li class="breadcrumb__item"><a href="http://www.ucl.ac.uk/">UCL</a></li>
+
+<li class="breadcrumb__item"><a href="/"></a></li>
+
+
+
+              </ul>
+            </nav>
+           <div class="site-content__main">
+            
+            
+          
+          
+
+    <h1 id="accessing-rc-systems">Accessing RC Systems</h1>
+
+<p>After you have <a href="accounts.html">applied for and been granted access to our services</a>, you can log in using a terminal application that supports the ssh access protocol.</p>
+
+<p>Aristotle is a teaching machine accessible to everyone with a UCL user ID and does not need to be applied for.</p>
+
+<h2 id="logging-in-from-linux-or-mac-os-x">Logging in from Linux or Mac OS X</h2>
+
+<p>Use the terminal and run the below command to ssh into the correct machine. Replace <code class="highlighter-rouge">&lt;your_UCL_user_id&gt;</code> with your central UCL username.</p>
+
+<h3 id="legion">Legion</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh &lt;your_UCL_user_id&gt;@legion.rc.ucl.ac.uk
+</code></pre>
+</div>
+
+<h3 id="grace">Grace</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh &lt;your_UCL_user_id&gt;@grace.rc.ucl.ac.uk
+</code></pre>
+</div>
+
+<h3 id="aristotle">Aristotle</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh &lt;your_UCL_user_id&gt;@aristotle.rc.ucl.ac.uk
+</code></pre>
+</div>
+
+<p>You will then be asked to enter your UCL password. This user ID and password are those provided to you by <a href="http://ucl.ac.uk/isd">Information Services Division</a>.</p>
+
+<p>If you will want to run graphical applications, read on to “Running graphical applications using X-forwarding”.</p>
+
+<h2 id="logging-in-from-windows">Logging in from Windows</h2>
+
+<p>On Windows you need something that will give you a suitable terminal and ssh - usually PuTTY, although you could also use Cygwin if you wanted a full Linux-like environment.</p>
+
+<h3 id="using-putty">Using PuTTY</h3>
+
+<p>PuTTY is a common SSH client on Windows and is available on Desktop@UCL. You can find it under Start &gt; All Programs &gt; Applications O-P &gt; PuTTY</p>
+
+<p>You will need to create an entry for the host you are connecting to with the settings below. If you want to save your settings, give them an easily-identifiable name in the “Saved Sessions” box and press “Save”. Then you can select it and “Load” next time you use PuTTY.</p>
+
+<p><img src="putty_gui.png" alt="Putty GUI" title="Putty GUI" /></p>
+
+<h2 id="login-problems">Login problems</h2>
+
+<p>If you experience difficulties with your login, please make sure that you are typing your UCL user ID and your password correctly.</p>
+
+<p>If you still cannot get access but can access other UCL services, please contact us on <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;">&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;</a>.</p>
+
+<p>If you cannot access anything, please see <a href="https://myaccount.ucl.ac.uk">UCL MyAccount</a> - you may need to request a password reset from the Service Desk.</p>
+
+<h2 id="accessing-services-from-outside-ucl">Accessing services from outside UCL</h2>
+
+<p>If you wish to access any of our machines from outside UCL, you cannot do so directly as they are behind UCL’s firewall. To do so you will have to either ssh in to UCL’s gateway first:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh &lt;your_UCL_user_id&gt;@socrates.ucl.ac.uk
+</code></pre>
+</div>
+
+<p>and from there ssh in to the correct host as described above, or login first to your departmental gateway (if you have one) and then login from there.</p>
+
+<h3 id="is-vpn-service">IS VPN Service</h3>
+
+<p>Alternatively, you can use the <a href="http://www.ucl.ac.uk/isd/staff/network/vpn">IS VPN service</a> to connect to UCL using a virtual private network. That way, once the connection has been established, you can establish an ssh connection to the host machine directly, for example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh &lt;your_UCL_user_id&gt;@legion.rc.ucl.ac.uk
+</code></pre>
+</div>
+
+<h2 id="running-graphical-applications-using-x-forwarding">Running graphical applications using X-forwarding</h2>
+
+<p>X-forwarding allows users to run a graphical program on a remote computer and display the user interface on their own computer.</p>
+
+<h3 id="x-forwarding-on-linux">X-forwarding on Linux</h3>
+
+<p>If you wish to have X-windows functionality enabled you have to make sure that you add either the -X or -Y flags (see man ssh for details) on all ssh commands you have to run to establish a connection to Legion.</p>
+
+<p>For example, connecting from outside of UCL:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh -X &lt;your_UCL_user_id&gt;@socrates.ucl.ac.uk
+</code></pre>
+</div>
+
+<p>and then</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ssh -X &lt;your_UCL_user_id&gt;@legion.rc.ucl.ac.uk
+</code></pre>
+</div>
+
+<h3 id="x-forwarding-on-mac-os-x">X-forwarding on Mac OS X</h3>
+
+<p>You will need to install XQuartz to provide an X-Window System for Mac OS X. (Previously known as X11.app).</p>
+
+<p>You can then follow the Linux instructions using Terminal.app.</p>
+
+<h3 id="x-forwarding-on-windows">X-forwarding on Windows</h3>
+
+<p>You will need:</p>
+
+<ul>
+  <li>An SSH client; e.g., PuTTY</li>
+  <li>An X server program; e.g., Exceed, Xming</li>
+</ul>
+
+<p>Exceed is available on Desktop@UCL machines and downloadable from the <a href="http://swdb.ucl.ac.uk/">UCL software database</a>. Xming is open source (and mentioned here without testing).</p>
+
+<h3 id="exceed-on-desktopucl">Exceed on Desktop@UCL</h3>
+
+<ol>
+  <li>Load Exceed. You can find it under Start &gt; All Programs &gt; Applications O-P &gt; Open Text Exceed 14 &gt; Exceed</li>
+  <li>Open PuTTY (Applications O-P &gt; PuTTY)</li>
+  <li>In PuTTY, set up the connection with the host machine as usual:
+    <ul>
+      <li>Host name: legion.rc.ucl.ac.uk (for example)</li>
+      <li>Port: 22</li>
+      <li>Connection type: SSH</li>
+    </ul>
+  </li>
+  <li>Then, from the Category menu, select Connection &gt; SSH &gt; X11 for ‘Options controlling SSH X11 forwarding’
+    <ul>
+      <li>Make sure the box marked ‘Enable X11 forwarding’ is checked.</li>
+    </ul>
+  </li>
+  <li>Return to the session menu and save these settings with a new identifiable name for reuse in future.</li>
+  <li>Click ‘Open’ and login to the host as usual</li>
+  <li>To test that X-forwarding is working try one of these test applications:
+    <ul>
+      <li>xeyes: to bring up a set of eyes that track the mouse position on the screen</li>
+      <li>glxgears: to bring up an animated set of gears</li>
+      <li>xclock: a clock</li>
+    </ul>
+  </li>
+</ol>
+
+<p>If these work, you have successfully enabled X forwarding for graphical applications. (Note they may not be available on all systems).</p>
+
+<h3 id="installing-xming-on-your-own-computer">Installing Xming on your own computer</h3>
+
+<p>Xming is a popular open source X server for Windows. These are instructions for using it alongside PuTTY. Other SSH clients and X servers are available. We cannot verify how well it may be working.</p>
+
+<ol>
+  <li>Install both PuTTY and Xming if you have not done so already. During Xming installation, choose not to install an SSH client.</li>
+  <li>Open Xming - the Xming icon should appear on the task bar.</li>
+  <li>Open PuTTY</li>
+  <li>Set up PuTTY as shown in the Exceed section.</li>
+</ol>
+
+<h2 id="transferring-files">Transferring files</h2>
+
+<p>Read on to <a href="Managing Data on RC Systems" title="wikilink">Managing data on RC systems</a>.</p>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- end .site-content -->
+
+  <footer class="footer wrapper">
+  <div class="footer__inner clearfix">
+             <article class="block block--col-1">
+                <h2 class="as-h5">Facilities</h2>
+                <ul class="footer__list list-unstyled">
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/departments/faculties">Faculties and departments</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/library/">Library</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/museums">Museums and Collections</a></li>
+					<li class="footer__item"><a href="http://www.thebloomsbury.com/">UCL Bloomsbury Theatre</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/maps">Maps and buildings</a></li>
+				</ul>
+            </article>
+            <article class="block block--col-2">
+                <h2 class="as-h5">Locations</h2>
+                <ul class="footer__list list-unstyled">
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/london">UCL and London</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/australia">UCL Australia</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/qatar">UCL Qatar</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/global">UCL Global</a></li>
+				</ul>
+            </article>
+            <article class="block block--col-3">
+                <h2 class="as-h5">Connect with us</h2>
+                <ul class="footer__list list-unstyled">
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/alumni">Alumni</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/enterprise">Businesses</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/media">Media Relations</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/hr/jobs/">Jobs</a></li>
+					<li class="footer__item"><a href="http://www.ucl.ac.uk/makeyourmark">Give to UCL</a></li>
+				</ul>
+
+      </article>
+  
+    <hr class="clear">
+    <ul class="footer__list list-unstyled zero-bottom">
+      <li class="footer__item text-muted small">University College London,&nbsp;Gower Street,&nbsp;London,&nbsp;WC1E 6BT&nbsp;Tel:&nbsp;+44&nbsp;(0)&nbsp;20 7679 2000</li>
+    </ul>
+    <ul class="list-inline footer__list list-unstyled list-inline--divided">
+      <li class="text-muted small">Copyright © 2016-10-24 19:17:25 +0000 UCL</li>
+      <li class="text-muted small"><a href="#">Disclaimer</a>
+      </li>
+      <li class="text-muted small"><a href="#">Freedom of Information</a>
+      </li>
+      <li class="text-muted small"><a href="#">Accessibility</a>
+      </li>
+      <li class="text-muted small"><a href="#">Privacy</a>
+      </li>
+      <li class="text-muted small"><a href="#">Cookies</a>
+      </li>
+      <li class="text-muted small"><a href="#">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+
+  <script src="/js/lib/require.min.js"></script>
+  <script src="/js/main.js"></script>
+    <script>
+      require.config({
+        baseUrl: '/js/lib'
+      });
+        require(["app/general", "app/searchWithAutoComplete", "app/tabs"]);//load the default stuff
+    </script>
+
+</body>
+
+</html>
+

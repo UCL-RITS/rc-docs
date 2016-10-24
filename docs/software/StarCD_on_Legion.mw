@@ -1,0 +1,83 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 4.22.058, 4.26.011'''<br />
+StarCD is a commercial package for modelling and simulating combustion and engine dynamics. <br /><br />
+==Setup==
+You must request access to the group controlling StarCD access (legstarcd) to use it. <br /> <br />
+==Example Job Submission Script==
+Here is an example run script for submitting batch jobs to the cluster:
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Job Name (shows up in qstat)
+#$ -N StarCD
+
+# 3. Merge output and error files
+#$ -j y
+
+# 4. Maximum runtime of job
+#$ -l h_rt=0:20:00
+
+# 5. Request 1 gigabyte of RAM per core.
+#$ -l mem=1G
+
+# 6. Request MPI environment with 16 processors
+#$ -pe mpi 16
+
+# 7. Request one license per core
+#$ -l starsuite=1
+
+# 8. Run from the current working directory
+#$ -cwd
+
+module load star-cd/4.26.011
+# run star without its tracker process as this currently causes multicore jobs to die early
+star -notracker
+</nowiki>
+</code>
+</div>
+
+Please copy if you wish and edit it to suit your jobs. The script can then be submitted using the simplest form of the qsub command ie:
+<code>
+ qsub run-starcd.sh
+</code>
+Input files will be used from the current working directory, and output written to the same, so this should be submitted from a directory containing your input files in the Scratch area.
+
+[[#top | back to top]]
+
+
+
+
+
+

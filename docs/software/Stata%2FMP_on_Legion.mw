@@ -1,0 +1,124 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 14'''<br />
+Stata is a statistics, data management, and graphics system. Stata/MP is the version of the package that runs on multiple cores.
+
+A sixteen user licence of Stata/MP, the multicore version of the Stata statistics, data management, and graphics system is installed on Legion. The licence we have supports Stata running on up to four cores per job.
+
+Stata is intended to be run primarily within batch jobs however you may short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer tests on the Usertest Nodes. <br /><br />
+==Setup==
+The following changes need to be made to the standard Legion modules before running this software:<br />
+
+<code>module load stata/14</code><br /><br />You can check that the module is loaded using:
+<code>
+ module list
+</code>
+You should now be able to use Stata interactively using either:
+<code>
+ stata-mp
+</code>
+for a command line interface or:
+<code>
+ xstata-mp
+</code>
+for the GUI interface. Note: this version requires an X server running on your local computer.
+==Example Job Submission Script==
+To submit batch jobs to the cluster you will need a runscript. Here is a simple example Stata runscript including comments:
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run a Stata/MP job on Legion with the upgraded
+# software stack under SGE.
+#
+# Updated Oct 2015
+#
+# Based on openmp.sh by:
+#
+# Owain Kenway, Research Computing, 16/Sept/2010
+
+#$ -S /bin/bash
+
+# 1. Request 12 hours of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=12:0:0
+
+# 2. Request 1 gigabyte of RAM per core.
+#$ -l mem=1G
+
+# 3. Set the name of the job.
+#$ -N Stata_job1
+
+# 4. Select  4 OpenMP threads (the most possible with Stata/MP on Legion).
+#$ -pe smp 4
+
+# 6. Set the working directory to somewhere in your scratch space. This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to $HOME.
+#
+# Note: this directory MUST exist before your job starts!
+#
+# Replace "<your_UCL_id>" with your UCL user ID :)
+#$ -wd /home/<your_UCL_id>/Scratch/Stata_output
+
+# 7. Set up Stata/MP environment
+#
+# Your work must be done in $TMPDIR
+cd $TMPDIR
+module load stata/14
+
+# 8. Run Stata do file
+cp $dofile $TMPDIR
+stata-mp -b do $dofile 
+
+# 9. Preferably, tar-up (archive) all output files onto the shared scratch area
+
+tar zcvf $HOME/Scratch/Stata_output/files_from_job_$JOB_ID.tar.gz $TMPDIR
+</nowiki>
+</code>
+</div>
+This is available on:
+<code>
+ /shared/ucl/apps/StataMP/share/run-stata-mp.sh
+</code>
+Please copy if you wish and edit it to suit your jobs. You will need to change the ''-wd /home/<your_UCL_id>/Scratch/Stata_output'' SGE directives and may need to change the number of threads, memory, wallclock time and job name directives as well. A suitable qsub command to submit a Stata job to process the do file ''myDofile.do'' located in your current directory would be:
+<code>
+ qsub -v dofile=`pwd`/myDofile run-stata-mp.sh
+</code>
+Output from this job will be written to a file called ''myDofile.log'' which will be saved in the tar archive ''files_from_job_$JOB_ID'' in your Scratch area.
+
+The example runscript can be modified to submit 1000s of Stata jobs using the SGE Array job facility. See the [https://wiki.rc.ucl.ac.uk/wiki/Category:Legion_User_Guide RC Systems User Guide] for examples of array job runscripts.
+
+[[#top | back to top]]
+
+
+
+
+
+

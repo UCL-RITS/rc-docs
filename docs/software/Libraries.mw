@@ -1,0 +1,233 @@
+
+{|style="background-color:#F9F9F9;"
+|- style="vertical-align:top;"
+!Name
+!Description
+!Version Number Installed
+!Links
+
+|- style="vertical-align:top;"
+|apr, apr-util
+|Apache Portable Runtime library and utility library
+|1.5.2, util 1.5.4
+|[https://apr.apache.org/ APR home]
+
+|- style="vertical-align:top;"
+|argtable
+|Argtable is an ANSI C library for parsing GNU style command line options.
+|2.13
+|[http://argtable.sourceforge.net/ Argtable home]
+
+|- style="vertical-align:top;"
+|atlas
+|ATLAS (Automatically Tuned Linear Algebra Software) provides self-tuning implementations of BLAS and parts of LAPACK. The versions deployed on Legion now include full LAPACK.
+|3.10.2
+|[http://math-atlas.sourceforge.net/ ATLAS homepage hosted by Sourceforge]
+[[ATLAS on Legion]]
+
+|- style="vertical-align:top;"
+|bambamc
+|Lightweight C implementation of name collating BAM file input and BAM file output.
+|0.0.50
+|[https://github.com/gt1/bambamc bambamc home]
+
+|- style="vertical-align:top;"
+|boost
+|C++ source libraries. Available with MPI for GCC and Intel, GCC only without.
+|1.54.0
+|[http://www.boost.org/ Boost home]
+
+|- style="vertical-align:top;"
+|cfitsio
+|CFITSIO is a library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format.
+|3370
+|[http://heasarc.gsfc.nasa.gov/fitsio/ CFITSIO home]
+
+|- style="vertical-align:top;"
+|eigen
+|Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+|3.2.5
+|[http://eigen.tuxfamily.org/ Eigen home]
+
+|- style="vertical-align:top;"
+|FFTW
+|FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).
+|2.1.5, 3.3.4
+|[http://www.fftw.org/ FFTW homepage]
+
+|- style="vertical-align:top;"
+|giflib
+|GIFLIB is a package of portable tools and library routines for working with GIF images.
+|5.1.1
+|[http://giflib.sourceforge.net/ GIFLIB home]
+
+|- style="vertical-align:top;"
+|glew
+|The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.
+|1.13.0
+|[http://glew.sourceforge.net/ GLEW home]
+
+|- style="vertical-align:top;"
+|GSL
+|The GNU Scientific Library provides numerical routines. On Legion, there are versions for the Intel and GNU compilers.
+|1.16
+|
+
+|- style="vertical-align:top;"
+|harminv
+|Harminv is a free program (and accompanying library) to solve the problem of harmonic inversion
+|1.4
+|[http://ab-initio.mit.edu/wiki/index.php/Harminv Harminv home]
+
+|- style="vertical-align:top;"
+|HDF
+|NCSA's Hierarchical Data Format. Available for Intel and GNU compilers, with and without MPI.
+|5-1.8.15, 5-1.8.15-p1
+|[http://www.hdfgroup.org/ HDF homepage]
+
+|- style="vertical-align:top;"
+|HTSlib
+|C library for high-throughput sequencing data formats.
+|1.2.1
+|[http://www.htslib.org/ HTSlib home]
+
+|- style="vertical-align:top;"
+|libbdwgc
+|The Boehm-Demers-Weiser conservative C/C++ Garbage Collector
+|7.4.2
+|[http://www.hboehm.info/gc/ libbdwgc home]
+
+|- style="vertical-align:top;"
+|libctl
+|libctl is a free Guile-based library implementing flexible control files for scientific simulations. It was written to support MIT Photonic Bands and Meep software.
+|3.2.2
+|[http://ab-initio.mit.edu/wiki/index.php/Libctl libctl home]
+
+|- style="vertical-align:top;"
+|libelf
+|libelf lets you read, modify or create ELF files in an architecture-independent way.
+|0.8.13
+|[http://www.mr511.de/software/english.html libelf home]
+
+|- style="vertical-align:top;"
+|libetsfio
+|The ETSF I/O library. A library of F90 routines to read/write the ETSF file format.
+|1.0.4
+|[http://www.etsf.eu/resources/software/libraries_and_tools libetsfio home]
+
+|- style="vertical-align:top;"
+|libflac
+|Library for working with Free Lossless Audio Codec
+|1.3.1
+|[https://xiph.org/flac/ libFLAC home]
+
+|- style="vertical-align:top;"
+|libgd
+|GD Graphics Library
+|2.1.1
+|[http://libgd.github.io/ LibGD home]
+
+|- style="vertical-align:top;"
+|libsodium
+|The Sodium crypto library, a fork of NaCl.
+|1.0.6
+|[https://download.libsodium.org/doc/ libsodium home]
+
+|- style="vertical-align:top;"
+|libsox
+|Sound eXchange: libsox is a library of sound sample file format readers/writers and sound effects processors.
+|ver
+|[http://sox.sourceforge.net/libsox.html libsox home]
+
+|- style="vertical-align:top;"
+|libxc
+|Libxc is a library of exchange-correlation functionals for density-functional theory.
+|2.1.2, 2.2.2
+|[http://www.tddft.org/programs/octopus/wiki/index.php/Libxc libxc home]
+
+|- style="vertical-align:top;"
+|mesa
+|The Mesa 3D Graphics Library
+|10.6.3
+|[http://www.mesa3d.org/ Mesa home]
+
+|- style="vertical-align:top;"
+|mpi
+|Intel and OpenMPI are available for both the Intel and GNU compilers.
+|IntelMPI 2015, OpenMPI 1.8.4
+|
+
+|- style="vertical-align:top;"
+|MKL
+|The Intel MKL contains numerical libraries optimised for Intel processors.
+
+Now part of the Intel compiler module.
+|2015
+|[http://software.intel.com/en-us/intel-mkl/ Intel MKL website]
+
+[[MKL on Legion]]
+
+[http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor Helpful tool to determine which library files you should link your program with]
+
+|- style="vertical-align:top;"
+|NAG Fortran library
+|The NAG Fortran library provides a large number of routines of use to Fortran programmers. 	
+|Mark 24 (for NAG and GNU Fortran only).
+Mark 25 (for Intel Fortran)
+|[http://www.nag.co.uk/numeric/fl/FLdescription.asp NAG Fortran Library web page]
+
+|- style="vertical-align:top;"
+|NetCDF, NetCDF-C++
+|NetCDF (network Common Data Form) is a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.
+|4.3.3.1
+4.2 (C++)
+4.4.1 (Fortran)
+
+|[http://www.unidata.ucar.edu/software/netcdf/ NetCDF homepage]
+
+|- style="vertical-align:top;"
+|OpenBLAS
+|OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version. Available for Intel and GNU compilers.
+|0.2.14
+|[http://www.openblas.net/ OpenBLAS home]
+[[OpenBLAS on Legion]]
+
+|- style="vertical-align:top;"
+|PyNGL
+|PyNGL (pronounced "pingle") is a Python language module used to visualize scientific data, with an emphasis on high quality 2D visualizations.
+|1.4.0
+|[https://www.pyngl.ucar.edu/ PyNGL home]
+
+|- style="vertical-align:top;"
+|PyNIO
+|PyNIO is a Python module used for reading and writing files in several different data formats, including netCDF, netCDF 4, GRIB1, GRIB2, HDF 4, HDF-EOS 2 and HDF-EOS5, and CCM history files.
+|1.4.1
+|[https://www.pyngl.ucar.edu/ PyNIO home]
+
+|- style="vertical-align:top;"
+|SPARSKIT 2
+|A basic tool-kit for sparse matrix computations
+|2009.11.18
+|[http://www-users.cs.umn.edu/~saad/software/SPARSKIT/ SPARSKIT 2 home]
+
+|- style="vertical-align:top;"
+|SQUID
+|C function library for sequence analysis.
+|1.9g
+|[http://selab.janelia.org/software.html SQUID home]
+
+|- style="vertical-align:top;"
+|SZIP
+|Szip compression software, providing lossless compression of scientific data.
+|2.1
+|[https://www.hdfgroup.org/doc_resource/SZIP/ SZIP home]
+
+|- style="vertical-align:top;"
+|VTK
+|The Visualization Toolkit
+|5.10.1, 6.2.0
+|[http://www.vtk.org/ VTK home]
+
+
+|}
+[[#top | back to top]]

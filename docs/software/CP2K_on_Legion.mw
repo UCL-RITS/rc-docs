@@ -1,0 +1,55 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 2.6.0'''<br />
+CP2K performs atomistic and molecular simulations. CP2K installs are maintained by the Department of Chemistry. <br /><br />'''Useful Links:'''
+
+* [http://www.cp2k.org/ CP2K website]    <br /><br />
+==Setup==
+The submission script generators for these versions are contained in the chemistry modules bundle, so you will need to load the module set that contains them before they are visible in the modules list: <br />
+
+<code>module load chemistry-modules</code><br /><code>module load submission-scripts</code><br /><br />The alias <code>submitters</code> will then list the submitters available.
+
+You can then run <code>cp2k.submit</code> which will ask you questions in order to create a suitable jobscript.
+
+The "cp2k.submit" submitter takes up to 5 arguments, and any omitted will be asked for interactively:
+<code>
+ cp2k.submit «input_file» «cores» «maximum_run_time» «memory_per_core» «job_name»
+</code>
+So, for example:
+<code>
+ cp2k.submit water.inp 8 2:00:00 4G mywatermolecule
+</code>
+would request a job running CP2K with the input file "water.inp", on 8 cores, with a maximum runtime of 2 hours, with 4 gigabytes of memory per core, and a job name of "mywatermolecule".
+
+
+
+
+
+
+

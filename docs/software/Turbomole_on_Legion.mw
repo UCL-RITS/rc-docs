@@ -1,0 +1,52 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 6.6'''<br />
+Turbomole is an ab initio computational chemistry program that implements various quantum chemistry methods.
+
+Currently available are versions 6.6 and 6.4.
+
+=Running Turbomole=
+
+There are scripts you can use to generate Turbomole jobs for you: 
+<code>
+ /shared/ucl/apps/turbomole/turbomole-mpi.submit
+ /shared/ucl/apps/turbomole/turbomole-smp.submit
+</code>
+
+They will ask you which version you want to use, how much memory, how many cores etc and set up and submit the job for you.
+
+Use the first for MPI jobs and the second for single-node shared memory threaded jobs. <br /><br />
+
+
+
+
+
+
+
+

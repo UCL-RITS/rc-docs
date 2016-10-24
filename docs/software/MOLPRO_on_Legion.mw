@@ -1,0 +1,97 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 2012.1.25, 2015.1.3, 2015.1.5'''<br />
+Molpro is a complete system of ab initio programs for molecular electronic structure calculations. <br /><br />'''Useful Links:'''
+
+* [http://www.molpro.net/ MOLPRO website]    <br /><br />
+==Setup==
+Molpro 2012.1.25 was built from source with the GNU compilers and OpenMPI. 
+
+Molpro 2015.1.3 was provided as binary only and supports communication over Ethernet and not Infiniband so multi-node jobs may run slower. It only works on Legion, not on Grace.
+
+Molpro 2015.1.5 was built from source with the Intel compilers and Intel MPI. <br /> <br />Molpro 2012.1.25 module setup <br />
+
+<code>module unload compilers</code><br /><code>module unload mpi</code><br /><code>module load compilers/gnu/4.9.2</code><br /><code>module load mpi/openmpi/1.8.4/gnu-4.9.2</code><br /><code>module load molpro/2012.1.25/gnu-4.9.2</code><br /><br />Molpro 2015.1.3 module setup
+
+<code>module load molpro/2015.1.3</code>
+
+Molpro 2015.1.5 module setup
+
+<code>module load molpro/2015.1.5/intel-2015-update2</code>
+==Example Job Submission Script==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request one hour of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=1:00:0
+
+# 3. Request 1 gigabyte of RAM per core
+#$ -l mem=1G
+
+# 4. Set the name of the job.
+#$ -N molpro_test
+
+# 6. Select the MPI parallel environment and 4 processors.
+#$ -pe mpi 4
+
+# 7. Set the working directory to somewhere in your scratch space.  
+# Replace <your userid> with your UCL userid.
+#$ -wd /home/<your userid>/Scratch/molpro_examples
+
+# 8. Load the module to set up your environment
+
+module load molpro/2015.1.5/intel-2015-update2
+
+# Example files available in /shared/ucl/apps/molpro/2015.1.5/intel-2015-update2/molprop_2015_1_linux_x86_64_i8/examples/
+# You need to set the wavefunction directory to somewhere in Scratch with -W.
+# $SGE_O_WORKDIR is what you specified with -wd.
+# $NSLOTS will use the number of cores you requested above.
+
+echo "Running molpro -n $NSLOTS -W $SGE_O_WORKDIR h2o_scf.com"
+
+molpro -n $NSLOTS -W $SGE_O_WORKDIR h2o_scf.com
+</nowiki>
+</code>
+</div>
+
+
+
+[[#top | back to top]]
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+ATLAS (Automatically Tuned Linear Algebra Software) provides self-tuning implementations of BLAS and LAPACK. We have versions of ATLAS available that were built with various different compilers.
+
+==Linking ATLAS 3.10.2==
+
+There are ATLAS modules for GCC 4.9.2 and the Intel 2015 compilers.
+
+The modules add the relevant lib directory to your LD_LIBRARY_PATH and LIBRARY_PATH. You can see what those are with <code>module show</code> followed by the module name.
+
+* [http://math-atlas.sourceforge.net/errata.html#LINK ATLAS website]
+
+===Dynamic linking===
+
+There is one combined library each for serial and threaded ATLAS (in most circumstances you probably want the serial version). 
+
+Serial:
+
+<code>
+ -L${ATLASROOT}/lib -lsatlas
+</code> 
+
+Threaded:
+
+<code>
+ -L${ATLASROOT}/lib -ltatlas
+</code>
+
+===Static linking===
+
+There are multiple libraries.
+
+Serial:
+
+<code>
+ -L${ATLASROOT}/lib -llapack -lf77blas -lcblas -latlas
+</code>
+
+Threaded:
+
+<code>
+ -L${ATLASROOT}/lib -llapack -lptf77blas -lptcblas -latlas
+</code>
+
+===Runtime errors===
+
+If you get a runtime error saying that libgfortran.so cannot be found, you need to add <code>-lgfortran</code> to your link line. 
+
+The Intel equivalent is <code>-lifcore</code>.
+
+You can do a module show on the compiler you are using to see where the libraries are located.

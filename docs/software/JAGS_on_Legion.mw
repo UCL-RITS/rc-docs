@@ -1,0 +1,50 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 3.4.0'''<br />
+JAGS (Just Another Gibbs Sampler) is a program for analysis of Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC) simulation not wholly unlike BUGS. <br /><br />'''Useful Links:'''
+
+* JAGS documentation is available on the [http://mcmc-jags.sourceforge.net/ JAGS website]    <br /><br />
+==Setup==
+<br />Use:
+<code>
+ module unload compilers
+ module load compilers/gnu/4.9.2
+ module load atlas/3.10.2/gnu-4.9.2
+ module load jags/3.4.0/gnu.4.9.2-atlas
+</code>
+to use JAGS in standalone command line mode.
+
+We have also added JAGS support to our recommended version of R using the <code>rjags</code> and <code>R2jags</code> R packages. See the [[R packages available on Legion]] page.
+
+
+
+
+
+
+

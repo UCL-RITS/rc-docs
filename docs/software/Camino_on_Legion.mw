@@ -1,0 +1,155 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 1091'''<br />
+Camino is a fully-featured toolkit for Diffusion MR processing and reconstruction, including diffusion tensor techniques, tractography and advanced algorithms for resolving non-Gaussian diffusion profiles, the so-called fibre-crossing problem. It is developed at UCL by the Microstructure Imaging Group. Camino is intended to be run primarily within batch jobs however you may run short (less than 5 minutes execution time) interactive tests on the Login Nodes and longer interactive tests on the User Test Nodes. <br /><br />'''Useful Links:'''
+
+* [http://web4.cs.ucl.ac.uk/research/medic/camino/pmwiki/pmwiki.php?n=Main.HomePage Camino homepage]    <br /><br />
+==Setup==
+The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module load java/1.6.0_32</code><br /><code>module load camino/1091</code><br />
+==Example Job Submission Script==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run a serial Camino job on Legion with the upgraded
+
+# software stack under SGE. This version works with the modules
+
+# environment upgraded in Feb 2012.
+
+# Camino revision 1091
+
+# Sep 2012
+
+# 1. Force bash as the executing shell.
+
+#$ -S /bin/bash
+
+# 2. Request 1 hour of wallclock time (format hours:minutes:seconds).
+
+# Change this to suit your requirements.
+
+#$ -l h_rt=0:10:0
+
+# 3. Request 1 gigabyte of RAM. Change this to suit your requirements.
+
+#$ -l mem=1G
+
+# 4. Set the name of the job. You can change this if you wish.
+
+#$ -N Camino_job_1
+
+
+# 6. Set the working directory to somewhere in your scratch space.  This is
+
+# a necessary step with the upgraded software stack as compute nodes cannot
+
+# write to your $HOME.
+
+#
+
+# NOTE: this directory must exist.
+
+#
+
+# Replace "<your_UCL_id>" with your UCL user ID :)
+
+#$ -wd /home/<your_UCL_id>/Scratch/Camino_output
+
+# 7. Your work *must* be done in $TMPDIR 
+
+cd $TMPDIR
+
+# 8. Load Camino module and set the amount of RAM Camino can use.
+
+module load java/1.6.0_32
+
+module load camino/1091
+
+export CAMINO_HEAP_SIZE=$MEMPERSLOT
+
+# 9. Run Camino programs - replace with your command(s)
+
+#
+
+# This is one of the Camino tutorials:
+
+#
+
+# http://web4.cs.ucl.ac.uk/research/medic/camino/pmwiki/pmwiki.php?n=Tutorials.PigBrainTutorial
+
+#
+
+# 9a. Copy input files to $TMPDIR
+
+tar xvzf /home/<your_UCL_id>/Scratch/Camino_output/test2/e1809_15.tgz
+
+cd e1809_15
+
+# 9b. Run analysis
+
+pointset2scheme -inputfile pigPoints.txt -version STEJSKALTANNER -dwparams 0.061 0.03 0.023 0.06 > PigBrain_ST.scheme
+
+ls NEX*.hdr > imagelist.txt
+
+analyzedti imagelist.txt ./pig_ PigBrain_ST.scheme
+
+# 10. Preferably, tar-up (archive) all output files onto the shared scratch area
+
+# All output files are prepended with pig_.
+
+tar cvzf /home/ccaabaa/Scratch/Camino_output/files_from_job_$JOB_ID.tar.gz pig_*
+</nowiki>
+</code>
+</div>
+This is available on:
+<code>
+ /shared/ucl/apps/Camino/run-camino.sh
+</code>
+Please copy if you wish and edit it to suit your jobs. You will need to change the ''-wd /home/<your_UCL_id>/Scratch/Camino_output'' SGE directive. You will also need to change the Camino commands in the example and may need to change the memory, wallclock time and job name directives as well. The:
+<code>
+ export CAMINO_HEAP_SIZE=$MEMPERSLOT
+</code>
+line is required to automatically configure Camino's heap size to the memory requested by the ''-l mem='' SGE directive. The script can be submitted using the simplest form of the qsub command ie:
+<code>
+ qsub run-camino.sh
+</code>
+Output will be written to $TMPDIR and so will need to be copied back to your ~/Scratch directory - step 10 in the runscript.
+
+[[#top | back to top]]
+
+
+
+
+
+

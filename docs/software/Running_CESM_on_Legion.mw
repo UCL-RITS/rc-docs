@@ -1,0 +1,85 @@
+There is now a centrally provided install of CESM 1.0.4 on Legion, provided through the modules system. In order to use this install, you need to register for an account with the CESM developers (so that you can accept the license and use SVN to access data sets) and notify [mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk] that you wish to be added to the CESM Unix group (legcesm).
+
+Before you run CESM for the first time you will also need to run a setup script to create a suitable directory structure in ~/Scratch, and set an environment variable to tell CESM which Legion project you wish to submit jobs under.
+
+=Prerequisites=
+
+In order to use the install of CESM on Legion, you need to have a Legion account, have registered with the CESM developers (for access to SVN) and send an e-mail to [mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk] asking to be  added to the CESM Unix group (legcesm).
+
+[[#top | back to top]]
+
+=Modules for CESM=
+
+CESM 1.0.4 is provided through the Legion environment modules system.  To load it you need to load:
+
+* compilers/intel/11.1/072
+* mpi/qlogic/1.2.7/intel
+* sge/6.2u3
+* netcdf/4.1.1/intel
+* cesm/1.0.4/intel
+
+For most users, the first three modules will be loaded by default.
+
+[[#top | back to top]]
+
+=Before first use=
+
+Before you use CESM, you need to run an initial config script (you don't need to run this again) and set an environment variable so that CESM knows what project to auto-generate job scripts for.
+
+First, make sure you don't have a ~/Scratch/cesm directory (and move it if you do) and then run:
+<code>
+ legion_cesm_setup.sh
+</code>
+This will create the following directory structure:
+
+<code>
+Scratch/cesm
+  |
+  +-- archive
+  +-- cases
+  +-- inputdata
+  +-- output
+  +-- scratch
+</code>
+These should be self-explanatory, except that "output" is used for storing SGE log files.
+
+Secondly, you need to set the $LEGION_CESM_PROJECT environment variable so that it contains the name of your project.  For example, if you are a member of the project "MyProject", you need to issue:
+<code>
+ export LEGION_CESM_PROJECT=MyProject
+</code>
+Be aware that this environment variable will be unset when you log out, so it may be worth adding this statement to the end of your ~/.bashrc so that it is run on login.
+
+[[#top | back to top]]
+
+=Check that everything is set up properly=
+
+It's worth doing a simple test to make sure that everything is working.  To create and run a simple test case:
+<code>
+ cd ~/Scratch/cesm/cases
+ create_newcase -case legiontest -res f19_g16 -compset X -mach legion
+</code>
+If this succeeds, you should have a "legiontest" CESM case within your cases folder.
+<code>
+ cd legiontest
+ ./configure -case
+</code>
+After you have completed this step, take a quick look at legiontest.legion.run to make sure that the run script has your project and other settings set correctly.
+
+Then you can build the case:
+<code>
+ ./legiontest.legion.build
+</code>
+And submit it:
+<code>
+ qsub legiontest.legion.run
+</code>
+
+[[#top | back to top]]
+
+=Modifying CESM=
+
+To use user-modified code in CESM, you can use the SourceMods directory within your new case, as described here:
+
+[http://www.cesm.ucar.edu/models/cesm1.0/cesm/cesm_doc_1_0_4/x1759.html http://www.cesm.ucar.edu/models/cesm1.0/cesm/cesm_doc_1_0_4/x1759.html]
+
+[[#top | back to top]]

@@ -1,0 +1,52 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 0.3.12'''<br />
+MRtrix provides a set of tools to perform diffusion-weighted MRI white matter tractography in the presence of crossing fibres. <br /><br />'''Useful Links:'''
+
+* [http://www.mrtrix.org/ MRtrix website]    <br /><br />
+==Setup==
+The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module load python/2.7.9</code><br /><code>module load qt/4.8.6/gnu-4.9.2</code><br /><code>module load gsl/1.16/gnu-4.9.2</code><br /><code>module load mrtrix/0.3.12/nogui</code><br /><br />MRtrix has a .mrtrix.conf that is copied to your home directory the first time you run this module from a login node. It sets:
+
+   Analyse.LeftToRight: false
+   NumberOfThreads: 4
+
+Alter <code>NumberOfThreads</code> to what you are using in your job script.
+
+=GUI tools unavailable=
+
+<code>mrview</code> and <code>shview</code> in MRtrix 3 cannot be run over a remote X11 connection so are not usable on Legion. To use these tools you will need a local install on your own computer.
+
+
+
+
+
+
+

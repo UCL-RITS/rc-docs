@@ -1,0 +1,1068 @@
+[[Category:Legion]]
+This is a list of the R add-on packages available with R 3.3.0 and Bioconductor 3.3 on Legion and Grace.
+__TOC__
+=R Packages installed on RC Systems=
+{|class="wikitable sortable" style="background-color:#F9F9F9;" width=100% 
+|-
+!data-sort-type="text"|Package
+!class="unsortable"|Description
+|-style="vertical-align:top;"
+|abc
+|Functions to perform Approximate Bayesian Computation (ABC) using simulated data.
+|-style="vertical-align:top;"
+|abind
+|Combine multi-dimensional arrays into a single array. This is a generalization of cbind and rbind.
+|-style="vertical-align:top;"
+|adapt
+|Multidimensional numerical integration
+|-style="vertical-align:top;"
+|adegenet
+|An R package for the exploratory analysis of genetic and genomic data.
+|-style="vertical-align:top;"
+|ade4
+|Data Analysis functions to analyse Ecological and Environmental data in the framework of Euclidean Exploratory methods.
+|-style="vertical-align:top;"
+|ADGofTest
+|Anderson-Darling GoF test with p-value calculation.
+|-style="vertical-align:top;"
+|akima
+|Linear or cubic spline interpolation for irregular gridded data.
+|-style="vertical-align:top;"
+|ape
+|Analyses of Phylogenetics and Evolution.
+
+|-style="vertical-align:top;"
+|aroma.affymetrix
+|Analysis of large Affymetrix microarray data sets.
+
+|-style="vertical-align:top;"
+|aroma.apd
+|A probe-level data file format used by aroma.affymetrix. ''This package has been deprecated.''
+
+|-style="vertical-align:top;"
+|aroma.core
+|Core methods and classes used by aroma.* packages part of The Aroma Framework.
+
+|-style="vertical-align:top;"
+|base64
+|Base 64 encoder/decoder.
+
+|-style="vertical-align:top;"
+|base64enc
+|Tools for base64 encoding.
+
+|-style="vertical-align:top;"
+|BaSTA
+|A package for estimating age-specific survival from incomplete capture-recapture/recovery data.
+
+|-style="vertical-align:top;"
+|BatchJobs
+|Provides Map, Reduce and Filter variants to generate jobs on batch computing systems like Sun Grid Engine and others.
+
+|-style="vertical-align:top;"
+|BBmisc
+|Miscellaneous helper functions from TU Dortmund.
+
+|-
+|beanplot
+|Visualization via Beanplots (like Boxplot/Stripchart/Violin Plot)
+
+|-style="vertical-align:top;"
+|bitops
+|Functions for Bitwise operations
+|-style="vertical-align:top;"
+|boot
+|Functions and datasets for bootstrapping from the book "Bootstrap Methods and Their Applications" by A. C. Davison and D. V. Hinkley
+
+|-style="vertical-align:top;"
+|brew
+|Implements a templating framework for mixing text and R code for report generation.
+
+|-style="vertical-align:top;"
+|car
+|car accompanies J. Fox and S. Weisberg, An R Companion to Applied Regression, Second Edition, Sage, 2011.
+|-style="vertical-align:top;"
+|caTools
+|Utility functions including: moving (rolling, running) window statistic functions, read/write for GIF and ENVI binary files, fast calculation of AUC, LogitBoost classifier, base64 encoder/decoder, round-off error free sum and cumsum, etc.
+
+|-style="vertical-align:top;"
+|caret
+|Classification and Regression Training.
+
+|-style="vertical-align:top;"
+|checkmate
+|Fast and Versatile Argument Checks.
+
+|-style="vertical-align:top;"
+|class
+|Functions for Classification
+|-style="vertical-align:top;"
+|cluster
+|Cluster Analysis Extended Rousseeuw et al
+|-style="vertical-align:top;"
+|coda
+|Output analysis and diagnostics for Markov Chain Monte Carlo simulations.
+|-style="vertical-align:top;"
+|codetools
+|Code Analysis Tools for R
+
+|-style="vertical-align:top;"
+|colorRamps
+|Builds gradient colour maps.
+
+|-style="vertical-align:top;"
+|colorspace
+|Color Space Manipulation.
+|-style="vertical-align:top;"
+|combinat
+|Combinatorics utilities
+|-style="vertical-align:top;"
+|compiler
+|The R Compiler Package.
+|-style="vertical-align:top;"
+|copula
+|Multivariate dependence with copulas
+|-style="vertical-align:top;"
+|corpcor
+|Efficient Estimation of Covariance and (Partial) Correlation using a James-Stein-type shrinkage estimator for the covariance matrix, with separate shrinkage for variances and correlations.
+|-style="vertical-align:top;"
+|datasets
+|The R Datasets Package
+|-style="vertical-align:top;"
+|DBI
+|R Database Interface
+|-style="vertical-align:top;"
+|Design
+|Design Package
+|-style="vertical-align:top;"
+|dichromat
+|Collapse red-green or green-blue distinctions to simulate the effects of different types of color-blindness.
+|-style="vertical-align:top;"
+|digest
+|Create cryptographic hash digests of R objects.
+|-style="vertical-align:top;"
+|doMC
+|Foreach parallel adaptor for the multicore package
+|-style="vertical-align:top;"
+|doParallel
+|Provides a parallel backend for the %dopar% function using the parallel package.
+
+|-
+|doRNG
+|Generic Reproducible Parallel Backend for foreach Loops
+
+|-style="vertical-align:top;"
+|dynamicTreeCut
+|Methods for detection of clusters in hierarchical clustering dendrograms.
+|-style="vertical-align:top;"
+|ellipse
+|Functions for drawing ellipses and ellipse-like confidence regions.
+|-style="vertical-align:top;"
+|Epi
+|A package for statistical analysis in epidemiology.
+|-style="vertical-align:top;"
+|etm
+|Matrix of transition probabilities for any time-inhomogeneous multistate model with finite state space.
+
+|-style="vertical-align:top;"
+|expm
+|Computation of the matrix exponential and related quantities.
+
+|-style="vertical-align:top;"
+|FactoMineR
+|Multivariate Exploratory Data Analysis and Data Mining with R.
+
+|-style="vertical-align:top;"
+|fail
+|File Abstraction Interface Layer (FAIL) mimicking a key-value store.
+
+|-style="vertical-align:top;"
+|fastmatch
+|Package providing a fast match() replacement for cases that require repeated look-ups.
+|-style="vertical-align:top;"
+|fdrtool
+|Estimation of (Local) False Discovery Rates and Higher Criticism.
+fields 	Tools for spatial data.
+|-style="vertical-align:top;"
+|flashClust
+|Implementation of optimal hierarchical clustering.
+|-style="vertical-align:top;"
+|flexmix
+|Flexible Mixture Modeling
+|-style="vertical-align:top;"
+|foreach
+|Foreach looping construct for R
+|-style="vertical-align:top;"
+|foreign
+|Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, dBase, etc.
+|-style="vertical-align:top;"
+|Formula
+|Extended Model Formulas with multiple parts on the right-hand side and/or multiple responses on the left-hand side.
+|-style="vertical-align:top;"
+|fpc
+|Various methods for clustering and cluster validation including fixed point, linear regression, clustering by merging Gaussian mixture components. Symmetric and asymmetric discriminant projections for visualisation of the separation of groupings and more.
+|-style="vertical-align:top;"
+|gamlss
+|Generalized Additive Models for Location Scale and Shape
+|-style="vertical-align:top;"
+|gamlss.data
+|GAMLSS Data
+|-style="vertical-align:top;"
+|gamlss.dist
+|Distributions to be used for GAMLSS modeling
+|-style="vertical-align:top;"
+|gamlss.mx
+|A GAMLSS add on package for fitting mixture distributions
+|-style="vertical-align:top;"
+|gamlss.nl
+|Fitting non linear parametric GAMLSS models
+|-style="vertical-align:top;"
+|gdata
+|Various R programming tools for data manipulation
+|-style="vertical-align:top;"
+|GenABEL
+|genome-wide SNP association analysis
+
+|-style="vertical-align:top;"
+|GenABEL.data
+|Contains data which is used by GenABEL example and test functions.
+
+|-style="vertical-align:top;"
+|GeneNet
+|Modeling and Inferring Gene Networks.
+|-style="vertical-align:top;"
+|genetics
+|Population Genetics
+|-style="vertical-align:top;"
+|ggplot2
+|An implementation of the Grammar of Graphics.
+|-style="vertical-align:top;"
+|glmnet
+|Lasso and elastic-net regularized generalized linear models.
+|-style="vertical-align:top;"
+|gplots
+|Various R programming tools for plotting data.
+|-style="vertical-align:top;"
+|gputools
+|This package provides R interfaces to a handful of common statistical algorithms. These algorithms are implemented in parallel using a mixture of Nvidia's CUDA language and Nvidia's CUBLAS library. On a computer equipped with an Nvidia GPU some of these functions may be substantially more efficient than native R routines. Note that we do not have the CULA library or the CULA extensions to this package on Legion.
+
+You may have to load the cuda/5.0 environment module to use this package.
+|-style="vertical-align:top;"
+|graphics
+|The R Graphics Package
+|-style="vertical-align:top;"
+|grDevices
+|R Graphics Devices and Support for Colours and Fonts
+|-style="vertical-align:top;"
+|grid
+|The Grid Graphics Package
+|-style="vertical-align:top;"
+|gsl
+|R wrapper for the special functions and quasi random number generators of the Gnu Scientific Library.
+
+|-style="vertical-align:top;"
+|gsmoothr
+|Smoothing tools rewritten in C.
+
+|-style="vertical-align:top;"
+|gtable
+|Tools to make it easier to work with "tables" of grobs.
+|-style="vertical-align:top;"
+|gtools
+|Various R programming tools
+|-style="vertical-align:top;"
+|HAC
+|Estimation, simulation and visualization of Hierarchical Archimedean Copulae (HAC).
+|-style="vertical-align:top;"
+|haplo.stats
+|Statistical Analysis of Haplotypes with Traits and Covariates when Linkage Phase is Ambiguous
+|-style="vertical-align:top;"
+|HI
+|Simulation from distributions supported by nested hyperplanes.
+|-style="vertical-align:top;"
+|Hmisc
+|Harrell Miscellaneous - many functions useful for data analysis, high-level graphics etc
+|-style="vertical-align:top;"
+|htmltools
+|Tools for HTML generation and output.
+|-style="vertical-align:top;"
+|httpuv
+|httpuv provides low-level socket and protocol support for handling HTTP and WebSocket requests directly from within R.
+|-style="vertical-align:top;"
+|hwriter
+|HTML Writer - Outputs R objects in HTML format.
+|-style="vertical-align:top;"
+|igraph
+|Routines for simple graphs and network analysis. igraph can handle large graphs and provides functions for generating random and regular graphs, graph visualization, centrality indices etc.
+|-style="vertical-align:top;"
+|INLA
+|Functions which allow you to perform a full Bayesian analysis of structured (geo-)additive models using Integrated Nested Laplace Approximaxion.
+|-style="vertical-align:top;"
+|inline
+|Inline C, C++, Fortran function calls from R.
+
+|-style="vertical-align:top;"
+|intervals
+|Tools for working with points and intervals.
+
+|-style="vertical-align:top;"
+|ipoptr
+|ipoptr is an R interface to Ipopt (Interior Point Optimizer), an open source software package for large-scale nonlinear optimization.
+|-style="vertical-align:top;"
+|iterators
+|Iterator construct for R
+|-style="vertical-align:top;"
+|KernSmooth
+|Functions for kernel smoothing for Wand & Jones (1995)
+|-style="vertical-align:top;"
+|labelling
+|Provides a range of axis labelling algorithms.
+|-style="vertical-align:top;"
+|lattice
+|Lattice Graphics
+
+|-style="vertical-align:top;"
+|latticeExtra
+|Extra Graphical Utilities Based on Lattice.
+
+|-style="vertical-align:top;"
+|leaps
+|Regression subset selection including exhaustive search.
+|-style="vertical-align:top;"
+|lme4
+|Linear mixed-effects models using S4 classes.
+|-style="vertical-align:top;"
+|locfit
+|Local Regression, Likelihood and Density Estimation.
+|-style="vertical-align:top;"
+|longitudinal
+|Analysis of Multiple Time Course Data.
+|-style="vertical-align:top;"
+|lpSolve
+|Interface to Lp_solve v. 5.5 to solve linear/integer programs
+
+|-style="vertical-align:top;"
+|LSD
+|Create lots of colorful plots in a plethora of variations.
+
+|-style="vertical-align:top;"
+|maps
+|Draw Geographical Maps.
+|-style="vertical-align:top;"
+|MASS
+|Support Functions and Datasets for Venables and Ripley's MASS
+|-style="vertical-align:top;"
+|Matrix
+|Sparse and Dense Matrix Classes and Methods
+
+|-style="vertical-align:top;"
+|matrixStats
+|Methods that Apply to Rows and Columns of a matrix.
+
+|-style="vertical-align:top;"
+|mclust
+|Normal Mixture Modeling for Model-Based Clustering, Classification, and Density Estimation.
+|-style="vertical-align:top;"
+|mcmc
+|Markov Chain Monte Carlo.
+|-style="vertical-align:top;"
+|metafor
+|Meta-Analysis Package
+|-style="vertical-align:top;"
+|methods
+|Formal Methods and Classes
+|-style="vertical-align:top;"
+|mgcv
+|GAMs with GCV/AIC/REML smoothness estimation and GAMMs by PQL
+
+|-style="vertical-align:top;"
+|minqa
+|Derivative-free optimization algorithms by quadratic approximation.
+
+|-style="vertical-align:top;"
+|mlr
+|Machine Learning in R.
+
+|-style="vertical-align:top;"
+|mnormt
+|The multivariate normal and t distributions
+|-style="vertical-align:top;"
+|modeltools
+|Tools and Classes for Statistical Models
+|-style="vertical-align:top;"
+|msm
+|Multi-state Markov and hidden Markov models in continuous time
+|-style="vertical-align:top;"
+|mstate
+|Data preparation, estimation and prediction in multi-state models.
+|-style="vertical-align:top;"
+|multcomp
+|Simultaneous Inference in General Parametric Models
+|-style="vertical-align:top;"
+|multicore
+|Parallel processing of R code on machines with multiple cores or CPUs - ''deprecated in R 3.1.1 and likely to be removed from future versions.''
+|-style="vertical-align:top;"
+|munsell
+|Munsell colour system.
+|-style="vertical-align:top;"
+|mvtnorm
+|Multivariate Normal and t Distributions
+|-style="vertical-align:top;"
+|ncdf
+|Interface to Unidata netCDF data files
+|-style="vertical-align:top;"
+|NetworkAnalysis
+|Statistical inference on populations of weighted or unweighted networks.
+|-style="vertical-align:top;"
+|nlme
+|Linear and Nonlinear Mixed Effects Models
+
+|-
+|nleqslv
+|Solve systems of non linear equations
+
+|-style="vertical-align:top;"
+|nloptr
+|R interface to NLopt a free/open-source library for nonlinear optimization.
+
+|-style="vertical-align:top;"
+|nnet
+|Feed-forward Neural Networks and Multinomial Log-Linear Models
+
+|-
+|nor1mix
+|Normal (1-d) Mixture Models (S3 Classes and Methods)
+
+|-style="vertical-align:top;"
+|numDeriv
+|provides methods for calculating (usually) accurate numerical first and second order derivatives.
+
+|-style="vertical-align:top;"
+|OPE
+|Fit an outer-product emulator to the multivariate evaluations of a computer model.
+|-style="vertical-align:top;"
+|parallel
+|Support for Parallel Computation.
+|-style="vertical-align:top;"
+|parcor
+|Regularized estimation of partial correlation matrices.
+|-style="vertical-align:top;"
+|pegas
+|Population and Evolutionary Genetics Analysis System.
+|-style="vertical-align:top;"
+|permute
+|Functions for generating restricted permutations of data
+
+|-style="vertical-align:top;"
+|phangorn
+|Phylogenetic analysis in R (Estimation of phylogenetic trees and networks using Maximum Likelihood, Maximum Parsimony, Distance methods & Hadamard conjugation).
+
+|-style="vertical-align:top;"
+|pixmap
+|Functions for import, export, plotting and other manipulations of bitmapped images.
+
+|-
+|pkgmaker
+|Package development utilities
+
+|-style="vertical-align:top;"
+|pls
+|Multivariate regression methods Partial Least Squares Regression (PLSR), Principal Component Regression (PCR) and Canonical Powered Partial Least Squares (CPPLS)
+
+|-style="vertical-align:top;"
+|plyr
+|Tools for splitting, applying and combining data.
+
+|-style="vertical-align:top;"
+|ppls
+|Penalized Partial Least Squares.
+
+|-style="vertical-align:top;"
+|pracma
+|Practical Numerical Math Functions.
+
+|-style="vertical-align:top;"
+|proto
+|Prototype object-based programming.
+
+|-style="vertical-align:top;"
+|PSCBS
+|Analysis of Parent-Specific DNA Copy Numbers.
+
+|-style="vertical-align:top;"
+|pspline
+|Penalized Smoothing Splines
+
+|-style="vertical-align:top;"
+|quadprog
+|Functions to solve Quadratic Programming Problems.
+|-style="vertical-align:top;"
+|quantreg
+|Quantile regression and related methods.
+|-style="vertical-align:top;"
+|qvalue
+|Q-value estimation for false discovery rate control
+
+|-style="vertical-align:top;"
+|R2HTML
+|Includes HTML function and methods to write in an HTML file.
+
+|-style="vertical-align:top;"
+|R2jags
+| A Package for Running jags from R.
+
+|-style="vertical-align:top;"
+|R2WinBUGS
+|Running WinBUGS and OpenBUGS from R. Note: does not work standalone, was a prerequisite for R2jags.
+
+|-style="vertical-align:top;"
+|randomForest
+|Breiman and Cutler's Random Forests for Classification and Regression.
+
+|-style="vertical-align:top;"
+|R.cache
+|Fast and light-weight caching (memoization) of objects and results to speed up computations.
+ 
+|-style="vertical-align:top;"
+|RColorBrewer
+|ColorBrewer palettes
+
+|-style="vertical-align:top;"
+|Rcpp
+|Seamless R and C++ Integration.
+
+|-style="vertical-align:top;"
+|RcppArmadillo
+|Rcpp Integration for the Armadillo Templated Linear Algebra Library.
+
+|-style="vertical-align:top;"
+|RcppEigen
+|Rcpp integration for the Eigen templated linear algebra library.
+
+|-style="vertical-align:top;"
+|RcppGSL
+|Rcpp integration for GNU GSL vectors and matrices.
+
+|-style="vertical-align:top;"
+|RCurl
+|General network (HTTP/FTP/...) client interface for R
+
+|-style="vertical-align:top;"
+|R.devices
+|Unified handling of graphics devices - unctions for creating plots and image files in a unified way regardless of output format (EPS, PDF, PNG, SVG, TIFF, WMF, etc.).
+
+|-
+|registry
+|Provides a generic infrastructure for creating and using registries.
+
+|-style="vertical-align:top;"
+|reshape
+|Flexibly restructure and aggregate data using just two functions: melt and cast.
+
+|-style="vertical-align:top;"
+|R.filesets
+|Easy handling of and access to files organized in structured directories.
+
+|-style="vertical-align:top;"
+|rgl
+|3D visualization device system (OpenGL). Provides medium to high level functions for 3D interactive graphics, including functions modelled on base graphics (plot3d(), etc.) as well as functions for constructing representations of geometric objects (cube3d(), etc.).
+
+|-style="vertical-align:top;"
+|R.huge
+|Methods for accessing huge amounts of data. ''This package has been deprecated and should no longer be used.''
+
+|-style="vertical-align:top;"
+|ridge
+|Ridge Regression with automatic selection of the penalty parameter.
+|-style="vertical-align:top;"
+|rjags
+|Interface to the JAGS MCMC library.
+|-style="vertical-align:top;"
+|RJSONIO
+|This is a package that allows conversion to and from data in Javascript object notation (JSON) format.
+|-style="vertical-align:top;"
+|R.methodsS3
+|Utility function for defining S3 methods.
+
+|-style="vertical-align:top;"
+|Rmpi
+|Rmpi provides an interface (wrapper) to MPI APIs. It also provides an interactive R slave environment. You may have to load the mpi/openmpi/1.4.5/gnu.4.6.3 environment module to use this package. (Currently Rmpi is available for r/2.15.2-atlas/gnu.4.6.3 and r/3.1.1-atlas/gnu.4.6.3 - load mpi/openmpi/1.6.5/gnu.4.6.3 for the latter.).
+
+|-style="vertical-align:top;"
+|RMySQL
+|R interface to the MySQL database system.
+
+|-
+|rngtools
+|Utility functions for working with Random Number Generators
+
+|-style="vertical-align:top;"
+|R.oo
+|R object-oriented programming with or without references.
+
+|-style="vertical-align:top;"
+|rpart
+|Recursive partitioning and regression trees
+
+|-
+|RPMM
+|Recursively Partitioned Mixture Model for Beta and Gaussian Mixtures
+
+|-style="vertical-align:top;"
+|R.rsp
+|Dynamic generation of scientific reports using the RSP markup lanuguage. RSP provides a powerful markup for controlling the content and output of LaTeX, HTML, Markdown, AsciiDoc, Sweave and knitr documents.
+
+|-style="vertical-align:top;"
+|Rsolnp
+|General Non-linear Optimization Using Augmented Lagrange Multiplier Method.
+
+|-style="vertical-align:top;"
+|RSQLite
+|SQLite interface for R
+
+|-style="vertical-align:top;"
+|RUnit
+|R functions implementing a standard Unit Testing framework, with additional code inspection and report generation tools.
+
+|-style="vertical-align:top;"
+|R.utils
+|Various programming utilities.
+|-style="vertical-align:top;"
+|saemix
+|The SAEM package implements the Stochastic Approximation EM algorithm for parameter estimation in (non)linear mixed effects models.
+|-style="vertical-align:top;"
+|sampling
+|Survey Sampling
+
+|-style="vertical-align:top;"
+|sandwich
+|Model-robust standard error estimators for cross-sectional, time series, and longitudinal data.
+
+|-style="vertical-align:top;"
+|scales
+|scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
+|-style="vertical-align:top;"
+|scatterplot3d
+|Plots a 3D point cloud
+
+|-style="vertical-align:top;"
+|schoolmath
+|Functions and datasets for math used in school.
+
+|-style="vertical-align:top;"
+|sendmailR
+|send email using R.
+
+|-style="vertical-align:top;"
+|shiny
+|Web Application Framework for R.
+|-style="vertical-align:top;"
+|sn
+|The skew-normal and skew-t distributions
+|-style="vertical-align:top;"
+|snow
+|Support for simple parallel computing in R.
+
+|-style="vertical-align:top;"
+|softImpute
+|Matrix Completion via Iterative Soft-Thresholded SVD.
+
+|-style="vertical-align:top;"
+|sp
+|Classes and methods for spatial data.
+|-style="vertical-align:top;"
+|spam
+|An alternative set of function for sparse matrix algebra.
+|-style="vertical-align:top;"
+|SparseM
+|Basic linear algebra for sparse matrices
+|-style="vertical-align:top;"
+|spatial
+|Functions for Kriging and Point Pattern Analysis
+|-style="vertical-align:top;"
+|splines
+|Regression Spline Functions and Classes
+|-style="vertical-align:top;"
+|stabledist
+|Density, Probability and Quantile functions, and random number generation for (skew) stable distributions.
+|-style="vertical-align:top;"
+|stats
+|The R Stats Package
+|-style="vertical-align:top;"
+|stats4
+|Statistical Functions using S4 Classes
+|-style="vertical-align:top;"
+|stringdist
+|Approximate string matching and string distance functions.
+|-style="vertical-align:top;"
+|stringr
+|stringr is a set of simple wrappers that make R's string functions more consistent, simpler and easier to use.
+|-style="vertical-align:top;"
+|survival
+|Survival analysis, including penalised likelihood
+|-style="vertical-align:top;"
+|tcltk
+|Tcl/Tk Interface
+|-style="vertical-align:top;"
+|tgp
+|Bayesian nonstationary, semiparametric nonlinear regression and design by treed Gaussian processes (GPs) with jumps to the limiting linear model (LLM).
+
+|-style="vertical-align:top;"
+|TH.data
+|TH's Data Archive.
+
+|-style="vertical-align:top;"
+|tkrplot
+|Simple mechanism for placing R graphics in a Tk widget.
+|-style="vertical-align:top;"
+|tools
+|Tools for Package Development
+
+|-style="vertical-align:top;"
+|truncnorm
+|Truncated normal distribution.
+
+|-style="vertical-align:top;"
+|tseries
+|Time series analysis and computational finance
+|-style="vertical-align:top;"
+|utils
+|The R Utils Package
+|-style="vertical-align:top;"
+|vegan
+|Community Ecology Package
+|-style="vertical-align:top;"
+|WGCNA
+|Weighted Correlation Network Analysis.
+|-style="vertical-align:top;"
+|XML
+|Tools for parsing and generating XML within R
+|-style="vertical-align:top;"
+|xtable
+|Export tables to LaTeX or HTML
+|-style="vertical-align:top;"
+|zoo
+|Z's ordered observations
+|}
+
+[[#top | back to top]]
+
+=Bioconductor Packages installed on RC Systems=
+
+The following packages from Bioconductor 3.3 are currently available with R 3.3.0 on Legion and Grace.
+
+{|class="wikitable sortable" style="background-color:#F9F9F9;vertical-align:top;" width=100%
+|-
+!data-sort-type="text"|Package
+!class="unsortable"|Description
+
+|-
+|affxparser
+|Affymetrix File Parsing SDK.
+
+|-
+|affy
+|Methods for Affymetrix Oligonucleotide Arrays
+|-
+|affydata
+|Affymetrix Data for Demonstration Purposes
+|-
+|affyio
+|Tools for parsing Affymetrix data files
+|-
+|affylmGUI
+|GUI for affy analysis using limma package
+|-
+|affyPLM
+|Methods for fitting probe-level models
+|-
+|affyQCReport
+|QC Report Generation for affyBatch objects
+|-
+|annaffy
+|Annotation tools for Affymetrix biological metadata
+|-
+|annmap
+|Genome annotation and visualisation package pertaining to Affymetrix arrays and NGS analysis.
+|-
+|annotate
+|Annotation for microarrays
+|-
+|AnnotationDbi
+|Annotation Database Interface
+|-
+|AnnotationForge
+|Code for Building Annotation Database Packages.
+|-
+|beadarray
+|Quality assessment and low-level analysis for Illumina BeadArray data.
+|-
+|beadarrayExampleData
+|Example data for the beadarray package.
+|-
+|BeadDataPackR
+|Compression and decompression of Illumina BeadArray data.
+|-
+|Biobase
+|Base functions for Bioconductor
+|-
+|BiocGenerics
+|Generic functions for Bioconductor.
+|-
+|BiocInstaller
+|Install/Update Bioconductor and CRAN Packages
+
+|-
+|BiocParallel
+|Bioconductor facilities for parallel evaluation.
+
+|-
+|biomaRt
+|Interface to BioMart databases (e.g. Ensembl, COSMIC, Wormbase and Gramene)
+|-
+|Biostrings
+|String objects representing biological sequences, and matching algorithms
+|-
+|biovizBase
+|Basic graphic utilities for visualization of genomic data.
+|-
+|BSgenome
+|Infrastructure for Biostrings-based genome data packages.
+|-
+|BSgenome.Hsapiens.UCSC.hg19
+|Homo sapiens (Human) full genome (UCSC version hg19).
+
+|-
+|bumphunter
+|Tools for finding bumps in genomic data
+
+|-
+|Category
+|Category Analysis.
+
+|-
+|ChAMP
+|Chip Analysis Methylation Pipeline for Illumina HumanMethylation450
+
+|-
+|ChAMPdata
+|Provides datasets needed for ChAMP and also a test dataset
+
+|-
+|DESeq
+|Differential gene expression analysis based on the negative binomial distribution
+
+|-
+|DESeq2
+|Differential gene expression analysis based on the negative binomial distribution.
+
+|-
+|DNAcopy
+|DNA copy number data analysis.
+
+|-
+|DynDoc
+|Dynamic document tools
+
+|-
+|easyRNASeq
+|Count summarization and normalization for RNA-Seq data.
+
+|-
+|edgeR
+|Differential expression analysis of RNA-seq and digital gene expression profiles with biological replication.
+|-
+|gcrma
+|Background Adjustment Using Sequence Information
+|-
+|genefilter
+|methods for filtering genes from microarray experiments
+|-
+|geneplotter
+|Graphics related functions for Bioconductor
+|-
+|GenomeGraphs
+|Plotting genomic information from Ensembl.
+
+|-
+|GenomeInfoDb
+|Utilities for manipulating chromosome and other 'seqname' identifiers.
+
+|-
+|genomeIntervals
+|Operations on genomic intervals.
+
+|-
+|GenomicAlignments
+|Representation and manipulation of short genomic alignments.
+
+|-
+|GenomicFeatures
+|Tools for making and manipulating transcript centric annotations.
+|-
+|GenomicRanges
+|Representation and manipulation of genomic intervals.
+|-
+|GO.db
+|A set of annotation maps describing the entire Gene Ontology
+|-
+|GOstats
+|Tools for manipulating GO and microarrays.
+|-
+|graph
+|A package to handle graph data structures.
+|-
+|GSEABase
+|Gene set enrichment analysis data structures and methods.
+|-
+|Gviz
+|Plotting data and annotation information along genomic coordinates.
+|-
+|hgu95av2.db
+|Affymetrix Human Genome U95 Set annotation data (chip hgu95av2)
+|-
+|hugene10stprobeset.db
+|Affymetrix Human Gene 1.0-ST Probeset Array Revision 8 annotation data (chip hugene10stprobeset).
+|-
+|hugene10sttranscriptcluster.db
+|Affymetrix Human Gene 1.0-ST Array Transcriptcluster Revision 8 annotation data (chip hugene10sttranscriptcluster).
+
+|-
+|Illumina450ProbeVariants.db
+|Annotation Package combining variant data from 1000 Genomes Project for Illumina HumanMethylation450 Bead Chip probes
+
+|-
+|illuminaHumanv4.db
+|Illumina HumanHT12v4 annotation data (chip illuminaHumanv4).
+
+|-
+|IlluminaHumanMethylation450k.db
+|Illumina Human Methylation 450k annotation data (chip IlluminaHumanMethylation450k) assembled using data from public repositories
+
+|-
+|IlluminaHumanMethylation450kmanifest
+|Annotation for Illumina's 450k methylation arrays
+
+|-
+|illuminaio
+|Parsing Illumina microarray output files.
+
+|-
+|impute
+|Imputation for microarray data (currently KNN only)
+|-
+|IRanges
+|Infrastructure for manipulating intervals on sequences
+|-
+|KEGG.db
+|A set of annotation maps for KEGG
+|-
+|limma
+|Linear Models for Microarray Data
+
+|-
+|lumi
+|BeadArray Specific Methods for Illumina Methylation and Expression Microarrays
+
+|-
+|made4
+|Multivariate analysis of microarray data using ADE4.
+|-
+|marray
+|Exploratory analysis for two-color spotted microarray data
+
+|-
+|methylumi
+|Handle Illumina methylation data
+
+|-
+|minfi
+|Analyze Illumina's 450k methylation arrays
+
+|-
+|multtest
+|Resampling-based multiple hypothesis testing
+|-
+|org.Hs.eg.db
+|Genome wide annotation for Human
+|-
+|preprocessCore
+|A collection of pre-processing functions
+|-
+|qvalue
+|Q-value estimation for false discovery rate control
+|-
+|RBGL
+|A fairly extensive and comprehensive interface to the graph algorithms contained in the BOOST library.
+
+|-
+|Repitools
+|Tools for the analysis of enrichment-based epigenomic data.
+
+|-
+|Rsamtools
+|R interface to the 'samtools', 'bcftools', and 'tabix' utilities for manipulating SAM (Sequence Alignment / Map), binary variant call (BCF) and compressed indexed tab-delimited (tabix) files.
+
+|-
+|Ringo
+|R Investigation of ChIP-chip Oligoarrays.
+
+|-
+|ROC
+|utilities for ROC, with uarray focus
+
+|-
+|Rsubread
+|High-performance read alignment, quantification and mutation discovery.
+
+|-
+|rtracklayer
+|R interface to genome browsers and their annotation tracks.
+|-
+|seqLogo
+|seqLogo takes the position weight matrix of a DNA sequence motif and plots the corresponding sequence logo as introduced by Schneider and Stephens (1990).
+
+|-
+|ShortRead
+|Sampling, iteration, and input of FASTQ files.
+
+|-
+|siggenes
+|Identification of differentially expressed genes and estimation of the False Discovery Rate (FDR) using both the Significance Analysis of Microarrays (SAM) and the Empirical Bayes Analyses of Microarrays (EBAM).
+
+|-
+|simpleaffy
+|Very simple high level analysis of Affymetrix data
+
+|-
+|sva
+|Surrogate Variable Analysis
+
+|-
+|VariantAnnotation
+|Annotation of Genetic Variants.
+
+|-
+|vsn
+|Variance stabilization and calibration for microarray data
+
+|-
+|wateRmelon
+|Illumina 450 methylation array normalization and metrics
+
+|-
+|widgetTools
+|Creates an interactive tcltk widget
+|-
+|xps
+|Processing and Analysis of Affymetrix Oligonucleotide Arrays including Exon Arrays, Whole Genome Arrays and Plate Arrays
+
+|-
+|XVector
+|Representation and manpulation of external sequences.
+
+|-
+|zlibbioc
+|An R packaged zlib-1.2.5
+|}
+[[#top | back to top]]

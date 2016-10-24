@@ -1,0 +1,43 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 2.0.0.7'''<br />
+Discovering known and novel miRNAs from deep sequencing data, miRDeep2 is a completely overhauled tool which discovers microRNA genes by analyzing sequenced RNAs. The tool reports known and hundreds of novel microRNAs with high accuracy in seven species representing the major animal clades. <br /><br />'''Useful Links:'''
+
+* [https://www.mdc-berlin.de/8551903/en/research/research_teams/systems_biology_of_gene_regulatory_elements/projects/miRDeep mIRDeep2 website]    <br /><br />
+==Setup==
+The following changes need to be made to the standard Legion modules before running this software:<br />
+
+<code>module load squid/1.9g</code><br /><code>module load randfold/2.0</code><br /><code>module load perl/5.22.0</code><br /><code>module load bowtie/1.1.2</code><br /><code>module load python/2.7.9</code><br /><code>module load viennarna/2.1.9</code><br /><code>module load mirdeep/2.0.0.7</code><br />
+
+
+
+
+
+
+

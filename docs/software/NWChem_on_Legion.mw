@@ -1,0 +1,127 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 6.5 r26243, 6.6-r27746'''<br />
+NWChem is used by thousands of researchers worldwide to investigate questions about chemical processes by applying theoretical techniques to predict the structure, properties, and reactivity of chemical and biological species ranging in size from tens to millions of atoms.
+
+With NWChem, researchers can tackle molecular systems including biomolecules, nanostructures, actinide complexes, and materials. NWChem offers an extensive array of highly scalable, parallel computational chemistry methods needed to address scientific questions that are relevant to reactive chemical processes occurring in our everyday environment—photosynthesis, protein functions, and combustion, to name a few.
+
+They include a multitude of highly correlated methods, density functional theory (DFT) with an extensive set of exchange-correlation functionals, time-dependent density functional theory (TDDFT), plane-wave DFT with exact exchange and Car-Parrinello, molecular dynamics with AMBER and CHARMM force fields, and combinations of them. <br /><br />'''Useful Links:'''
+
+* [http://www.nwchem-sw.org/index.php/Main_Page NWChem.org]    <br /><br />
+==Setup==
+<br />We have a version of NWChem 6.5 built with MKL and ScaLAPACK, and one version built with ATLAS. Both use the Intel compilers and MPI, and are built with the Python 2.7 interface. The ATLAS version may have more frequent convergence errors. NWChem 6.6 is built with MKL and ScaLAPACK only.
+
+You should load the NWChem module you wish to use once from a login node, as it will create a symlinked .nwchemrc in your home. 
+
+==MKL with ScaLAPACK version==
+
+Module changes to make using the default modules.
+
+<code> 
+ module python/2.7.9
+ module load nwchem/6.5-r26243/intel-2015-update2
+</code>
+
+==ATLAS version==
+
+Module changes to make using the default modules.
+
+Note: the ATLAS version failed to converge with this [https://www.hpcvl.org/faqs/application-software/nwchem parallel hpcvl sample input] - test for your own data.
+
+<code> 
+ module python/2.7.9
+ module load atlas/3.10.2/intel-2015-update2
+ module load nwchem/6.5-r26243/atlas/intel-2015-update2
+</code>
+==Example NWChem Script==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Batch script to run an MPI NWChem job on Legion with the upgraded 
+# software stack under SGE. Oct 2015
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request thirty minutes of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=0:30:0
+
+# 3. Request 1 gigabyte of RAM.
+#$ -l mem=1G
+
+# 4. Set the name of the job.
+#$ -N NWChem_mkl
+
+# 5. Select the MPI parallel environment and 8 processors.
+#$ -pe mpi 8
+
+# 7. Set the working directory to somewhere in your scratch space.  This is
+# a necessary step with the upgraded software stack as compute nodes cannot
+# write to your $HOME.
+#
+# NOTE: this directory must exist.
+#
+# Replace "<your_UCL_id>" with your UCL user ID :)
+#$ -wd /home/<your_UCL_id>/Scratch/output/nwchem
+
+# 8. Now we need to set up and run our job. 
+
+module load python/2.7.9
+module load nwchem/6.5-r26243/intel-2015-update2
+
+module list
+
+# Gerun is a wrapper for mpirun
+gerun nwchem hpcvl_sample.nw
+</nowiki>
+</code>
+</div>
+
+==Library not found errors==
+
+If you get an error similar to this, then your <code>~/.nwchemrc</code> symlink is likely pointing to a different version that you used previously. Deleting the symlink and loading the module you want to use will recreate it.
+<code>
+ warning:::::::::::::: from_compile
+ NWCHEM_NWPW_LIBRARY is: <
+ /dev/shm/tmp.VB3DpmjULc/nwchem-6.6/src/nwpw/libraryps/>
+ but file does not exist or you do not have access to it !
+ ------------------------------------------------------------------------
+ nwpwlibfile: no nwpw library found 0
+</code>
+
+[[#top | back to top]]
+
+
+
+
+
+

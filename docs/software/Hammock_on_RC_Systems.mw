@@ -1,0 +1,97 @@
+
+[[Category:Software]][[Category:Applications]]
+<table style="width:37%; background-color:#F9F9F9;float:right;margin-left:10px;">
+<tr>
+<td style="vertical-align:top;">
+'''Quick Links'''
+<ul style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+<li>[[RC Systems | Platforms Overview]]</li>
+<li>[[Additional Resource Requests| Request Additional Resources]]</li>
+<li>[[:Category:User Guide | User Guide]]</li>
+<li>[[Software| Software]]</li>
+<li>[[Legion Metrics | Service Metrics]]</li>
+<li>[[Account Services]]</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top;">
+__NOEDITSECTION__[[Contact and Support|Contact & Support]]<br />
+For support for any of our services or for general advice and consultancy, email:<br />
+[mailto:rc-support@ucl.ac.uk rc-support@ucl.ac.uk]
+
+</td>
+</tr>
+</table>
+
+
+[[Applications | Back to Applications]]<br /><br />
+'''Current Version: 1.0.5'''<br />
+Hammock is a tool for peptide sequence clustering. It is able to cluster extremely large amounts of short peptide sequences into groups sharing sequence motifs. Typical Hammock applications are NGS-based experiments using large combinatorial peptide libraries, e.g. Phage display. <br /><br />
+==Setup==
+We provide a hammock module that contains the main dependencies and creates a quick-install alias:
+<code>
+ do-hammock-install
+</code>
+
+This will install Hammock 1.0.5 in your home, and edit settings.prop to use clustal-omega and hmmer from our modules and tell it to write temporary files in your Scratch directory (in the form <code>Hammock_temp_time</code>). <br /> <br />The following changes need to be made to the standard modules before running this software: <br />
+
+<code>module unload compilers</code><br /><code>module load hammock/1.0.5</code><br />
+==Example Job Submission Script==
+
+<div style="background-color:#F9F9F9;width=100%;padding:5px 10px 5px 10px;">
+<code>
+ <nowiki>
+#!/bin/bash -l
+
+# Example Hammock script. You must have run do-hammock-install on a login node
+# first to make your own Hammock install.
+
+# 1. Force bash as the executing shell.
+#$ -S /bin/bash
+
+# 2. Request 15 mins of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=0:15:0
+
+# 3. Request 1 gigabyte of RAM per core
+#$ -l mem=1G
+
+# 4. Set the name of the job.
+#$ -N hammock_test
+
+# 6. Select the shared memory parallel environment and 4 processors:
+# hhsearch will use four threads.
+#$ -pe smp 4
+
+# 7. Set the working directory to somewhere in your scratch space.  
+# Replace <your userid> with your UCL userid.
+#$ -wd /home/<your userid>/Scratch/hammock_examples
+
+# 8. Load the module to set up your environment
+
+module unload compilers
+module load hammock/1.0.5
+
+# This copies the MUSI example that comes with Hammock into your working
+# directory and runs it. The module sets $HAMMOCKPATH for you. You must set the
+# output directory to somewhere in Scratch with -d. Below makes a different 
+# outputdir per job so multiple runs don't overwrite files.
+cp $HAMMOCKPATH/../examples/MUSI/musi.fa .
+outputdir=~/Scratch/hammock-examples/musi_$JOB_ID
+mkdir -p $outputdir
+echo "Running java -jar $HAMMOCKPATH/Hammock.jar full -i musi.fa -d $outputdir"
+
+java -jar $HAMMOCKPATH/Hammock.jar full -i musi.fa -d $outputdir
+</nowiki>
+</code>
+</div>
+
+
+
+[[#top | back to top]]
+
+
+
+
+
+
