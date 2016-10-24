@@ -18,6 +18,7 @@ github_username:  UCL-RITS
 exclude:
   - README.md
   - builder
+  - deploy_key
 
 # Build settings
 markdown: kramdown
