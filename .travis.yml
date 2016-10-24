@@ -1,8 +1,11 @@
 language: ruby
 install: 
   - gem install mdl
-script:
-  - find . -name "*.md" | xargs mdl
-
 exclude:
   - README.md
+  - builder
+
+script:
+  - find . -name "*.md" | xargs mdl
+  - git clone https://github.com/UCL-RITS/rc-docs-builder.git builder
+  - bash builder/deploy.sh
