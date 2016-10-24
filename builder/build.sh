@@ -25,7 +25,7 @@ rsync -r "template/$template_dir/"* "$build_dir/jekyll/"
 
 echo "Using bundler to obtain local Jekyll install..." >&2
 cd "$build_dir/jekyll"
-bundle install --quiet --gemfile="$owd/builder/Gemfile" --path="$build_dir"
+bundle install --gemfile="$owd/builder/Gemfile" --path="$build_dir"
 
 echo "Building site..." >&2
 BUNDLE_GEMFILE="$owd/builder/Gemfile" bundle exec jekyll build --destination "$owd/out"
