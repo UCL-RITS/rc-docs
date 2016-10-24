@@ -8,7 +8,7 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
 function doCompile {
-  builder/build.sh
+  bash builder/build.sh
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
