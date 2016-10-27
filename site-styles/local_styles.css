@@ -1,4 +1,4 @@
-pre.highlighter-rouge div.highlighter-rouge { 
+pre.highlighter-rouge,div.highlighter-rouge { 
 	/* top logo colour is hsl(192,100%,31%) */
 	background-color: rgb(192,20%,60%);
 	padding: 0.5em;
@@ -11,7 +11,7 @@ pre.highlight {
 
 code.highlighter-rouge {
 	margin: 0 0.1em;
-	background-color: hsl(192,50%,80%);
+	background-color: hsl(192,50%,93%);
 }
 
 
