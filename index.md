@@ -21,7 +21,7 @@ For support for any of our services or for general advice and consultancy, conta
 
 We will endeavour to answer queries on any aspect of computing related to your research whatever your skill level or requirements.
 
-## User Accounts'''
+## User Accounts
 
 We now have a single simplified application process for all of our research computing platforms.
 
