@@ -216,63 +216,47 @@
           
           
 
-    <h1 id="aristotle">Aristotle</h1>
+    <h1 id="research-computing-documentation">Research Computing Documentation</h1>
 
-<h2 id="overview">Overview</h2>
+<p>This site is maintained by the Research Computing team for the purpose of sharing information about our services, including user guides, service updates and account request and renewal support.</p>
 
-<p>Aristotle is a stop-gap interactive service for teaching running on a pair of U-like Legion login nodes, each with 64 gigabytes of RAM and 16 cores. The machines run RHEL 6.5 and have a subset of the Legion software stack available. Users should not expect all the packages on the system to work, because it is using the Legion application stack which was built for Scientific Linux 5.x. The main aim of this service is to allow specific teaching courses to run that need to run Unix applications and have outgrown the Socrates service.</p>
-
-<h2 id="access">Access</h2>
-
-<p>Anyone with a UCL userid and within the UCL institutional firewall can access Aristotle by connecting via ssh to:</p>
-
-<p><code class="highlighter-rouge">aristotle.rc.ucl.ac.uk</code></p>
-
-<p>This is a DNS round-robin pointing to two identical machines, <code class="highlighter-rouge">aristotle01</code> and <code class="highlighter-rouge">aristotle02</code>.</p>
-
-<p>The userid and password you need to connect with are those provided to you by <a href="http://ucl.ac.uk/isd">Information Services Division</a>.</p>
-
-<p>If you experience difficulties with your login, please make sure that you are typing your UCL user ID and your password correctly. If you still cannot get access, please contact us on <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;">&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;</a>.</p>
-
-<p>If you are outside the UCL firewall, you will need to connect to Socrates first, as with <a href="Accessing Legion" title="wikilink">Legion</a></p>
-
-<h2 id="user-environment">User Environment</h2>
-
-<p>Aristotle runs Red Hat Enterprise Linux 6.5 and NFS mounts the <a href="Legion Software" title="wikilink">Legion software stack</a>. This means a large number of packages are theoretically available although many of them may not work as they were build for Legion’s Scientific Linux 5.x operating system. As this machine is intended for teaching, work has focused on getting specific applications required for specific courses to work and these are:</p>
+<h2 id="information-and-support-documents">Information and Support Documents</h2>
 
 <ul>
-  <li>SAC</li>
-  <li>Phon</li>
-  <li>GMT</li>
-  <li>Fortran compilers (of which there are a large variety)</li>
+  <li><a href=":Category:User Guide" title="wikilink">User guide</a></li>
+  <li><a href="RC_Systems" title="wikilink">Platforms:</a> <a href="RC_Systems#Legion" title="wikilink">Legion</a>, <a href="RC_Systems#Grace" title="wikilink">Grace</a>, <a href="RC_Systems#Aristotle" title="wikilink">Aristotle</a>, and <a href="Emerald" title="wikilink">Emerald</a></li>
+  <li><a href="Planned Service Outages" title="wikilink">Planned service outages</a></li>
+  <li><a href="Additional Resource Requests" title="wikilink">Request additional resources</a></li>
+  <li><a href="Legion Metrics" title="wikilink">Service metrics</a></li>
 </ul>
 
-<p>Packages are available through modules and users should consult the relevant <a href="Legion user environment" title="wikilink">Legion modules documentation</a>.</p>
+<h2 id="email-support">Email Support</h2>
 
-<h3 id="tested-and-working-legion-packages">Tested and working Legion packages</h3>
+<p>For support for any of our services or for general advice and consultancy, contact us at:</p>
 
-<p>The following packages have been tested and work on Aristotle. The information in brackets includes the module(s) to load. For example to use Matlab:</p>
+<p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;">&#114;&#099;&#045;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#117;&#099;&#108;&#046;&#097;&#099;&#046;&#117;&#107;</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>module load matlab/full/r2013a/8.1-aristotle
-matlab
-</code></pre>
-</div>
+<p>We will endeavour to answer queries on any aspect of computing related to your research whatever your skill level or requirements.</p>
+
+<h2 id="user-accounts">User Accounts’’’</h2>
+
+<p>We now have a single simplified application process for all of our research computing platforms.</p>
+
+<p>To obtain an account, you must either be, or be approved by, a permanent member of staff. If you are a student or a postdoctoral researcher, this will normally be your supervisor. You will need your UCL userid and password to access the application form.</p>
+
+<p>Follow the link below to access the account services page to apply for an account:</p>
 
 <ul>
-  <li>Glasgow Haskell compiler v 7.6.3 (compilers/ghc/7.6.3)</li>
-  <li>GMT (GMT/5.1.1-goolf-1.4.10)</li>
-  <li>GNU C/C++/Fortran compilers v 4.6.3 (compilers/gnu/4.6.3)</li>
-  <li>Intel C/C++/Fortran compilers v 13.0 (compilers/intel/13.0/028)</li>
-  <li>Matlab R2013a (matlab/full/r2013a/8.1-aristotle)</li>
-  <li>Mrxvt v0.5.4 multi-tabbed terminal emulator for X - Xterm replacement (mrxvt/0.5.4)</li>
-  <li>Nag Fortran compiler (compilers/nag/5.3.1.907)</li>
-  <li>NONMEM (atlas/3.8.3/gnu.4.6.3 nonmem/7.3.0/gfortran_rh6.5)</li>
-  <li>Phon (phon/1.37/gcc-4.7.2)</li>
-  <li>Python 2.7.3 and 3.3.0 (python/2.7.3/gnu.4.6.3, python/3.3.0/gnu.4.6.3)</li>
-  <li>R 3.1.1 (recommended/r-aristotle)</li>
-  <li>SAC (sac/101.6a)</li>
-  <li>SAS (sas/9.4/64 - also need directory ~/Scratch to exist)</li>
-  <li>TauP (taup/2.1.2)</li>
+  <li><a href="https://wiki.rc.ucl.ac.uk/wiki/Account_Services">Account Services (Request a user account)</a></li>
+</ul>
+
+<h2 id="how-to">How to…</h2>
+
+<ul>
+  <li><a href="Connecting to Research Data Services" title="wikilink"> Connect to the Research Data Storage service</a></li>
+  <li><a href="Additional Resource Requests" title="wikilink"> Access additional resources</a></li>
+  <li><a href="Reporting_problems" title="wikilink"> Report a problem with one of our computing platforms</a></li>
+  <li><a href="Accessing_RC_Systems#Accessing_services_from_outside_UCL" title="wikilink"> Access services from outside UCL</a></li>
 </ul>
 
 
